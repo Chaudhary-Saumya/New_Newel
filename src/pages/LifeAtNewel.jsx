@@ -149,7 +149,7 @@ export default function LifeAtNewel() {
           </p>
 
           {/* Blue accent line */}
-          <div className="mt-6 h-1 w-32 bg-gradient-to-r from-[#5099ff] to-blue-600 mx-auto rounded-full" />
+          <div className="mt-6 h-1 w-32 bg-linear-to-r from-[#5099ff] to-blue-600 mx-auto rounded-full" />
 
         </div>
 
@@ -181,7 +181,7 @@ export default function LifeAtNewel() {
                     />
 
                     {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/30 via-black/10 to-transparent" />
 
                   </div>
 

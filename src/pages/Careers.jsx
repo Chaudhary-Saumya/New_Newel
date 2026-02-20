@@ -202,18 +202,18 @@ export default function Careers() {
 
       <section ref={sectionRef} className="relative bg-white py-20 lg:py-32 overflow-hidden">
         {/* Light animated wave background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-white to-indigo-50/20 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-br from-blue-50/30 via-white to-indigo-50/20 pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
           {/* Hero */}
           <div ref={heroRef} className="text-center mb-16 lg:mb-24">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-[#5099ff] to-blue-700 tracking-tight leading-none mb-5">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-gray-900 via-[#5099ff] to-blue-700 tracking-tight leading-none mb-5">
               Careers at Newel
             </h1>
             <p className="text-xl lg:text-2xl text-gray-700 font-medium max-w-4xl mx-auto">
               Want to work with us?
             </p>
-            <div className="mt-8 h-1.5 w-40 bg-gradient-to-r from-[#5099ff] to-blue-600 mx-auto rounded-full" />
+            <div className="mt-8 h-1.5 w-40 bg-linear-to-r from-[#5099ff] to-blue-600 mx-auto rounded-full" />
           </div>
 
           {/* Why Newel – Floating Timeline */}
@@ -224,7 +224,7 @@ export default function Careers() {
 
             <div className="relative max-w-5xl mx-auto">
               {/* Curved connecting line */}
-              <div ref={whyLineRef} className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#5099ff]/30 to-blue-600/30 transform -translate-x-1/2 rounded-full hidden lg:block" />
+              <div ref={whyLineRef} className="absolute left-1/2 top-0 bottom-0 w-1 bg-linear-to-b from-[#5099ff]/30 to-blue-600/30 transform -translate-x-1/2 rounded-full hidden lg:block" />
 
               <div className="space-y-16 lg:space-y-20">
                 {whyNewel.map((benefit, index) => {
@@ -244,7 +244,7 @@ export default function Careers() {
                     {/* Connection dot */}
 
                     <div className="relative z-10 flex items-center gap-4 lg:gap-5">
-                      <div className="shrink-0 w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-gradient-to-br from-[#5099ff] to-blue-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <div className="shrink-0 w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-linear-to-br from-[#5099ff] to-blue-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                         <IconComponent className="w-6 h-6 lg:w-7 lg:h-7 text-white" />
                       </div>
                       <div className="flex-1">
@@ -302,7 +302,7 @@ export default function Careers() {
                       </p>
                       <a
                         href="#apply"
-                        className="inline-flex items-center px-7 py-3 bg-gradient-to-r from-[#5099ff] to-blue-600 text-white font-semibold text-base rounded-full shadow-lg hover:shadow-xl hover:shadow-[#5099ff]/40 transition-all duration-300 hover:-translate-y-1"
+                        className="inline-flex items-center px-7 py-3 bg-linear-to-r from-[#5099ff] to-blue-600 text-white font-semibold text-base rounded-full shadow-lg hover:shadow-xl hover:shadow-[#5099ff]/40 transition-all duration-300 hover:-translate-y-1"
                       >
                         Apply Now →
                       </a>
@@ -335,7 +335,7 @@ export default function Careers() {
           </div>
 
           {/* CTA */}
-          <div ref={ctaRef} className="text-center bg-gradient-to-br from-blue-50 to-indigo-50/30 rounded-2xl p-8 lg:p-12 shadow-xl border border-blue-100/50">
+          <div ref={ctaRef} className="text-center bg-linear-to-br from-blue-50 to-indigo-50/30 rounded-2xl p-8 lg:p-12 shadow-xl border border-blue-100/50">
             <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-6">
               Ready to Build the Future?
             </h2>
@@ -344,7 +344,7 @@ export default function Careers() {
             </p>
             <a
               href="#apply"
-              className="group inline-flex items-center px-10 py-5 bg-gradient-to-r from-[#5099ff] to-blue-700 text-white font-bold text-lg rounded-full shadow-xl hover:shadow-2xl hover:shadow-[#5099ff]/50 transition-all duration-500 hover:-translate-y-2 active:scale-95 relative overflow-hidden"
+              className="group inline-flex items-center px-10 py-5 bg-linear-to-r from-[#5099ff] to-blue-700 text-white font-bold text-lg rounded-full shadow-xl hover:shadow-2xl hover:shadow-[#5099ff]/50 transition-all duration-500 hover:-translate-y-2 active:scale-95 relative overflow-hidden"
             >
               <span className="relative z-10">Apply Today →</span>
               <span className="absolute inset-0 bg-white/20 scale-x-0 origin-left transition-transform duration-700 group-hover:scale-x-100" />
