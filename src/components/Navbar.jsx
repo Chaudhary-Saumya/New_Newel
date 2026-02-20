@@ -27,12 +27,12 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Industries', href: '#industries' },
+    { name: 'Services', href: '/services' },
+    { name: 'Industries', href: '/industries' },
     { name: 'Our Core Team', href: '/OurTeam' },
     { name: 'Life@Newel', href: '/LifeAtNewel' },
-    { name: 'Careers', href: '#careers' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Careers', href: '/careers' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (

@@ -2,6 +2,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 
 // ✅ Import your images here
 // import L1 from "../assets/L1.jpg";
@@ -130,7 +132,9 @@ export default function LifeAtNewel() {
   };
 
   return (
-    <section className="py-20 lg:py-32 bg-white">
+    <>
+    <Navbar/>
+      <section className="py-20 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
         {/* Header */}
@@ -239,5 +243,7 @@ export default function LifeAtNewel() {
 
       </div>
     </section>
+    <Footer/>
+    </>
   );
 }

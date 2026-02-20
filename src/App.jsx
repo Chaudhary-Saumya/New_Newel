@@ -14,6 +14,7 @@ import IndustriesOilGas from './pages/IndustriesOilGas'
 import IndustriesInfrastructure from './pages/IndustriesInfrastructure'
 import IndustriesEngineering from './pages/IndustriesEngineering'
 import AppDev from './pages/AppDev'
+import Careers from './pages/Careers'
 
 const App = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => {
         <Route path='/Infrastructure' element={<IndustriesInfrastructure/>}/>
         <Route path='/Engineering' element={<IndustriesEngineering/>}/>
         <Route path='/AppDev' element={<AppDev/>}/>
+        <Route path='/Careers' element={<Careers/>}/>
       </Routes>  
     </div>
   )
