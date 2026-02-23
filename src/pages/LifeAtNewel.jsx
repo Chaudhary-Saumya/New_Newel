@@ -2,248 +2,328 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
-
-// ✅ Import your images here
-// import L1 from "../assets/L1.jpg";
-// import L2 from "../assets/L2.jpg";
-// import L3 from "../assets/L3.jpg";
-// import L4 from "../assets/L4.jpg";
-// import L5 from "../assets/L5.jpg";
-// import L6 from "../assets/L6.jpg";
-// import L7 from "../assets/L7.jpg";
-// import L8 from "../assets/L8.jpg";
+import Footer from '../components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// You will replace these descriptions with real ones
-// Photos are now supported
-const lifeMoments = [
+const events = [
   {
     title: "Diwali Celebration",
-    description: "Lights, sweets, rangoli, and team bonding under festive vibes.",
-
+    cover: 'https://neweltechnologies.com/LifeAtNewel/Diwali/1.jpeg',
+    images: [
+      'https://neweltechnologies.com/LifeAtNewel/Diwali/1.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/Diwali/2.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/Diwali/3.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/Diwali/6.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/Diwali/9.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/Diwali/13.jpeg',
+    ],
   },
   {
-    title: "Independence Day",
-    description: "Flag hoisting, patriotic songs, and unity in celebration.",
-   
+    title: "Independence Day Celebration",
+    cover: 'https://neweltechnologies.com/LifeAtNewel/15Aug2022/6.jpeg',
+    images: [
+      'https://neweltechnologies.com/LifeAtNewel/15Aug2022/1.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/15Aug2022/3.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/15Aug2022/4.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/15Aug2022/5.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/15Aug2022/6.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/15Aug2022/9.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/15Aug2022/10.jpeg',
+    ],
   },
   {
-    title: "Birthday Surprises",
-    description: "Cake cutting, wishes, and making every birthday memorable.",
-    
+    title: "Birthday Celebration",
+    cover: 'https://neweltechnologies.com/LifeAtNewel/Birthday/WhatsAppImage2022-08-17at10.52.53AM(1).jpeg',
+    images: [
+      'https://neweltechnologies.com/LifeAtNewel/Birthday/WhatsAppImage2022-08-17at10.52.53AM(1).jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/Birthday/WhatsAppImage2022-08-17at10.52.53AM(2).jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/Birthday/WhatsAppImage2022-08-17at10.52.53AM(3).jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/Birthday/WhatsAppImage2022-08-17at10.52.53AM.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/Birthday/WhatsAppImage2022-08-17at10.52.54AM(1).jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/Birthday/WhatsAppImage2022-08-17at10.52.54AM(2).jpeg',
+    ],
   },
   {
-    title: "Virtual Events",
-    description: "Online games, fun sessions, and keeping remote teams connected.",
-  
+    title: "Virtual Event",
+    cover: 'https://neweltechnologies.com/LifeAtNewel/VirtualEvent/WhatsAppImage2022-08-17at10.53.32AM(2).jpeg',
+    images: [
+      'https://neweltechnologies.com/LifeAtNewel/VirtualEvent/WhatsAppImage2022-08-17at10.53.30AM(1).jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/VirtualEvent/WhatsAppImage2022-08-17at10.53.30AM.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/VirtualEvent/WhatsAppImage2022-08-17at10.53.31AM.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/VirtualEvent/WhatsAppImage2022-08-17at10.53.32AM(2).jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/VirtualEvent/WhatsAppImage2022-08-17at10.53.32AM.jpeg',
+    ],
   },
   {
-    title: "Tech Meetups & Collaborations",
-    description: "Knowledge sharing with partners like Outsystems & NuVama.",
-
+    title: "Outsystem Event Held In MCA With Nuvama Tech Team",
+    cover: 'https://neweltechnologies.com/LifeAtNewel/EVENTHELDINMCAWITHNUVAMTECHTEAM/7.jpeg',
+    images: [
+      'https://neweltechnologies.com/LifeAtNewel/EVENTHELDINMCAWITHNUVAMTECHTEAM/2.png',
+      'https://neweltechnologies.com/LifeAtNewel/EVENTHELDINMCAWITHNUVAMTECHTEAM/1.png',
+      'https://neweltechnologies.com/LifeAtNewel/EVENTHELDINMCAWITHNUVAMTECHTEAM/3.png',
+      'https://neweltechnologies.com/LifeAtNewel/EVENTHELDINMCAWITHNUVAMTECHTEAM/5.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/EVENTHELDINMCAWITHNUVAMTECHTEAM/6.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/EVENTHELDINMCAWITHNUVAMTECHTEAM/7.jpeg',
+    ],
   },
   {
-    title: "Office Parties",
-    description: "Festive gatherings, music, and team energy.",
-
+    title: "Party Time",
+    cover: 'https://neweltechnologies.com/LifeAtNewel/PARTYTIME/WhatsApp%20Image%202023-01-21%20at%209.44.12%20AM.jpeg',
+    images: [
+      'https://neweltechnologies.com/LifeAtNewel/PARTYTIME/WhatsApp%20Image%202023-01-21%20at%209.44.12%20AM.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/PARTYTIME/WhatsApp%20Image%202023-01-21%20at%209.44.13%20AM.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/PARTYTIME/WhatsApp%20Image%202023-01-21%20at%209.44.14%20AM.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/PARTYTIME/WhatsApp%20Image%202023-01-21%20at%2012.10.10%20PM.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/PARTYTIME/WhatsApp%20Image%202023-01-21%20at%2012.10.09%20PM%20(1).jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/PARTYTIME/WhatsApp%20Image%202023-01-21%20at%2012.10.09%20PM.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/PARTYTIME/WhatsApp%20Image%202023-01-21%20at%2012.10.09%20PM%20(2).jpeg',
+    ],
   },
   {
-    title: "Republic Day",
-    description: "Honoring the nation with pride and team spirit.",
-    
+    title: "Republic Day Celebration",
+    cover: 'https://neweltechnologies.com/LifeAtNewel/REPUBLICDAY2023/WhatsApp%20Image%202023-01-25%20at%205.48.39%20PM.jpeg',
+    images: [
+      'https://neweltechnologies.com/LifeAtNewel/REPUBLICDAY2023/WhatsApp%20Image%202023-01-25%20at%205.48.39%20PM.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/REPUBLICDAY2023/WhatsApp%20Image%202023-01-25%20at%205.48.37%20PM%20(1).jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/REPUBLICDAY2023/WhatsApp%20Image%202023-01-25%20at%205.48.38%20PM.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/REPUBLICDAY2023/WhatsApp%20Image%202023-01-25%20at%205.48.40%20PM%20(1).jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/REPUBLICDAY2023/WhatsApp%20Image%202023-01-25%20at%205.48.40%20PM.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/REPUBLICDAY2023/WhatsApp%20Image%202023-01-25%20at%205.48.39%20PM.jpeg',
+    ],
   },
   {
-    title: "Team Outings",
-    description: "Fun trips, relaxation, and lasting memories.",
-
-  },
+    title: "Outing Time",
+    cover: 'https://neweltechnologies.com/LifeAtNewel/Outing3/1.jpeg',
+    images: [
+      'https://neweltechnologies.com/LifeAtNewel/Outing3/1.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/Outing3/2.JPG',
+      'https://neweltechnologies.com/LifeAtNewel/Outing3/4.jpeg',
+      'https://neweltechnologies.com/LifeAtNewel/Outing3/5.JPG',
+      'https://neweltechnologies.com/LifeAtNewel/Outing3/6.JPG',
+      'https://neweltechnologies.com/LifeAtNewel/Outing3/7.JPG',
+      'https://neweltechnologies.com/LifeAtNewel/Outing3/8.JPG',
+      'https://neweltechnologies.com/LifeAtNewel/Outing3/9.JPG',
+      'https://neweltechnologies.com/LifeAtNewel/Outing3/12.JPG',
+      'https://neweltechnologies.com/LifeAtNewel/Outing3/13.jpeg',
+    ],
+  }
 ];
 
 export default function LifeAtNewel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const carouselRef = useRef(null);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const sectionRef = useRef(null);
   const cardRefs = useRef([]);
-
-  // Auto-play + manual navigation
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % lifeMoments.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-
-      // Fade-in stagger for cards
+      // Cards stagger entrance
       gsap.fromTo(
         cardRefs.current,
-        { opacity: 0, y: 40 },
+        { opacity: 0, y: 80, scale: 0.92 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.9,
+          scale: 1,
+          duration: 1.1,
           stagger: 0.15,
-          ease: 'power3.out',
+          ease: "power3.out",
           scrollTrigger: {
-            trigger: carouselRef.current,
-            start: 'top 80%',
+            trigger: sectionRef.current,
+            start: "top 70%",
             once: true,
           },
         }
       );
 
-      // Simple hover lift
+      // Hover zoom + overlay
       cardRefs.current.forEach((card) => {
         if (!card) return;
 
-        card.addEventListener('mouseenter', () => {
-          gsap.to(card, {
-            scale: 1.04,
-            y: -8,
-            boxShadow: '0 25px 50px -12px rgba(80, 153, 255, 0.15)',
-            duration: 0.4,
-            ease: 'power2.out',
+        card.addEventListener("mouseenter", () => {
+          gsap.to(card.querySelector('img'), {
+            scale: 1.12,
+            duration: 0.7,
+            ease: "power2.out",
+          });
+          gsap.to(card.querySelector('.overlay'), {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "power2.out",
           });
         });
 
-        card.addEventListener('mouseleave', () => {
-          gsap.to(card, {
+        card.addEventListener("mouseleave", () => {
+          gsap.to(card.querySelector('img'), {
             scale: 1,
-            y: 0,
-            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+            duration: 0.8,
+            ease: "power2.out",
+          });
+          gsap.to(card.querySelector('.overlay'), {
+            opacity: 0,
+            y: 20,
             duration: 0.5,
-            ease: 'power2.out',
+            ease: "power2.out",
           });
         });
       });
-
     });
 
     return () => ctx.revert();
   }, []);
 
-  const goToSlide = (index) => {
-    setCurrentIndex(index);
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % selectedEvent.images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + selectedEvent.images.length) % selectedEvent.images.length);
   };
 
   return (
     <>
-    <Navbar/>
-      <section className="py-20 lg:py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <Navbar />
 
-        {/* Header */}
-        <div className="text-center mb-16 lg:mb-24">
+      <section ref={sectionRef} className="relative bg-white py-20 lg:py-32 overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-[length:60px_60px] opacity-30 pointer-events-none" />
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight">
-            Life @ Newel Technologies
-          </h1>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
+          {/* Hero */}
+          <div className="text-center mb-16 lg:mb-24">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight">
+              Life @ Newel Technologies
+            </h1>
+            <p className="mt-6 text-xl lg:text-2xl text-gray-700 max-w-5xl mx-auto leading-relaxed">
+              Where work meets joy, growth meets fun, and every moment builds stronger bonds.
+            </p>
+            <div className="mt-8 h-1 w-32 bg-gradient-to-r from-[#5099ff] to-blue-600 mx-auto rounded-full" />
+          </div>
 
-          <p className="mt-5 text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Where passion meets purpose, hard work meets celebration, and every day builds stronger bonds.
-          </p>
-
-          {/* Blue accent line */}
-          <div className="mt-6 h-1 w-32 bg-linear-to-r from-[#5099ff] to-blue-600 mx-auto rounded-full" />
-
-        </div>
-
-        {/* Carousel Container */}
-        <div ref={carouselRef} className="relative overflow-hidden">
-
-          <div
-            className="flex transition-transform duration-700 ease-out"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-          >
-
-            {lifeMoments.map((moment, index) => (
-
-              <div
-                key={moment.title}
-                ref={(el) => (cardRefs.current[index] = el)}
-                className="min-w-full px-4 sm:px-8"
-              >
-
-                <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300">
-
-                  {/* ✅ Real Image Added */}
-                  <div className="relative h-64 sm:h-80 lg:h-96 overflow-hidden">
-
+          {/* Horizontal Snap Carousel */}
+          <div className="relative">
+            <div className="overflow-x-auto snap-x snap-mandatory scrollbar-hide flex gap-6 lg:gap-10 pb-8">
+              {events.map((event, index) => (
+                <div
+                  key={event.title}
+                  ref={(el) => (cardRefs.current[index] = el)}
+                  className="group relative w-[300px] sm:w-[360px] lg:w-[420px] flex-shrink-0 snap-center rounded-3xl overflow-hidden shadow-xl bg-white border border-gray-100 hover:shadow-2xl hover:shadow-[#5099ff]/30 transition-all duration-500"
+                  onClick={() => {
+                    setSelectedEvent(event);
+                    setCurrentImageIndex(0);
+                  }}
+                >
+                  <div className="relative h-[380px] lg:h-[480px] overflow-hidden">
                     <img
-                      src={moment.image}
-                      alt={moment.title}
-                      className="w-full h-full object-cover"
+                      src={event.cover}
+                      alt={event.title}
+                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                     />
-
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-linear-to-t from-black/30 via-black/10 to-transparent" />
-
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                   </div>
 
-                  {/* Content */}
-                  <div className="p-6 lg:p-10">
-
-                    <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
-                      {moment.title}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8 text-white z-10">
+                    <h3 className="text-2xl lg:text-3xl font-bold tracking-tight mb-2">
+                      {event.title}
                     </h3>
-
-                    <p className="text-gray-700 text-base lg:text-lg leading-relaxed">
-                      {moment.description}
+                    <p className="text-sm lg:text-base opacity-90">
+                      Click to view gallery →
                     </p>
-
                   </div>
 
+                  <div className="absolute bottom-6 right-6">
+                    <button className="bg-[#5099ff] text-white px-6 py-2 rounded-full font-medium text-sm lg:text-base shadow-lg hover:bg-blue-600 transition-colors">
+                      View Gallery
+                    </button>
+                  </div>
                 </div>
+              ))}
+            </div>
 
-              </div>
+            {/* Navigation Arrows (optional - can hide on mobile) */}
+            <button
+              className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 p-4 rounded-full shadow-lg hover:bg-white transition-colors hidden lg:block"
+              onClick={() => {
+                const container = document.querySelector('.overflow-x-auto');
+                container.scrollBy({ left: -420, behavior: 'smooth' });
+              }}
+            >
+              ←
+            </button>
 
-            ))}
+            <button
+              className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 p-4 rounded-full shadow-lg hover:bg-white transition-colors hidden lg:block"
+              onClick={() => {
+                const container = document.querySelector('.overflow-x-auto');
+                container.scrollBy({ left: 420, behavior: 'smooth' });
+              }}
+            >
+              →
+            </button>
+          </div>
+        </div>
+      </section>
 
+      {/* Full-screen Gallery Modal */}
+      {selectedEvent && (
+        <div className="fixed inset-0 z-50 bg-black/95 flex flex-col items-center justify-center">
+          <button
+            className="absolute top-6 right-6 text-white text-5xl hover:text-[#5099ff] transition-colors z-50"
+            onClick={() => setSelectedEvent(null)}
+          >
+            ×
+          </button>
+
+          <div className="relative w-full max-w-6xl h-[80vh] px-4 flex items-center">
+            <button
+              className="absolute left-4 lg:left-8 text-white text-6xl hover:text-[#5099ff] transition-colors z-50"
+              onClick={prevImage}
+            >
+              ‹
+            </button>
+
+            <img
+              src={selectedEvent.images[currentImageIndex]}
+              alt={`${selectedEvent.title} - ${currentImageIndex + 1}`}
+              className="w-full h-full object-contain rounded-2xl shadow-2xl transition-all duration-500"
+            />
+
+            <button
+              className="absolute right-4 lg:right-8 text-white text-6xl hover:text-[#5099ff] transition-colors z-50"
+              onClick={nextImage}
+            >
+              ›
+            </button>
+
+            <p className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/70 text-white px-8 py-3 rounded-full text-lg">
+              {currentImageIndex + 1} / {selectedEvent.images.length}
+            </p>
           </div>
 
-          {/* Navigation Dots */}
-          <div className="flex justify-center mt-8 space-x-3">
-
-            {lifeMoments.map((_, index) => (
-
+          {/* Thumbnails */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 bg-black/60 px-6 py-3 rounded-full overflow-x-auto max-w-full">
+            {selectedEvent.images.map((img, idx) => (
               <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  currentIndex === index
-                    ? 'bg-[#5099ff] scale-125'
-                    : 'bg-gray-300 hover:bg-gray-400'
+                key={idx}
+                onClick={() => setCurrentImageIndex(idx)}
+                className={`w-16 h-16 lg:w-20 lg:h-20 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 ${
+                  idx === currentImageIndex
+                    ? 'border-[#5099ff] scale-110 shadow-lg'
+                    : 'border-transparent opacity-70 hover:opacity-100'
                 }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-
+              >
+                <img src={img} alt="" className="w-full h-full object-cover" />
+              </button>
             ))}
-
           </div>
-
         </div>
+      )}
 
-        {/* Closing */}
-        <div className="text-center mt-16 lg:mt-24">
-
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-            Work Hard, Celebrate Together
-          </h2>
-
-          <p className="text-xl lg:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-            At Newel, we believe great work happens when people feel valued, connected, and genuinely happy.
-          </p>
-
-        </div>
-
-      </div>
-    </section>
-    <Footer/>
+      <Footer />
     </>
   );
 }
