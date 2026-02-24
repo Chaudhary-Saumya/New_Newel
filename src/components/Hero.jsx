@@ -1,67 +1,180 @@
 // components/Hero.jsx
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Carousel data
+const slides = [
+  {
+    id: 1,
+    title: "The Future",
+    subtitle: "of Cloud is",
+    highlight: "AWS",
+    description: "Enterprise-grade migration, intelligent architecture, serverless innovation, and cost intelligence that scales with your ambition.",
+    layer1: { number: "01", title: "Migration", desc: "Zero-downtime cloud lift & shift", color: "blue-600" },
+    layer2: { number: "02", title: "Architecture", desc: "Serverless + microservices at scale", color: "indigo-600" },
+    layer3: { number: "03", title: "Optimization", desc: "Real-time cost intelligence & auto-scaling", color: "blue-600" },
+  },
+  {
+    id: 2,
+    title: "Build Without",
+    subtitle: "Boundaries Using",
+    highlight: "Serverless",
+    description: "Focus on code, not infrastructure. Auto-scaling, pay-as-you-go, and zero server management for maximum agility.",
+    layer1: { number: "01", title: "Lambda", desc: "Event-driven compute at any scale", color: "purple-600" },
+    layer2: { number: "02", title: "Fargate", desc: "Serverless containers without clusters", color: "pink-600" },
+    layer3: { number: "03", title: "Step Functions", desc: "Visual workflow orchestration", color: "purple-600" },
+  },
+  {
+    id: 3,
+    title: "Scale Your",
+    subtitle: "Business with",
+    highlight: "Data & AI",
+    description: "Unlock insights from your data with machine learning, analytics, and intelligent automation that drives growth.",
+    layer1: { number: "01", title: "Analytics", desc: "Real-time data processing at scale", color: "emerald-600" },
+    layer2: { number: "02", title: "Machine Learning", desc: "ML models for predictive insights", color: "teal-600" },
+    layer3: { number: "03", title: "AI Services", desc: "Pre-built AI for every use case", color: "emerald-600" },
+  },
+  {
+    id: 4,
+    title: "Secure Your",
+    subtitle: "Cloud Future with",
+    highlight: "Zero Trust",
+    description: "Enterprise-grade security with identity-first protection, encryption everywhere, and compliance built-in.",
+    layer1: { number: "01", title: "Identity", desc: "Fine-grained access control", color: "amber-600" },
+    layer2: { number: "02", title: "Encryption", desc: "Data protection at rest & in transit", color: "orange-600" },
+    layer3: { number: "03", title: "Compliance", desc: "SOC2, HIPAA, GDPR ready", color: "amber-600" },
+  },
+];
+
 const Hero = () => {
   const sectionRef = useRef(null);
   const headlineRef = useRef(null);
-  const visualRef = useRef(null);
   const descRef = useRef(null);
   const ctaRef = useRef(null);
-  const chatRef = useRef(null);
+  const visualRef = useRef(null);
   const layerRefs = useRef([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const isAnimating = useRef(false);
 
+  const currentContent = slides[currentSlide];
+
+  const goToSlide = (index) => {
+    if (isAnimating.current || index === currentSlide) return;
+    isAnimating.current = true;
+
+    const direction = index > currentSlide ? 1 : -1;
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        setCurrentSlide(index);
+        isAnimating.current = false;
+      },
+    });
+
+    // Fade/slide out current content
+    tl.to([headlineRef.current, descRef.current, ctaRef.current], {
+      opacity: 0,
+      x: direction * -60,
+      duration: 0.45,
+      stagger: 0.08,
+      ease: "power2.in",
+    });
+
+    // After content is out → change slide & animate in new content
+    tl.add(() => {
+      // Animate in new headline words
+      gsap.fromTo(
+        headlineRef.current.querySelectorAll('.word'),
+        { x: direction * 80, opacity: 0 },
+        { x: 0, opacity: 1, stagger: 0.09, duration: 0.9, ease: "power3.out" }
+      );
+
+      gsap.fromTo(
+        descRef.current,
+        { x: direction * 50, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.7, ease: "power3.out" }
+      );
+
+      gsap.fromTo(
+        ctaRef.current.children,
+        { y: 30, opacity: 0, scale: 0.92 },
+        { y: 0, opacity: 1, scale: 1, stagger: 0.1, duration: 0.7, ease: "back.out(1.3)" }
+      );
+
+      // Cards entrance
+      layerRefs.current.forEach((layer, i) => {
+        gsap.fromTo(
+          layer,
+          { opacity: 0, y: 50, scale: 0.88, rotationY: direction * 20 },
+          { opacity: 1, y: 0, scale: 1, rotationY: 0, duration: 0.8, delay: i * 0.12, ease: "power3.out" }
+        );
+      });
+    }, "-=0.1");
+  };
+
+  const goToNextSlide = () => goToSlide((currentSlide + 1) % slides.length);
+  const goToPrevSlide = () => goToSlide((currentSlide - 1 + slides.length) % slides.length);
+
+  // Auto-play
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isAnimating.current) goToNextSlide();
+    }, 5800);
+    return () => clearInterval(interval);
+  }, [currentSlide]);
+
+  // Initial animations + mouse tilt
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Headline reveal
+      // Headline initial reveal
       gsap.from(headlineRef.current.querySelectorAll('.word'), {
-        y: 80,
+        y: 90,
         opacity: 0,
-        stagger: 0.08,
-        duration: 1.2,
+        stagger: 0.1,
+        duration: 1.4,
         ease: 'power4.out',
       });
 
-      // AWS gradient shift
+      // Gradient animation
       gsap.to('.aws-gradient', {
         backgroundPosition: '200% 0',
-        duration: 8,
+        duration: 10,
         repeat: -1,
         ease: 'none',
       });
 
       gsap.from(descRef.current, {
-        y: 40,
+        y: 50,
         opacity: 0,
-        duration: 1,
-        delay: 0.5,
+        duration: 1.1,
+        delay: 0.6,
         ease: 'power3.out',
       });
 
       gsap.from(ctaRef.current.children, {
         y: 40,
         opacity: 0,
-        scale: 0.95,
-        stagger: 0.12,
-        duration: 0.9,
-        delay: 0.8,
-        ease: 'back.out(1.4)',
+        scale: 0.94,
+        stagger: 0.14,
+        duration: 1,
+        delay: 0.9,
+        ease: 'back.out(1.5)',
       });
 
-      // Cloud layers parallax + entrance
+      // Initial card entrance
       layerRefs.current.forEach((layer, i) => {
         gsap.fromTo(
           layer,
-          { opacity: 0, y: 60, scale: 0.9 },
+          { opacity: 0, y: 70, scale: 0.9 },
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 1.2,
-            delay: 0.7 + i * 0.15,
+            duration: 1.3,
+            delay: 0.8 + i * 0.18,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: sectionRef.current,
@@ -72,7 +185,7 @@ const Hero = () => {
         );
       });
 
-      // Mouse tilt on visual container
+      // Mouse tilt
       const handleMouseMove = (e) => {
         if (!visualRef.current) return;
         const rect = visualRef.current.getBoundingClientRect();
@@ -80,17 +193,17 @@ const Hero = () => {
         const y = (e.clientY - rect.top) / rect.height - 0.5;
 
         gsap.to(visualRef.current, {
-          rotationY: x * 18,
-          rotationX: -y * 18,
-          transformPerspective: 1200,
-          duration: 0.6,
+          rotationY: x * 16,
+          rotationX: -y * 16,
+          transformPerspective: 1100,
+          duration: 0.7,
           ease: 'power2.out',
         });
       };
 
       window.addEventListener('mousemove', handleMouseMove);
       return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, sectionRef);
+    });
 
     return () => ctx.revert();
   }, []);
@@ -101,32 +214,29 @@ const Hero = () => {
       ref={sectionRef}
       className="relative min-h-screen flex items-center bg-gradient-to-br from-slate-50 via-blue-50/30 to-white overflow-hidden"
     >
-      {/* Subtle dotted grid background */}
+      {/* Background pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(#3b82f620_1px,transparent_1px)] bg-[size:40px_40px] opacity-40" />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-12 gap-12 items-center">
-        
         {/* LEFT — Text Content */}
         <div className="lg:col-span-7 space-y-8">
-          
+          {/* Headline with key → forces remount on slide change */}
           <h1
+            key={`headline-${currentSlide}`}
             ref={headlineRef}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] font-extrabold tracking-[-0.02em] leading-tight text-gray-900"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold tracking-[-0.02em] leading-tight text-gray-900"
           >
-            <span className="word block">The Future</span>
-            <span className="word block">of Cloud is</span>
+            <span className="word block">{currentContent.title}</span>
+            <span className="word block">{currentContent.subtitle}</span>
             <span className="word block">
               <span className="aws-gradient inline-block bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 bg-[length:200%_auto] bg-clip-text text-transparent">
-                AWS
+                {currentContent.highlight}
               </span>
             </span>
           </h1>
 
-          <p
-            ref={descRef}
-            className="text-lg md:text-xl text-gray-600 max-w-xl leading-relaxed"
-          >
-            Enterprise-grade migration, intelligent architecture, serverless innovation, and cost intelligence that scales with your ambition.
+          <p ref={descRef} className="text-lg md:text-xl text-gray-600 max-w-xl leading-relaxed">
+            {currentContent.description}
           </p>
 
           <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4">
@@ -141,69 +251,93 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* RIGHT — Interactive Cloud Stack Visual */}
+        {/* RIGHT — Visual Cards */}
         <div
           ref={visualRef}
-          className="hidden lg:block lg:col-span-5 relative h-[620px] perspective-[1600px]"
+          className="hidden lg:block lg:col-span-5 relative h-[620px] perspective-[1400px]"
           style={{ transformStyle: 'preserve-3d' }}
         >
-          {/* Layer 1 - Back */}
           <div
             ref={(el) => (layerRefs.current[0] = el)}
-            className="absolute top-12 right-8 w-72 h-72 bg-white/70 backdrop-blur-xl border border-blue-100 rounded-2xl shadow-xl p-6 flex flex-col justify-center"
+            className={`absolute top-12 right-8 w-72 h-72 bg-white/75 backdrop-blur-xl border border-gray-200 rounded-2xl shadow-xl p-6 flex flex-col justify-center transition-colors duration-500`}
           >
-            <div className="text-blue-600 text-3xl font-bold">01</div>
-            <div className="mt-3 text-xl font-semibold text-gray-900">Migration</div>
-            <div className="text-gray-600 mt-2 text-sm">Zero-downtime cloud lift &amp; shift</div>
+            <div className={`text-${currentContent.layer1.color} text-3xl font-bold`}>{currentContent.layer1.number}</div>
+            <div className="mt-3 text-xl font-semibold text-gray-900">{currentContent.layer1.title}</div>
+            <div className="text-gray-600 mt-2 text-sm">{currentContent.layer1.desc}</div>
           </div>
 
-          {/* Layer 2 - Middle */}
           <div
             ref={(el) => (layerRefs.current[1] = el)}
-            className="absolute top-28 right-0 w-72 h-72 bg-white/80 backdrop-blur-2xl border border-indigo-100 rounded-2xl shadow-xl p-6 flex flex-col justify-center"
+            className={`absolute top-28 right-0 w-72 h-72 bg-white/85 backdrop-blur-2xl border border-gray-200 rounded-2xl shadow-xl p-6 flex flex-col justify-center transition-colors duration-500`}
           >
-            <div className="text-indigo-600 text-3xl font-bold">02</div>
-            <div className="mt-3 text-xl font-semibold text-gray-900">Architecture</div>
-            <div className="text-gray-600 mt-2 text-sm">Serverless + microservices at scale</div>
+            <div className={`text-${currentContent.layer2.color} text-3xl font-bold`}>{currentContent.layer2.number}</div>
+            <div className="mt-3 text-xl font-semibold text-gray-900">{currentContent.layer2.title}</div>
+            <div className="text-gray-600 mt-2 text-sm">{currentContent.layer2.desc}</div>
           </div>
 
-          {/* Layer 3 - Front */}
           <div
             ref={(el) => (layerRefs.current[2] = el)}
-            className="absolute top-44 -right-5 w-72 h-72 bg-white border border-blue-200 rounded-2xl shadow-xl p-6 flex flex-col justify-center"
+            className={`absolute top-44 -right-5 w-72 h-72 bg-white border border-gray-200 rounded-2xl shadow-xl p-6 flex flex-col justify-center transition-colors duration-500`}
           >
-            <div className="text-blue-600 text-3xl font-bold">03</div>
-            <div className="mt-3 text-xl font-semibold text-gray-900">Optimization</div>
-            <div className="text-gray-600 mt-2 text-sm">
-              Real-time cost intelligence &amp; auto-scaling
-            </div>
+            <div className={`text-${currentContent.layer3.color} text-3xl font-bold`}>{currentContent.layer3.number}</div>
+            <div className="mt-3 text-xl font-semibold text-gray-900">{currentContent.layer3.title}</div>
+            <div className="text-gray-600 mt-2 text-sm">{currentContent.layer3.desc}</div>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Navigation Controls */}
+      <div className="absolute bottom-32 left-1/2 -translate-x-1/2 z-20 flex items-center gap-5">
+        <button
+          onClick={goToPrevSlide}
+          className="w-11 h-11 rounded-full bg-white/90 backdrop-blur border border-gray-200 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-all shadow-md"
+          aria-label="Previous"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <div className="flex gap-3">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goToSlide(i)}
+              className={`w-3 h-3 rounded-full transition-all duration-400 ${
+                i === currentSlide
+                  ? 'bg-blue-600 scale-125 shadow-md'
+                  : 'bg-gray-300 hover:bg-gray-400'
+              }`}
+              aria-label={`Slide ${i + 1}`}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={goToNextSlide}
+          className="w-11 h-11 rounded-full bg-white/90 backdrop-blur border border-gray-200 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-all shadow-md"
+          aria-label="Next"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Slide counter */}
+      <div className="absolute bottom-10 right-10 z-20 text-sm text-gray-500 font-medium">
+        <span className="text-blue-600 text-xl font-bold">{String(currentSlide + 1).padStart(2, '0')}</span>
+        <span className="mx-1.5">/</span>
+        <span>{String(slides.length).padStart(2, '0')}</span>
+      </div>
+
+      {/* Scroll indicator */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-gray-500">
         <span className="text-xs uppercase tracking-widest">Scroll to explore</span>
         <div className="mt-2 w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center pt-2">
           <div className="w-1 h-3 bg-gray-500 rounded-full animate-bounce" />
         </div>
       </div>
-
-      {/* Floating Chat Button */}
-      <button
-        ref={chatRef}
-        className="fixed bottom-8 right-8 z-50 bg-gradient-to-br from-blue-600 to-indigo-600 text-white p-4 rounded-full shadow-xl hover:scale-110 transition-all duration-300"
-        aria-label="Open chat"
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-          />
-        </svg>
-      </button>
     </section>
   );
 };

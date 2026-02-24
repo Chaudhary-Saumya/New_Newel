@@ -15,6 +15,13 @@ import IndustriesInfrastructure from './pages/IndustriesInfrastructure'
 import IndustriesEngineering from './pages/IndustriesEngineering'
 import AppDev from './pages/AppDev'
 import Careers from './pages/Careers'
+import EquipmentManufacturing from './pages/EquipmentManufacturing'
+import IndustriesOEM from './pages/IndustriesOEM'
+import IndustriesChemical from './pages/IndustriesChemical'
+import IndustriesPetrochemical from './pages/IndustriesPetrochemical'
+import IndustriesHealthcare from './pages/IndustriesHealthcare'
+import IndustriesBuildingMaterials from './pages/IndustriesBuildingMaterials'
+import IndustriesMetalAndMinerals from './pages/IndustriesMetalAndMinerals'
 
 const App = () => {
   return (
@@ -27,13 +34,20 @@ const App = () => {
         <Route path='/Contact' element={<Contact/>}/>
         <Route path='/Services' element={<Service/>}/>
         <Route path='/Industries' element={<Industrie/>}/>
-        <Route path='/BFSI' element={<IndustriesBFSI/>}/>
-        <Route path='/Retail' element={<IndustriesRetail/>}/>
-        <Route path='/EPC' element={<IndustriesEPC/>}/>
-        <Route path='Oil' element={<IndustriesOilGas/>}/>
-        <Route path='/Infrastructure' element={<IndustriesInfrastructure/>}/>
-        <Route path='/Engineering' element={<IndustriesEngineering/>}/>
-        <Route path='/AppDev' element={<AppDev/>}/>
+        <Route path='/industries/bfsi' element={<IndustriesBFSI/>}/>
+        <Route path='/industries/retail' element={<IndustriesRetail/>}/>
+        <Route path='/industries/epc' element={<IndustriesEPC/>}/>
+        <Route path='/industries/oil-gas' element={<IndustriesOilGas/>}/>
+        <Route path='/industries/infrastructure' element={<IndustriesInfrastructure/>}/>
+        <Route path='/industries/engineering' element={<IndustriesEngineering/>}/>
+        <Route path='/services/ApplicationDevelopment' element={<AppDev/>}/>
+        <Route path='/industries/Manufacturing' element={<EquipmentManufacturing/>}/>
+        <Route path='/industries/OEM' element={<IndustriesOEM/>}/>
+        <Route path='/industries/Chemical' element={<IndustriesChemical/>}/>
+        <Route path='/industries/Petrochemical' element={<IndustriesPetrochemical/>}/>
+        <Route path='/industries/Healthcare' element={<IndustriesHealthcare/>}/>
+        <Route path='/industries/BuildingMaterials' element={<IndustriesBuildingMaterials/>}/>
+        <Route path='/industries/MetalMinerals' element={<IndustriesMetalAndMinerals/>}/>
         <Route path='/Careers' element={<Careers/>}/>
       </Routes>  
     </div>

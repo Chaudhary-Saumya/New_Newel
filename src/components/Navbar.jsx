@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import logo from '../assets/Logo.png';
 import { Link } from 'react-router-dom';
-import { ChevronDown } from 'lucide-react'; // ← add this icon from lucide-react
+import { ChevronDown } from 'lucide-react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -11,7 +11,6 @@ const Navbar = () => {
   const navRef = useRef(null);
 
   useEffect(() => {
-    // Entrance animation
     gsap.fromTo(
       navRef.current,
       { y: -80, opacity: 0 },
@@ -27,37 +26,57 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
+    { name: 'Home', to: '/' },
+    { name: 'About', to: '/about' },
     {
       name: 'Services',
-      href: '/services',
+      to: '/services',
       hasDropdown: true,
       dropdownItems: [
-        { name: 'Staff Augmentation Support services', href: '/services/staff-augmentation' },
-        { name: 'Executive Search / Permanent Hiring', href: '/services/executive-search' },
-        { name: 'Contract Staffing / Third Party Hiring', href: '/services/contract-staffing' },
-        // Add more from your screenshot if needed
+        { name: 'Staffing and recruiting', to: '/services/staff-augmentation' },
+        { name: 'Application Development', to: '/services/ApplicationDevelopment' },
+        { name: 'Mobile Application', to: '/services/MobileApplication' },
+        { name: 'Data Analytics', to: '/services/DataAnalytics' },
+        { name: 'Cloud Services', to: '/services/CloudServices' },
+        { name: 'Application Re-Engineering', to: '/services/ApplicationRe-Engineering' },
+        { name: 'Quality Assurance', to: '/services/QualityAssurance' },
+        { name: 'Robotic Process Automation', to: '/services/RoboticProcessAutomation' },
+        { name: 'Outsystems', to: '/services/Outsystems' },
+        { name: 'DOOH', to: '/services/DOOH' },
       ],
     },
     {
       name: 'Industries',
-      href: '/industries',
+      to: '/industries',
       hasDropdown: true,
       dropdownItems: [
-        { name: 'BFSI', href: '/industries/bfsi' },
-        { name: 'Retail', href: '/industries/retail' },
-        { name: 'EPC (Engineering, Procurement & Construction)', href: '/industries/epc' },
-        { name: 'Oil & Gas', href: '/industries/oil-gas' },
-        { name: 'Infrastructure', href: '/industries/infrastructure' },
-        { name: 'Engineering', href: '/industries/engineering' },
-        // Add more as per your site
+        { name: 'BFSI', to: '/industries/bfsi' },
+        { name: 'Retail', to: '/industries/retail' },
+        { name: 'EPC (Engineering, Procurement & Construction)', to: '/industries/epc' },
+        { name: 'Oil & Gas', to: '/industries/oil-gas' },
+        { name: 'Infrastructure', to: '/industries/infrastructure' },
+        { name: 'Engineering', to: '/industries/engineering' },
+        { name: 'Heavy Equipment Manufacturing', to: '/industries/Manufacturing' },
+        { name: 'OEM', to: '/industries/OEM' },
+        { name: 'Chemical', to: '/industries/Chemical' },
+        { name: 'Petrochemical', to: '/industries/Petrochemical' },
+        { name: 'Healthcare', to: '/industries/Healthcare' },
+        { name: 'Building materials', to: '/industries/BuildingMaterials' },
+        { name: 'Metal & Minerals', to: '/industries/MetalMinerals' },
+        { name: 'Tele communication', to: '/industries/TeleCommunication' },
+        { name: 'Defence', to: '/industries/Defence' },
+        { name: 'Fertilizer', to: '/industries/Fertilizer' },
+        { name: 'Power', to: '/industries/Power' },
+        { name: 'Renewable Energy', to: '/industries/RenewableEnergy' },
+        { name: 'IT', to: '/industries/IT' },
+        { name: 'Food and beverage', to: '/industries/FoodBeverage' },
+        { name: 'Semiconductor', to: '/industries/Semiconductor' },
       ],
     },
-    { name: 'Our Core Team', href: '/OurTeam' },
-    { name: 'Life@Newel', href: '/LifeAtNewel' },
-    { name: 'Careers', href: '/careers' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Our Core Team', to: '/OurTeam' },
+    { name: 'Life@Newel', to: '/LifeAtNewel' },
+    { name: 'Careers', to: '/careers' },
+    { name: 'Contact', to: '/contact' },
   ];
 
   return (
@@ -70,12 +89,13 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 flex items-center justify-between h-16 sm:h-20">
+        
         {/* Logo */}
         <Link to="/" className="flex items-center">
           <img
             src={logo}
             alt="Newel Technologies"
-            className="h-9 sm:h-11 w-auto transition-all duration-300"
+            className="h-9 sm:h-13 w-auto transition-all duration-300"
           />
         </Link>
 
@@ -85,7 +105,8 @@ const Navbar = () => {
             <li key={link.name} className="relative group">
               {link.hasDropdown ? (
                 <>
-                  <button
+                  <Link
+                    to={link.to}
                     className={`flex items-center gap-1.5 px-3 py-2.5 text-sm xl:text-base font-medium transition-colors duration-200 ${
                       isScrolled ? 'text-gray-800' : 'text-gray-800'
                     } group-hover:text-blue-600`}
@@ -94,54 +115,54 @@ const Navbar = () => {
                     <ChevronDown
                       className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
                     />
-                  </button>
+                  </Link>
 
-                  {/* Dropdown Panel */}
                   <div
                     className={`
-                      absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-100/80
+                      absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-xl border border-gray-100/80
                       opacity-0 scale-95 translate-y-2 pointer-events-none transition-all duration-300
                       group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover:pointer-events-auto
                     `}
                   >
-                    <div className="py-3">
+                    <div className="max-h-80 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-gray-50">
                       {link.dropdownItems.map((item) => (
-                        <a
+                        <Link
                           key={item.name}
-                          href={item.href}
-                          className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                          to={item.to}
+                          className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors whitespace-nowrap"
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
                 </>
               ) : (
-                <a
-                  href={link.href}
+                <Link
+                  to={link.to}
                   className={`px-3 py-2.5 text-sm xl:text-base font-medium transition-colors duration-200 ${
                     isScrolled ? 'text-gray-800' : 'text-gray-800'
                   } hover:text-blue-600 relative group`}
                 >
                   {link.name}
                   <span className="absolute bottom-1.5 left-3 right-3 h-0.5 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center" />
-                </a>
+                </Link>
               )}
             </li>
           ))}
         </ul>
 
         {/* CTA Button */}
-        <button
+        <Link
+          to="/contact"
           className={`hidden lg:block px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 ${
             isScrolled
               ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md hover:shadow-lg hover:shadow-blue-200'
               : 'bg-blue-600 text-white hover:bg-blue-700 shadow-md hover:shadow-lg hover:shadow-blue-200'
           }`}
         >
-          Get a Quote
-        </button>
+          Get Started
+        </Link>
 
         {/* Mobile Hamburger */}
         <button
@@ -150,21 +171,9 @@ const Navbar = () => {
           aria-label="Toggle menu"
         >
           <div className="w-7 h-6 relative">
-            <span
-              className={`absolute h-0.5 w-full bg-gray-800 rounded-full transition-all duration-300 ${
-                isMobileMenuOpen ? 'top-1/2 left-0 rotate-45' : 'top-0'
-              }`}
-            />
-            <span
-              className={`absolute h-0.5 w-full bg-gray-800 rounded-full transition-all duration-300 ${
-                isMobileMenuOpen ? 'opacity-0' : 'top-1/2 left-0'
-              }`}
-            />
-            <span
-              className={`absolute h-0.5 w-full bg-gray-800 rounded-full transition-all duration-300 ${
-                isMobileMenuOpen ? 'top-1/2 left-0 -rotate-45' : 'bottom-0'
-              }`}
-            />
+            <span className={`absolute h-0.5 w-full bg-gray-800 rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'top-1/2 left-0 rotate-45' : 'top-0'}`} />
+            <span className={`absolute h-0.5 w-full bg-gray-800 rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'top-1/2 left-0'}`} />
+            <span className={`absolute h-0.5 w-full bg-gray-800 rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'top-1/2 left-0 -rotate-45' : 'bottom-0'}`} />
           </div>
         </button>
       </div>
@@ -186,33 +195,35 @@ const Navbar = () => {
                   </summary>
                   <div className="pl-6 pt-1 pb-3">
                     {link.dropdownItems.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
-                        href={item.href}
+                        to={item.to}
                         className="block px-4 py-2.5 text-sm text-gray-600 hover:text-blue-600 transition-colors"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </details>
               ) : (
-                <a
-                  href={link.href}
+                <Link
+                  to={link.to}
                   className="block px-5 py-3.5 text-gray-800 font-medium hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
-                </a>
+                </Link>
               )}
             </div>
           ))}
-          <button
-            className="mt-4 w-full bg-blue-600 text-white py-3.5 rounded-xl font-semibold hover:bg-blue-700 transition-colors"
+          <Link
+            to="/contact"
+            className="mt-4 w-full bg-blue-600 text-white py-3.5 rounded-xl font-semibold hover:bg-blue-700 transition-colors text-center"
+            onClick={() => setIsMobileMenuOpen(false)}
           >
-            Get a Quote
-          </button>
+            Get Started
+          </Link>
         </div>
       </div>
     </nav>

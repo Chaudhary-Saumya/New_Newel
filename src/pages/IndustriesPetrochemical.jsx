@@ -1,4 +1,4 @@
-// components/IndustriesBFSI.jsx
+// components/IndustriesPetrochemical.jsx
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -7,14 +7,14 @@ import Footer from '../components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// BFSI related images
+// Petrochemical related images (refineries, processing plants, industrial complexes)
 const heroImages = [
-  "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+  "https://upload.wikimedia.org/wikipedia/commons/d/d2/TASNEE_001.jpg",  // Large petrochemical plant with towers and structures
+  "https://thumbs.dreamstime.com/b/oil-refinery-factory-twilight-petrochemical-plant-petroleum-chemical-industry-97523037.jpg",  // Refinery at twilight with illuminated towers
+  "https://www.mdd.com/wp-content/uploads/2025/06/iStock-514620986.jpg",  // Modern petrochemical complex at dusk with blue sky
 ];
 
-export default function IndustriesBFSI() {
+export default function IndustriesPetrochemical() {
   const sectionRef = useRef(null);
   const heroRef = useRef(null);
   const heroImgRef = useRef(null);
@@ -24,8 +24,8 @@ export default function IndustriesBFSI() {
 
   const challenges = [
     {
-      title: "Intensifying Fintech Competition",
-      desc: "Digital-first challengers are forcing legacy institutions to reinvent customer experience at lightning speed.",
+      title: "Plant Operations & Reliability",
+      desc: "Staffing skilled operators and technicians to ensure continuous, high-uptime performance in complex facilities.",
       icon: (
         <svg className="w-8 h-8 text-[#5099ff]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -33,26 +33,17 @@ export default function IndustriesBFSI() {
       ),
     },
     {
-      title: "Purposeful Digital Transformation",
-      desc: "Moving from rigid legacy systems to intelligent, cloud-native platforms — without business disruption.",
+      title: "Process Optimization & Efficiency",
+      desc: "Sourcing process engineers to maximize yield, reduce energy use, and improve throughput in cracking and distillation units.",
       icon: (
         <svg className="w-8 h-8 text-[#5099ff]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
         </svg>
       ),
     },
     {
-      title: "Mobile-First Banking Imperative",
-      desc: "Creating secure, intuitive, always-on mobile experiences that become the primary banking channel.",
-      icon: (
-        <svg className="w-8 h-8 text-[#5099ff]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-        </svg>
-      ),
-    },
-    {
-      title: "Navigating Regulatory Evolution",
-      desc: "Mastering RBI guidelines, DPDP Act, GDPR, and global compliance while preserving innovation velocity.",
+      title: "Safety & Hazard Management",
+      desc: "Building teams expert in risk assessment, PSM (Process Safety Management), and emergency response to protect personnel and assets.",
       icon: (
         <svg className="w-8 h-8 text-[#5099ff]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -60,8 +51,17 @@ export default function IndustriesBFSI() {
       ),
     },
     {
-      title: "Hyper-Personalized CX at Scale",
-      desc: "Delivering contextual, predictive, omnichannel experiences that turn customers into advocates.",
+      title: "Maintenance & Asset Integrity",
+      desc: "Providing reliability engineers, inspectors, and turnaround specialists to minimize downtime and extend equipment life.",
+      icon: (
+        <svg className="w-8 h-8 text-[#5099ff]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Sustainability & Environmental Compliance",
+      desc: "Sourcing professionals focused on emissions reduction, flare minimization, and adherence to environmental regulations for greener operations.",
       icon: (
         <svg className="w-8 h-8 text-[#5099ff]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -174,10 +174,9 @@ export default function IndustriesBFSI() {
         );
       }
 
-      // Very subtle hover lift (no 3D tilt → no glitch risk)
+      // Card hover lift
       cardRefs.current.forEach((card) => {
         if (!card) return;
-
         card.addEventListener("mouseenter", () => {
           gsap.to(card, {
             y: -10,
@@ -186,7 +185,6 @@ export default function IndustriesBFSI() {
             ease: "power2.out",
           });
         });
-
         card.addEventListener("mouseleave", () => {
           gsap.to(card, {
             y: 0,
@@ -206,17 +204,19 @@ export default function IndustriesBFSI() {
       <Navbar />
 
       <section ref={sectionRef} className="relative min-h-screen bg-white py-20 lg:py-20 overflow-hidden">
-        {/* Very light background accent */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-white to-indigo-50/20 pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
           {/* Hero Section */}
           <div ref={heroRef} className="text-center mb-20 lg:mb-32">
-            <h1 className="text-5xl md:text-5xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-none">
-              BFSI
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 tracking-tight leading-none">
+              Petrochemical
             </h1>
             <p className="mt-8 text-xl lg:text-2xl text-gray-700 max-w-5xl mx-auto leading-relaxed">
-              Digital disruption is rewriting the rules of financial services. Traditional institutions that don’t evolve fast enough risk being left behind. Newel helps BFSI leaders turn disruption into dominance with intelligent cloud architecture, secure modernization, and customer-obsessed innovation.
+              Our staffing services cover the full spectrum of petrochemical operations—supplying experts in plant operations, process optimization, safety, and maintenance.
+            </p>
+            <p className="mt-6 text-lg lg:text-xl text-gray-600 max-w-4xl mx-auto">
+              We support your goal of efficient, safe, and sustainable output in this critical energy and materials sector.
             </p>
             <div className="mt-10 h-1.5 w-40 bg-gradient-to-r from-[#5099ff] to-blue-600 mx-auto rounded-full" />
           </div>
@@ -224,7 +224,7 @@ export default function IndustriesBFSI() {
           {/* Hero Images Section */}
           <div ref={heroImgRef} className="mb-24 lg:mb-40">
             <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 text-center mb-8">
-              Our BFSI Solutions
+              Our Petrochemical Solutions
             </h2>
             <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
               {heroImages.map((img, index) => (
@@ -235,16 +235,16 @@ export default function IndustriesBFSI() {
                 >
                   <img 
                     src={img} 
-                    alt={`BFSI Solution ${index + 1}`}
+                    alt={`Petrochemical Solution ${index + 1}`}
                     className="w-full h-64 lg:h-72 object-cover transform group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                     <p className="text-white font-bold text-lg">
-                      {index === 0 ? "Secure Banking Infrastructure" : index === 1 ? "Real-time Analytics" : "Digital Transformation"}
+                      {index === 0 ? "Refinery & Cracking Units" : index === 1 ? "Integrated Processing" : "High-Capacity Facilities"}
                     </p>
                     <p className="text-white/80 text-sm mt-1">
-                      {index === 0 ? "Enterprise-grade security for modern banks" : index === 1 ? "Data-driven insights for better decisions" : "End-to-end digital modernization"}
+                      {index === 0 ? "Large-scale distillation and cracking" : index === 1 ? "Complex industrial operations" : "Sustainable petrochemical production"}
                     </p>
                   </div>
                 </div>
@@ -252,10 +252,10 @@ export default function IndustriesBFSI() {
             </div>
           </div>
 
-          {/* Challenges – Clean Card Layout */}
+          {/* Challenges Section */}
           <div className="mb-24 lg:mb-40">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-12 lg:mb-16">
-              Challenges We Solve for BFSI Leaders
+              Challenges We Solve for Petrochemical Leaders
             </h2>
 
             {/* First row - 3 cards */}
@@ -304,10 +304,10 @@ export default function IndustriesBFSI() {
           {/* CTA Block */}
           <div ref={ctaRef} className="text-center bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 lg:p-12 shadow-lg border border-blue-100/50">
             <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
-              Ready to Lead the Next Era of BFSI?
+              Ready to Optimize Your Petrochemical Operations?
             </h2>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto mb-6">
-              Partner with Newel to build secure, intelligent, and future-ready financial ecosystems.
+              Build efficient, safe, and sustainable teams with Newel to drive reliable output.
             </p>
             <a
               href="#contact"
