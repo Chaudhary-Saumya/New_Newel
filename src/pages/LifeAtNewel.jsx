@@ -195,7 +195,7 @@ export default function LifeAtNewel() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
           {/* Hero */}
           <div className="text-center mb-16 lg:mb-24">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
               Life @ Newel Technologies
             </h1>
             <p className="mt-6 text-xl lg:text-2xl text-gray-700 max-w-5xl mx-auto leading-relaxed">

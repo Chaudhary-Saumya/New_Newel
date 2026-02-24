@@ -2,6 +2,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import logo from '../assets/Logo.png';
+import { Link } from 'react-router-dom';
+import { ChevronDown } from 'lucide-react'; // ← add this icon from lucide-react
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,8 +29,31 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services' },
-    { name: 'Industries', href: '/industries' },
+    {
+      name: 'Services',
+      href: '/services',
+      hasDropdown: true,
+      dropdownItems: [
+        { name: 'Staff Augmentation Support services', href: '/services/staff-augmentation' },
+        { name: 'Executive Search / Permanent Hiring', href: '/services/executive-search' },
+        { name: 'Contract Staffing / Third Party Hiring', href: '/services/contract-staffing' },
+        // Add more from your screenshot if needed
+      ],
+    },
+    {
+      name: 'Industries',
+      href: '/industries',
+      hasDropdown: true,
+      dropdownItems: [
+        { name: 'BFSI', href: '/industries/bfsi' },
+        { name: 'Retail', href: '/industries/retail' },
+        { name: 'EPC (Engineering, Procurement & Construction)', href: '/industries/epc' },
+        { name: 'Oil & Gas', href: '/industries/oil-gas' },
+        { name: 'Infrastructure', href: '/industries/infrastructure' },
+        { name: 'Engineering', href: '/industries/engineering' },
+        // Add more as per your site
+      ],
+    },
     { name: 'Our Core Team', href: '/OurTeam' },
     { name: 'Life@Newel', href: '/LifeAtNewel' },
     { name: 'Careers', href: '/careers' },
@@ -46,34 +71,68 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 flex items-center justify-between h-16 sm:h-20">
         {/* Logo */}
-        <a href="#home" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <img
             src={logo}
             alt="Newel Technologies"
             className="h-9 sm:h-11 w-auto transition-all duration-300"
           />
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <ul className="hidden lg:flex items-center gap-1 xl:gap-2">
           {navLinks.map((link) => (
-            <li key={link.name}>
-              <a
-                href={link.href}
-                className={`px-3 py-2.5 text-sm xl:text-base font-medium transition-colors duration-200 ${
-                  isScrolled
-                    ? 'text-gray-800 hover:text-blue-600'
-                    : 'text-gray-800 hover:text-blue-600'
-                } relative group`}
-              >
-                {link.name}
-                <span className="absolute bottom-1.5 left-3 right-3 h-0.5 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center" />
-              </a>
+            <li key={link.name} className="relative group">
+              {link.hasDropdown ? (
+                <>
+                  <button
+                    className={`flex items-center gap-1.5 px-3 py-2.5 text-sm xl:text-base font-medium transition-colors duration-200 ${
+                      isScrolled ? 'text-gray-800' : 'text-gray-800'
+                    } group-hover:text-blue-600`}
+                  >
+                    {link.name}
+                    <ChevronDown
+                      className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+                    />
+                  </button>
+
+                  {/* Dropdown Panel */}
+                  <div
+                    className={`
+                      absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-100/80
+                      opacity-0 scale-95 translate-y-2 pointer-events-none transition-all duration-300
+                      group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover:pointer-events-auto
+                    `}
+                  >
+                    <div className="py-3">
+                      {link.dropdownItems.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                        >
+                          {item.name}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <a
+                  href={link.href}
+                  className={`px-3 py-2.5 text-sm xl:text-base font-medium transition-colors duration-200 ${
+                    isScrolled ? 'text-gray-800' : 'text-gray-800'
+                  } hover:text-blue-600 relative group`}
+                >
+                  {link.name}
+                  <span className="absolute bottom-1.5 left-3 right-3 h-0.5 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center" />
+                </a>
+              )}
             </li>
           ))}
         </ul>
 
-        {/* CTA */}
+        {/* CTA Button */}
         <button
           className={`hidden lg:block px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 ${
             isScrolled
@@ -113,19 +172,41 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-400 ease-in-out ${
-          isMobileMenuOpen ? 'max-h-125 opacity-100' : 'max-h-0 opacity-0'
+          isMobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
         } bg-white shadow-lg`}
       >
-        <div className="px-5 py-6 flex flex-col gap-2">
+        <div className="px-5 py-6 flex flex-col gap-1">
           {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="block px-5 py-3.5 text-gray-800 font-medium hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {link.name}
-            </a>
+            <div key={link.name}>
+              {link.hasDropdown ? (
+                <details className="group">
+                  <summary className="flex justify-between items-center px-5 py-3.5 text-gray-800 font-medium hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-colors cursor-pointer">
+                    {link.name}
+                    <ChevronDown className="w-5 h-5 transition-transform group-open:rotate-180" />
+                  </summary>
+                  <div className="pl-6 pt-1 pb-3">
+                    {link.dropdownItems.map((item) => (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        className="block px-4 py-2.5 text-sm text-gray-600 hover:text-blue-600 transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.name}
+                      </a>
+                    ))}
+                  </div>
+                </details>
+              ) : (
+                <a
+                  href={link.href}
+                  className="block px-5 py-3.5 text-gray-800 font-medium hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </a>
+              )}
+            </div>
           ))}
           <button
             className="mt-4 w-full bg-blue-600 text-white py-3.5 rounded-xl font-semibold hover:bg-blue-700 transition-colors"

@@ -123,7 +123,7 @@ const AboutUs = () => {
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 md:mb-24">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold text-gray-900 tracking-tight">
             About Us
           </h1>
           <p className="mt-5 text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">

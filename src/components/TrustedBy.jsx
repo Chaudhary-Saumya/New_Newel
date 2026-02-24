@@ -52,6 +52,7 @@ export default function TrustedBy() {
       });
 
       // Marquee 1 → scrolls LEFT
+      // eslint-disable-next-line react-hooks/immutability
       tl1 = gsap.to(marquee1Ref.current, {
         xPercent: -50,
         duration: 28,
@@ -98,7 +99,7 @@ export default function TrustedBy() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <div ref={headingRef} className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 tracking-tight">
+          <h2 className="text-5xl md:text-5xl font-bold text-gray-900 tracking-tight">
             Our Clients
           </h2>
           <p className="mt-4 text-xl text-gray-500">

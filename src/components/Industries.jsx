@@ -82,7 +82,7 @@ export default function Industries() {
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-24">
-          <h2 className="text-6xl md:text-7xl font-bold text-slate-900 tracking-tighter">
+          <h2 className="text-6xl md:text-5xl font-bold text-slate-900 tracking-tighter">
             Industries We Serve
           </h2>
           <p className="mt-6 text-xl text-slate-600 max-w-2xl mx-auto">
@@ -107,9 +107,6 @@ export default function Industries() {
                     className="w-full h-full object-cover"
                   />
                   
-                  {/* Color overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${ind.color} opacity-30`} />
-                  
                   {/* Subtle shine overlay */}
                   <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent" />
                   
@@ -126,7 +123,7 @@ export default function Industries() {
                     <div className="h-px flex-1 bg-gradient-to-r from-[#5099ff] to-transparent" />
                   </div>
 
-                  <h3 className="text-5xl font-semibold text-slate-900 tracking-tight mb-8">
+                  <h3 className="text-4xl font-semibold text-slate-900 tracking-tight mb-8">
                     {ind.name}
                   </h3>
 

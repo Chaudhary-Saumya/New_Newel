@@ -136,11 +136,11 @@ export default function OurCoreTeam() {
         <div className="relative z-10">
           {/* Hero Intro */}
           <div className="text-center pt-20 pb-16 lg:pt-20 lg:pb-24">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight">
+            <h1 className="text-2xl sm:text-3xl lg:text-5xl xl:text-5xl font-black tracking-tight">
               <span className="block bg-linear-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent text-6xl">
                 The Leadership
               </span>
-              <span className="block mt-2">Behind Newel</span>
+              <span className="block mt-2 text-7xl">Behind Newel</span>
             </h1>
             <p className="mt-6 text-xl lg:text-2xl text-gray-800 max-w-4xl mx-auto px-6">
               Seasoned experts combining decades of domain mastery, technical
@@ -194,7 +194,7 @@ export default function OurCoreTeam() {
 
           {/* Final statement */}
           <div className="text-center py-20 lg:py-32 px-6">
-            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-800 tracking-tight">
+            <h2 className="text-4xl lg:text-5xl xl:text-5xl font-bold text-gray-800 tracking-tight">
               One Team. One Vision.
             </h2>
             <p className="mt-6 text-xl lg:text-2xl text-gray-500 max-w-4xl mx-auto">

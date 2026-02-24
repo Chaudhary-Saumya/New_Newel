@@ -109,7 +109,7 @@ export default function Services() {
       <div className="max-w-6xl mx-auto px-6">
         {/* Heading */}
         <div className="text-center mb-16 md:mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold text-gray-900 tracking-tight">
             Our Core Services
           </h2>
           <p className="mt-5 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
