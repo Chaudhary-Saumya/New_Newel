@@ -22,6 +22,14 @@ import IndustriesPetrochemical from './pages/IndustriesPetrochemical'
 import IndustriesHealthcare from './pages/IndustriesHealthcare'
 import IndustriesBuildingMaterials from './pages/IndustriesBuildingMaterials'
 import IndustriesMetalAndMinerals from './pages/IndustriesMetalAndMinerals'
+import IndustriesTelecommunication from './pages/IndustriesTelecommunication'
+import IndustriesDefence from './pages/IndustriesDefence'
+import IndustriesFertilizer from './pages/IndustriesFertilizer'
+import IndustriesPower from './pages/IndustriesPower'
+import IndustriesRenewableEnergy from './pages/IndustriesRenewableEnergy'
+import IndustriesIT from './pages/IndustriesIT'
+import IndustriesFoodAndBeverage from './pages/IndustriesFoodAndBeverage'
+import IndustriesSemiconductor from './pages/IndustriesSemiconductor'
 
 const App = () => {
   return (
@@ -48,6 +56,14 @@ const App = () => {
         <Route path='/industries/Healthcare' element={<IndustriesHealthcare/>}/>
         <Route path='/industries/BuildingMaterials' element={<IndustriesBuildingMaterials/>}/>
         <Route path='/industries/MetalMinerals' element={<IndustriesMetalAndMinerals/>}/>
+        <Route path='/industries/TeleCommunication' element={<IndustriesTelecommunication/>}/>
+        <Route path='/industries/Defence' element={<IndustriesDefence/>}/>
+        <Route path='/industries/Fertilizer' element={<IndustriesFertilizer/>}/>
+        <Route path='/industries/Power' element={<IndustriesPower/>}/>
+        <Route path='/industries/RenewableEnergy' element={<IndustriesRenewableEnergy/>}/>
+        <Route path='/industries/IT' element={<IndustriesIT/>}/>
+        <Route path='/industries/FoodBeverage' element={<IndustriesFoodAndBeverage/>}/>
+        <Route path='/industries/Semiconductor' element={<IndustriesSemiconductor/>}/>
         <Route path='/Careers' element={<Careers/>}/>
       </Routes>  
     </div>
