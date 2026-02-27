@@ -65,6 +65,7 @@ const App = () => {
         <Route path='/industries/FoodBeverage' element={<IndustriesFoodAndBeverage/>}/>
         <Route path='/industries/Semiconductor' element={<IndustriesSemiconductor/>}/>
         <Route path='/Careers' element={<Careers/>}/>
+        
       </Routes>  
     </div>
   )
