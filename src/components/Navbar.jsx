@@ -33,7 +33,13 @@ const Navbar = () => {
       to: '/services',
       hasDropdown: true,
       dropdownItems: [
-        { name: 'Staffing and recruiting', to: '/services/staff-augmentation' },
+        {
+          name: 'Staffing and recruiting',
+          subItems: [
+            { name: 'IT Staff Augmentation', to: '/services/ITstaffAugmentation' },
+            { name: 'Third-Party Contracting', to: '/services/thirdParty' },
+          ],
+        },
         { name: 'Application Development', to: '/services/ApplicationDevelopment' },
         { name: 'Mobile Application', to: '/services/MobileApplication' },
         { name: 'Data Analytics', to: '/services/DataAnalytics' },
@@ -89,7 +95,6 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 flex items-center justify-between h-16 sm:h-20">
-        
         {/* Logo */}
         <Link to="/" className="flex items-center">
           <img
@@ -124,15 +129,44 @@ const Navbar = () => {
                       group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover:pointer-events-auto
                     `}
                   >
-                    <div className="max-h-80 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-gray-50">
+                    <div className="max-h-80 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-gray-50 py-2">
                       {link.dropdownItems.map((item) => (
-                        <Link
-                          key={item.name}
-                          to={item.to}
-                          className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors whitespace-nowrap"
-                        >
-                          {item.name}
-                        </Link>
+                        <div key={item.name}>
+                          {item.subItems ? (
+                            // Nested dropdown for "Staffing and recruiting"
+                            <div className="relative group/sub">
+                              <div className="flex items-center justify-between px-5 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-pointer">
+                                {item.name}
+                                <ChevronDown className="w-4 h-4 transition-transform group-hover/sub:rotate-180" />
+                              </div>
+
+                              <div
+                                className={`
+                                  absolute top-0 left-full w-64 bg-white rounded-xl shadow-xl border border-gray-100/80
+                                  opacity-0 scale-95 -translate-x-2 pointer-events-none transition-all duration-300
+                                  group-hover/sub:opacity-100 group-hover/sub:scale-100 group-hover/sub:translate-x-0 group-hover/sub:pointer-events-auto
+                                `}
+                              >
+                                {item.subItems.map((sub) => (
+                                  <Link
+                                    key={sub.name}
+                                    to={sub.to}
+                                    className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors whitespace-nowrap"
+                                  >
+                                    {sub.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          ) : (
+                            <Link
+                              to={item.to}
+                              className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors whitespace-nowrap"
+                            >
+                              {item.name}
+                            </Link>
+                          )}
+                        </div>
                       ))}
                     </div>
                   </div>
@@ -181,7 +215,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-400 ease-in-out ${
-          isMobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+          isMobileMenuOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
         } bg-white shadow-lg`}
       >
         <div className="px-5 py-6 flex flex-col gap-1">
@@ -195,14 +229,36 @@ const Navbar = () => {
                   </summary>
                   <div className="pl-6 pt-1 pb-3">
                     {link.dropdownItems.map((item) => (
-                      <Link
-                        key={item.name}
-                        to={item.to}
-                        className="block px-4 py-2.5 text-sm text-gray-600 hover:text-blue-600 transition-colors"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
+                      <div key={item.name}>
+                        {item.subItems ? (
+                          <details className="group/sub mt-2">
+                            <summary className="flex justify-between items-center px-4 py-2.5 text-sm text-gray-600 hover:text-blue-600 transition-colors cursor-pointer">
+                              {item.name}
+                              <ChevronDown className="w-4 h-4 transition-transform group-open/sub:rotate-180" />
+                            </summary>
+                            <div className="pl-6 pt-1">
+                              {item.subItems.map((sub) => (
+                                <Link
+                                  key={sub.name}
+                                  to={sub.to}
+                                  className="block px-4 py-2 text-sm text-gray-600 hover:text-blue-600 transition-colors"
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                  {sub.name}
+                                </Link>
+                              ))}
+                            </div>
+                          </details>
+                        ) : (
+                          <Link
+                            to={item.to}
+                            className="block px-4 py-2.5 text-sm text-gray-600 hover:text-blue-600 transition-colors"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {item.name}
+                          </Link>
+                        )}
+                      </div>
                     ))}
                   </div>
                 </details>

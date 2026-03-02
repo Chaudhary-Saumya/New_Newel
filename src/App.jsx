@@ -30,6 +30,16 @@ import IndustriesRenewableEnergy from './pages/IndustriesRenewableEnergy'
 import IndustriesIT from './pages/IndustriesIT'
 import IndustriesFoodAndBeverage from './pages/IndustriesFoodAndBeverage'
 import IndustriesSemiconductor from './pages/IndustriesSemiconductor'
+import ApplicationDevelopment from './pages/ApplicationDevelopment'
+import MobileApplication from './pages/Services/MobileApplication'
+import DataAnalytics from './pages/Services/DataAnalytics'
+import ApplicationReEngineering from './pages/Services/ApplicationReEngineering'
+import QualityAssurance from './pages/Services/QualityAssurance'
+import RoboticProcessAutomation from './pages/Services/RoboticProcessAutomation'
+import Outsystems from './pages/Services/Outsystems'
+import DOOH from './pages/Services/DOOH'
+import ITStaffAugmentation from './pages/Services/ITStaffAugmentation'
+import ThirdPartyContracting from './pages/Services/ThirdPartyContracting'
 
 const App = () => {
   return (
@@ -48,7 +58,6 @@ const App = () => {
         <Route path='/industries/oil-gas' element={<IndustriesOilGas/>}/>
         <Route path='/industries/infrastructure' element={<IndustriesInfrastructure/>}/>
         <Route path='/industries/engineering' element={<IndustriesEngineering/>}/>
-        <Route path='/services/ApplicationDevelopment' element={<AppDev/>}/>
         <Route path='/industries/Manufacturing' element={<EquipmentManufacturing/>}/>
         <Route path='/industries/OEM' element={<IndustriesOEM/>}/>
         <Route path='/industries/Chemical' element={<IndustriesChemical/>}/>
@@ -65,7 +74,16 @@ const App = () => {
         <Route path='/industries/FoodBeverage' element={<IndustriesFoodAndBeverage/>}/>
         <Route path='/industries/Semiconductor' element={<IndustriesSemiconductor/>}/>
         <Route path='/Careers' element={<Careers/>}/>
-        
+        <Route path='/services/ApplicationDevelopment' element={<ApplicationDevelopment/>}/>
+        <Route path='/services/MobileApplication' element={<MobileApplication/>}/>
+        <Route path='/services/DataAnalytics' element={<DataAnalytics/>}/>
+        <Route path='/services/ApplicationRe-Engineering' element={<ApplicationReEngineering/>}/>
+        <Route path='/services/QualityAssurance' element={<QualityAssurance/>}/>
+        <Route path='/services/RoboticProcessAutomation' element={<RoboticProcessAutomation/>}/>
+        <Route path='/services/Outsystems' element={<Outsystems/>}/>
+        <Route path='/services/DOOH' element={<DOOH/>}/>
+        <Route path='/services/ITstaffAugmentation' element={<ITStaffAugmentation/>}/>
+        <Route path='/services/thirdParty' element={<ThirdPartyContracting/>}/>
       </Routes>  
     </div>
   )
