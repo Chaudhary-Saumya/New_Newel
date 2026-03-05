@@ -9,9 +9,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Power related images (power plants, distribution networks, renewable energy)
 const heroImages = [
-  "https://images.unsplash.com/photo-1509643262183-3abbe25cf176?w=800&h=600&fit=crop",  // Traditional power plant
-  "https://images.unsplash.com/photo-1570549717489-3ea5abca34af?w=800&h=600&fit=crop",  // Energy distribution grid
-  "https://images.unsplash.com/photo-1473341304170-971dccb5ac94?w=800&h=600&fit=crop",  // Wind turbines for renewable power
+  "https://images.unsplash.com/photo-1467533003447-e295ff1b0435?w=800&h=600&fit=crop&auto=format",  // Wind turbines generating electricity
+
+"https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=800&h=600&fit=crop&auto=format",  // High-voltage power transmission lines
+
+"https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&h=600&fit=crop&auto=format",  // Solar power plant / renewable energy field  // Wind turbines for renewable power
 ];
 
 export default function IndustriesPower() {
@@ -21,6 +23,10 @@ export default function IndustriesPower() {
   const cardRefs = useRef([]);
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
+
+  useEffect(() => {
+        document.title = 'Industries Power | Newel';
+      }, []);
 
   const challenges = [
     {

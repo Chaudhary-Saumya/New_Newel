@@ -14,6 +14,10 @@ const AboutUs = () => {
   const cardRefs = useRef([]);
 
   useEffect(() => {
+    document.title = 'About Us | Newel';
+  }, []);
+
+  useEffect(() => {
     const ctx = gsap.context(() => {
       // Timeline vertical line draw animation
       gsap.fromTo(

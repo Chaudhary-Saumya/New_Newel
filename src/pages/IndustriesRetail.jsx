@@ -22,6 +22,10 @@ export default function IndustriesRetail() {
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
 
+  useEffect(() => {
+        document.title = 'Industries Retails | Newel';
+      }, []);
+
   const challenges = [
     {
       title: "Mobile-First Commerce Transformation",

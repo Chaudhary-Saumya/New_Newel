@@ -14,6 +14,10 @@ export default function AppDev() {
   const processStepsRef = useRef([]);
   const stackRef = useRef(null);
 
+  useEffect(() => {
+        document.title = 'App Dev | Newel';
+      }, []);
+
   // Sample tech stack (you can replace icons with real ones)
   const techStack = [
     { name: "React Native", icon: "⚛️" },

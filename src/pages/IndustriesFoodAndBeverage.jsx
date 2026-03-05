@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Food and Beverage related images (production lines, packaging, quality control)
 const heroImages = [
-  "https://images.unsplash.com/photo-1589924691995-400dc9ecc0af?w=800&h=600&fit=crop",  // Modern food processing line
+  "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&h=600&fit=crop&auto=format",  // Modern food processing line
   "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=800&h=600&fit=crop",  // Beverage bottling and packaging
   "https://images.unsplash.com/photo-1583258292688-d0213dc5a3a8?w=800&h=600&fit=crop",  // Quality control and lab testing in food industry
 ];
@@ -21,6 +21,10 @@ export default function IndustriesFoodAndBeverage() {
   const cardRefs = useRef([]);
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
+
+  useEffect(() => {
+        document.title = 'Industries Food And Beverages | Newel';
+      }, []);
 
   const challenges = [
     {

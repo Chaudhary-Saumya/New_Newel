@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const heroImages = [
   "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&h=600&fit=crop",  // AI technology representation
   "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop",  // Cybersecurity setup
-  "https://images.unsplash.com/photo-1506942911434-5f0ed42a8a6a?w=800&h=600&fit=crop",  // Autonomous drone system
+  "https://images.unsplash.com/photo-1604076913837-52ab5629fba9?w=800&h=600&fit=crop",    // Autonomous drone system
 ];
 
 export default function IndustriesDefence() {
@@ -21,6 +21,10 @@ export default function IndustriesDefence() {
   const cardRefs = useRef([]);
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
+
+  useEffect(() => {
+        document.title = 'Industries Defence | Newel';
+      }, []);
 
   const challenges = [
     {

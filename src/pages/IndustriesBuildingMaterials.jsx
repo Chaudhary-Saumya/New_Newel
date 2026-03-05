@@ -9,9 +9,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Building Materials related images (cement plants, concrete production, aggregates, materials handling)
 const heroImages = [
-  "https://images.unsplash.com/photo-1581092160560-7a5e0e4b8e2a?w=800&h=600&fit=crop",  // Modern cement plant with silos and conveyors
-  "https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?w=800&h=600&fit=crop",  // Concrete batching plant in operation
-  "https://images.unsplash.com/photo-1581092162387-4c4d0e6e9b5c?w=800&h=600&fit=crop",  // Aggregates and construction materials storage yard
+  "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop&auto=format",  // Cement / construction plant industrial view
+
+"https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?w=800&h=600&fit=crop",  // Concrete batching / industrial facility
+
+"https://images.unsplash.com/photo-1489515217757-5fd1be406fef?w=800&h=600&fit=crop&auto=format",  // Construction materials / cement work site // Aggregates and construction materials storage yard
 ];
 
 export default function IndustriesBuildingMaterials() {
@@ -21,6 +23,10 @@ export default function IndustriesBuildingMaterials() {
   const cardRefs = useRef([]);
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
+
+  useEffect(() => {
+        document.title = 'Industries Builing Materials | Newel';
+      }, []);
 
   const challenges = [
     {

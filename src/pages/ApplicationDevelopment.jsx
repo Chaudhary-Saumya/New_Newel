@@ -43,6 +43,10 @@ export default function ApplicationDevelopment() {
   const container = useRef(null);
 
   useEffect(() => {
+        document.title = 'Application Developtment | Newel';
+      }, []);
+
+  useEffect(() => {
     const ctx = gsap.context(() => {
       // Hero animations
       gsap.fromTo('.hero-title', { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 1.4, ease: 'power4.out' });

@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Infrastructure related images
 const heroImages = [
-  "https://images.unsplash.com/photo-1519003300448-174fa1e012e9?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=600&fit=crop",
   "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop",
   "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&h=600&fit=crop",
 ];
@@ -21,6 +21,10 @@ export default function IndustriesInfrastructure() {
   const cardRefs = useRef([]);
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
+
+  useEffect(() => {
+        document.title = 'Industries Infrastructure | Newel';
+      }, []);
 
   const challenges = [
     {

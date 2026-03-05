@@ -9,9 +9,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 // IT related images (coding, cybersecurity, cloud computing)
 const heroImages = [
-  "https://images.unsplash.com/photo-1461749289074-4a27f83f5c8b?w=800&h=600&fit=crop",  // Developers coding
-  "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop",  // Cybersecurity setup
-  "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop",  // Cloud architecture representation
+ "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop&auto=format",  // Programmer coding on laptop
+
+"https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop&auto=format",  // Software development / coding screen
+
+"https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop&auto=format"   // Developer workspace with multiple monitors
 ];
 
 export default function IndustriesIT() {
@@ -21,6 +23,10 @@ export default function IndustriesIT() {
   const cardRefs = useRef([]);
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
+
+  useEffect(() => {
+        document.title = 'Industries IT | Newel';
+      }, []);
 
   const challenges = [
     {

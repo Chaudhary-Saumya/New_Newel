@@ -22,6 +22,10 @@ export default function IndustriesEPC() {
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
 
+  useEffect(() => {
+        document.title = 'Industries EPC | Newel';
+      }, []);
+
   // EPC Challenges (industry-specific, enterprise-level content)
   const challenges = [
     {

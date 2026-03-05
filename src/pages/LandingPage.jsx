@@ -14,6 +14,10 @@ const LandingPage = () => {
   const pageRef = useRef(null);
 
   useEffect(() => {
+    document.title = 'NEWEL TECHNOLOGIES PVT LTD';
+  }, []);
+
+  useEffect(() => {
     const ctx = gsap.context(() => {
       // Smooth reveal animation for sections
       const sections = document.querySelectorAll('section');

@@ -22,6 +22,10 @@ export default function IndustriesOilGas() {
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
 
+  useEffect(() => {
+        document.title = 'Industries Oil Gas | Newel';
+      }, []);
+
   const challenges = [
     {
       title: "Workforce & Talent Optimization",

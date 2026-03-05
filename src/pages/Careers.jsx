@@ -16,6 +16,10 @@ export default function Careers() {
   const statsRef = useRef([]);
   const ctaRef = useRef(null);
 
+  useEffect(() => {
+        document.title = 'Careers | Newel';
+      }, []);
+
   const [expandedJob, setExpandedJob] = useState(null);
 
   const whyNewel = [

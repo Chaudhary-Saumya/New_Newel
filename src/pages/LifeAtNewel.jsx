@@ -184,6 +184,10 @@ export default function LifeAtNewel() {
     setCurrentImageIndex((prev) => (prev - 1 + selectedEvent.images.length) % selectedEvent.images.length);
   };
 
+ useEffect(() => {
+    document.title = 'Life At Newel | Newel';
+  }, []);
+
   return (
     <>
       <Navbar />

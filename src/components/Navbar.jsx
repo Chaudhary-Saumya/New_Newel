@@ -10,6 +10,18 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navRef = useRef(null);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
   useEffect(() => {
     gsap.fromTo(
       navRef.current,
@@ -124,38 +136,40 @@ const Navbar = () => {
 
                   <div
                     className={`
-                      absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-xl border border-gray-100/80
+                      absolute top-full left-0 w-72 bg-white rounded-xl shadow-xl border border-gray-100/80
                       opacity-0 scale-95 translate-y-2 pointer-events-none transition-all duration-300
                       group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover:pointer-events-auto
                     `}
                   >
-                    <div className="max-h-80 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-gray-50 py-2">
+                    <div className="max-h-[70vh] overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-gray-50 py-2">
                       {link.dropdownItems.map((item) => (
-                        <div key={item.name}>
+                        <div key={item.name} className="relative">
                           {item.subItems ? (
                             // Nested dropdown for "Staffing and recruiting"
-                            <div className="relative group/sub">
-                              <div className="flex items-center justify-between px-5 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-pointer">
+                            <div className="relative group/sub px-5 py-2.5">
+                              <div className="flex items-center justify-between text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-pointer rounded-lg">
                                 {item.name}
                                 <ChevronDown className="w-4 h-4 transition-transform group-hover/sub:rotate-180" />
                               </div>
 
                               <div
                                 className={`
-                                  absolute top-0 left-full w-64 bg-white rounded-xl shadow-xl border border-gray-100/80
+                                  absolute top-0 left-full ml-1 w-56 bg-white rounded-xl shadow-xl border border-gray-100/80
                                   opacity-0 scale-95 -translate-x-2 pointer-events-none transition-all duration-300
-                                  group-hover/sub:opacity-100 group-hover/sub:scale-100 group-hover/sub:translate-x-0 group-hover/sub:pointer-events-auto
+                                  group-hover/sub:opacity-100 group-hover/sub:scale-100 group-hover/sub:translate-x-0 group-hover/sub:pointer-events-auto z-50
                                 `}
                               >
-                                {item.subItems.map((sub) => (
-                                  <Link
-                                    key={sub.name}
-                                    to={sub.to}
-                                    className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors whitespace-nowrap"
-                                  >
-                                    {sub.name}
-                                  </Link>
-                                ))}
+                                <div className="py-2">
+                                  {item.subItems.map((sub) => (
+                                    <Link
+                                      key={sub.name}
+                                      to={sub.to}
+                                      className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors whitespace-nowrap"
+                                    >
+                                      {sub.name}
+                                    </Link>
+                                  ))}
+                                </div>
                               </div>
                             </div>
                           ) : (
@@ -214,9 +228,9 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-400 ease-in-out ${
-          isMobileMenuOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
-        } bg-white shadow-lg`}
+        className={`lg:hidden overflow-y-auto transition-all duration-300 ease-in-out ${
+          isMobileMenuOpen ? 'max-h-[calc(100vh-4rem)] opacity-100 visible' : 'max-h-0 opacity-0 invisible'
+        } absolute top-16 left-0 right-0 bg-white shadow-lg`}
       >
         <div className="px-5 py-6 flex flex-col gap-1">
           {navLinks.map((link) => (

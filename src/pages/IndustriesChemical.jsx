@@ -22,6 +22,10 @@ export default function IndustriesChemical() {
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
 
+  useEffect(() => {
+        document.title = 'Industries Chemical | Newel';
+      }, []);
+
   const challenges = [
     {
       title: "Specialized R&D Talent Sourcing",

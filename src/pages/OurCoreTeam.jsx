@@ -44,6 +44,10 @@ export default function OurCoreTeam() {
   const containerRef = useRef(null);
   const cardsRef = useRef([]);
 
+   useEffect(() => {
+      document.title = 'Our Core Team | Newel';
+    }, []);
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Horizontal scroll snap + smooth pinning

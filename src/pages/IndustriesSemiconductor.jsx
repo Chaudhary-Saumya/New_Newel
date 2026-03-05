@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const heroImages = [
   "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop",  // Cleanroom technician working on wafer
   "https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?w=800&h=600&fit=crop",  // Semiconductor wafer close-up
-  "https://images.unsplash.com/photo-1581092162387-4c4d0e6e9b5c?w=800&h=600&fit=crop",  // Advanced chip fabrication equipment
+  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop",  // Advanced chip fabrication equipment
 ];
 
 export default function IndustriesSemiconductor() {
@@ -21,6 +21,10 @@ export default function IndustriesSemiconductor() {
   const cardRefs = useRef([]);
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
+
+   useEffect(() => {
+      document.title = 'Industries Semiconductor | Newel';
+    }, []);
 
   const challenges = [
     {

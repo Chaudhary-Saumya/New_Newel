@@ -9,9 +9,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Fertilizer related images (production plants, chemical mixing, agricultural fields)
 const heroImages = [
-  "https://images.unsplash.com/photo-1581092160560-7a5e0e4b8e2a?w=800&h=600&fit=crop",  // Fertilizer production plant
-  "https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?w=800&h=600&fit=crop",  // Chemical engineers in lab
-  "https://images.unsplash.com/photo-1581092162387-4c4d0e6e9b5c?w=800&h=600&fit=crop",  // Agricultural fertilizer application
+ "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=800&h=600&fit=crop&auto=format",  // Farmer spreading fertilizer / agriculture field
+
+"https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&h=600&fit=crop&auto=format",  // Fertile crop field / agriculture production
+
+"https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=800&h=600&fit=crop&auto=format",  // Large agricultural farmland
 ];
 
 export default function IndustriesFertilizer() {
@@ -21,6 +23,10 @@ export default function IndustriesFertilizer() {
   const cardRefs = useRef([]);
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
+
+  useEffect(() => {
+        document.title = 'Industries Fertilizer | Newel';
+      }, []);
 
   const challenges = [
     {

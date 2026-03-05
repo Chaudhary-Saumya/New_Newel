@@ -9,9 +9,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Metal & Minerals related images (mining, refining, processing plants)
 const heroImages = [
-  "https://images.unsplash.com/photo-1581092160560-7a5e0e4b8e2a?w=800&h=600&fit=crop",  // Open-pit mining operation with heavy machinery
-  "https://images.unsplash.com/photo-1581093458796-9d5c0a5a5b5c?w=800&h=600&fit=crop",  // Metal smelting and refining furnace interior
-  "https://images.unsplash.com/photo-1581092162387-4c4d0e6e9b5c?w=800&h=600&fit=crop",  // Mineral processing plant with conveyors and silos
+  "https://images.unsplash.com/photo-1513828583688-c52646db42da?w=800&h=600&fit=crop&auto=format",  // Open-pit mining site with heavy machinery
+
+"https://images.unsplash.com/photo-1565034946487-077786996e27?w=800&h=600&fit=crop&auto=format",  // Industrial metal furnace / smelting environment
+
+"https://images.unsplash.com/photo-1473445361085-b9a07f55608b?w=800&h=600&fit=crop&auto=format",  // Mining trucks working in mineral
 ];
 
 export default function IndustriesMetalAndMinerals() {
@@ -21,6 +23,10 @@ export default function IndustriesMetalAndMinerals() {
   const cardRefs = useRef([]);
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
+
+  useEffect(() => {
+        document.title = 'Industries Metal And Minerals | Newel';
+      }, []);
 
   const challenges = [
     {

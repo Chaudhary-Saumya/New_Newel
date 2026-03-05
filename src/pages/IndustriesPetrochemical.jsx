@@ -22,6 +22,10 @@ export default function IndustriesPetrochemical() {
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
 
+  useEffect(() => {
+        document.title = 'Industries Petrochemicals | Newel';
+      }, []);
+
   const challenges = [
     {
       title: "Plant Operations & Reliability",

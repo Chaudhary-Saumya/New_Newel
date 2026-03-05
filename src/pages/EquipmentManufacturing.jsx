@@ -22,6 +22,10 @@ export default function EquipmentManufacturing() {
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
 
+  useEffect(() => {
+        document.title = 'Industries Manufacturing | Newel';
+      }, []);
+
   const challenges = [
     {
       title: "Skilled Talent Acquisition & Retention",

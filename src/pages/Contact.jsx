@@ -21,6 +21,10 @@ export default function Contact() {
   });
 
   useEffect(() => {
+    document.title = 'Contact | Newel';
+  }, []);
+
+  useEffect(() => {
     const ctx = gsap.context(() => {
       // Left side entrance
       gsap.fromTo(

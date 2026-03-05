@@ -9,9 +9,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Healthcare related images (hospitals, medical teams, advanced care environments)
 const heroImages = [
-  "https://images.unsplash.com/photo-1512678080530-7760d81faba2?w=800&h=600&fit=crop",  // Modern hospital corridor with medical staff
-  "https://images.unsplash.com/photo-1576092768241-dec2310aa0f5?w=800&h=600&fit=crop",  // Doctor and nurse in discussion / patient care
-  "https://images.unsplash.com/photo-1586776971484-9f4b0f958f92?w=800&h=600&fit=crop",  // Advanced medical equipment and lab setting
+ "https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=800&h=600&fit=crop&auto=format",  // Doctor using tablet with patient in hospital
+
+"https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&h=600&fit=crop&auto=format",  // Healthcare professionals in hospital hallway
+
+"https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&h=600&fit=crop&auto=format",  // Modern hospital equipment and medical workspace
 ];
 
 export default function IndustriesHealthcare() {
@@ -21,6 +23,10 @@ export default function IndustriesHealthcare() {
   const cardRefs = useRef([]);
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
+
+  useEffect(() => {
+        document.title = 'Industries Helthcare | Newel';
+      }, []);
 
   const challenges = [
     {

@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { MapPin, Mail, Phone, Facebook, Twitter, Linkedin, Instagram, ArrowUp } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -70,7 +71,7 @@ export default function Footer() {
             
             <div className="space-y-4 text-sm text-slate-600">
               <div className="flex gap-3">
-                <span className="text-[#5099ff] mt-0.5">📍</span>
+                <MapPin className="w-5 h-5 text-[#5099ff] mt-0.5 flex-shrink-0" />
                 <p>504, Sunrise Business Park, Rd Number 16,<br />
                   Nehru Nagar, Wagle Industrial Estate, Thane West,<br />
                   Thane, Maharashtra 400604
@@ -78,14 +79,14 @@ export default function Footer() {
               </div>
 
               <div className="flex gap-3">
-                <span className="text-[#5099ff] mt-0.5">✉️</span>
+                <Mail className="w-5 h-5 text-[#5099ff] mt-0.5 flex-shrink-0" />
                 <a href="mailto:enquiry@neweltechnologies.com" className="hover:text-[#5099ff] transition-colors">
                   enquiry@neweltechnologies.com
                 </a>
               </div>
 
               <div className="flex gap-3">
-                <span className="text-[#5099ff] mt-0.5">📞</span>
+                <Phone className="w-5 h-5 text-[#5099ff] mt-0.5 flex-shrink-0" />
                 <div>
                   <a href="tel:+919664323316" className="block hover:text-[#5099ff] transition-colors">+91 96643 23316</a>
                   <a href="tel:+917208061012" className="block hover:text-[#5099ff] transition-colors">+91 72080 61012</a>
@@ -95,19 +96,38 @@ export default function Footer() {
 
             {/* Social Icons */}
             <div className="flex gap-4">
-              {["facebook", "twitter", "linkedin", "instagram"].map((social, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-9 h-9 bg-white border border-slate-200 hover:border-[#5099ff] hover:text-[#5099ff] flex items-center justify-center rounded-xl transition-all duration-300"
-                >
-                  <span className="text-lg">{
-                    social === "facebook" ? "f" :
-                    social === "twitter" ? "𝕏" :
-                    social === "linkedin" ? "in" : "📷"
-                  }</span>
-                </a>
-              ))}
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 bg-white border border-slate-200 hover:border-[#5099ff] hover:text-[#5099ff] flex items-center justify-center rounded-xl transition-all duration-300"
+              >
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 bg-white border border-slate-200 hover:border-[#5099ff] hover:text-[#5099ff] flex items-center justify-center rounded-xl transition-all duration-300"
+              >
+                <Twitter className="w-4 h-4" />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 bg-white border border-slate-200 hover:border-[#5099ff] hover:text-[#5099ff] flex items-center justify-center rounded-xl transition-all duration-300"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 bg-white border border-slate-200 hover:border-[#5099ff] hover:text-[#5099ff] flex items-center justify-center rounded-xl transition-all duration-300"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
             </div>
           </div>
 
@@ -161,7 +181,7 @@ export default function Footer() {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="w-10 h-10 bg-white border border-slate-200 hover:border-[#5099ff] rounded-2xl flex items-center justify-center text-[#5099ff] hover:bg-[#5099ff] hover:text-white transition-all duration-300 shadow-sm"
           >
-            ↑
+            <ArrowUp className="w-5 h-5" />
           </button>
         </div>
       </div>

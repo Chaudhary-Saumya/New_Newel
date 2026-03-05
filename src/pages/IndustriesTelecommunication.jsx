@@ -9,9 +9,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Telecommunication related images (network towers, fiber optics, data centers)
 const heroImages = [
-  "https://images.unsplash.com/photo-1519389950473-47ba60e54fad?w=800&h=600&fit=crop",  // Telecom tower against sky
-  "https://images.unsplash.com/photo-1558383547-8f3e6e6d30c2?w=800&h=600&fit=crop",  // Fiber optic cables and network equipment
-  "https://images.unsplash.com/photo-1526628953301-8be146148147?w=800&h=600&fit=crop",  // Modern data center with servers
+  "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=600&fit=crop&auto=format",  // Telecom tower / cellular communication antenna
+
+"https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop&auto=format",  // Network infrastructure / fiber & data connectivity
+
+"https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop&auto=format",  // Data communication / telecom technology// Modern data center with servers
 ];
 
 export default function IndustriesTelecommunication() {
@@ -21,6 +23,10 @@ export default function IndustriesTelecommunication() {
   const cardRefs = useRef([]);
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
+
+  useEffect(() => {
+        document.title = 'Industries Telecommunication | Newel';
+      }, []);
 
   const challenges = [
     {

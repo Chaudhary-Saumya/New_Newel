@@ -22,6 +22,10 @@ export default function IndustriesBFSI() {
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
 
+  useEffect(() => {
+        document.title = 'Industries BFSI | Newel';
+      }, []);
+
   const challenges = [
     {
       title: "Intensifying Fintech Competition",

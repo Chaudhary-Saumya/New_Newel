@@ -9,9 +9,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Renewable Energy related images (solar panels, wind turbines, hydro power)
 const heroImages = [
-  "https://images.unsplash.com/photo-1509391366347-3be0931bc2a9?w=800&h=600&fit=crop",  // Solar panels in field
-  "https://images.unsplash.com/photo-1506126279646-90d6588d014b?w=800&h=600&fit=crop",  // Wind turbines at sunset
-  "https://images.unsplash.com/photo-1509643262183-3abbe25cf176?w=800&h=600&fit=crop",  // Hydro dam and renewable energy infrastructure
+  "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&h=600&fit=crop&auto=format",  // Solar farm in open landscape
+
+"https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=800&h=600&fit=crop&auto=format",  // Wind turbines in renewable energy field
+
+"https://images.unsplash.com/photo-1473186578172-c141e6798cf4?w=800&h=600&fit=crop&auto=format",  // Hydroelectric dam / renewable power generation  // Hydro dam and renewable energy infrastructure
 ];
 
 export default function IndustriesRenewableEnergy() {
@@ -21,6 +23,10 @@ export default function IndustriesRenewableEnergy() {
   const cardRefs = useRef([]);
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
+
+  useEffect(() => {
+        document.title = 'Industries Renewable Energy | Newel';
+      }, []);
 
   const challenges = [
     {

@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const heroImages = [
   "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop",
   "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1565730148023-297e46a4e856?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&h=600&fit=crop&auto=format"
 ];
 
 export default function IndustriesEngineering() {
@@ -21,6 +21,10 @@ export default function IndustriesEngineering() {
   const cardRefs = useRef([]);
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
+
+  useEffect(() => {
+        document.title = 'Industries Engineering | Newel';
+      }, []);
 
   const challenges = [
     {

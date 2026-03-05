@@ -22,6 +22,10 @@ export default function IndustriesOEM() {
   const imageRefs = useRef([]);
   const ctaRef = useRef(null);
 
+  useEffect(() => {
+        document.title = 'Industries OEM | Newel';
+      }, []);
+
   const challenges = [
     {
       title: "Precision Engineering & Design Talent",
