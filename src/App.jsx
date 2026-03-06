@@ -40,6 +40,8 @@ import Outsystems from './pages/Services/Outsystems'
 import DOOH from './pages/Services/DOOH'
 import ITStaffAugmentation from './pages/Services/ITStaffAugmentation'
 import ThirdPartyContracting from './pages/Services/ThirdPartyContracting'
+import AWS from './pages/Services/AWS'
+import MicrosoftOnAWS from './pages/Services/MicrosoftOnAWS'
 
 const App = () => {
   return (
@@ -84,6 +86,8 @@ const App = () => {
         <Route path='/services/DOOH' element={<DOOH/>}/>
         <Route path='/services/ITstaffAugmentation' element={<ITStaffAugmentation/>}/>
         <Route path='/services/thirdParty' element={<ThirdPartyContracting/>}/>
+        <Route path='/services/AWS' element={<AWS/>}/>
+        <Route path='/services/MicrosoftOnAws' element={<MicrosoftOnAWS/>}/>
       </Routes>  
     </div>
   )

@@ -8,27 +8,7 @@ import { ChevronDown } from 'lucide-react';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [openDropdowns, setOpenDropdowns] = useState({});
   const navRef = useRef(null);
-
-  const toggleDropdown = (name) => {
-    setOpenDropdowns(prev => ({
-      ...prev,
-      [name]: !prev[name]
-    }));
-  };
-
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     gsap.fromTo(
@@ -55,6 +35,7 @@ const Navbar = () => {
       dropdownItems: [
         {
           name: 'Staffing and recruiting',
+          isStaffing: true,
           subItems: [
             { name: 'IT Staff Augmentation', to: '/services/ITstaffAugmentation' },
             { name: 'Third-Party Contracting', to: '/services/thirdParty' },
@@ -63,7 +44,14 @@ const Navbar = () => {
         { name: 'Application Development', to: '/services/ApplicationDevelopment' },
         { name: 'Mobile Application', to: '/services/MobileApplication' },
         { name: 'Data Analytics', to: '/services/DataAnalytics' },
-        { name: 'Cloud Services', to: '/services/CloudServices' },
+        {
+          name: 'Cloud Services',
+          isCloud: true, // flag for left panel
+          subItems: [
+            { name: 'AWS', to: '/services/AWS' },
+            { name: 'Microsoft on AWS', to: '/services/MicrosoftOnAws' },
+          ],
+        },
         { name: 'Application Re-Engineering', to: '/services/ApplicationRe-Engineering' },
         { name: 'Quality Assurance', to: '/services/QualityAssurance' },
         { name: 'Robotic Process Automation', to: '/services/RoboticProcessAutomation' },
@@ -144,54 +132,52 @@ const Navbar = () => {
 
                   <div
                     className={`
-                      absolute top-full left-0 w-72 bg-white rounded-xl shadow-xl border border-gray-100/80
+                      absolute top-full left-0 mt-2 w-[760px] bg-white rounded-xl shadow-2xl border border-gray-100/80
                       opacity-0 scale-95 translate-y-2 pointer-events-none transition-all duration-300
                       group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover:pointer-events-auto
+                      flex overflow-hidden
                     `}
                   >
-                    <div className="max-h-[70vh] overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-gray-50 py-2">
-                      {link.dropdownItems.map((item) => (
-                        <div key={item.name} className="relative">
-                          {item.subItems ? (
-                            // Nested dropdown for "Staffing and recruiting" - clickable
-                            <div className="relative px-5 py-2.5">
-                              <div 
-                                className="flex items-center justify-between text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-pointer rounded-lg"
-                                onClick={() => toggleDropdown('staffing')}
+                    {/* LEFT PANEL - for Staffing and Cloud Services */}
+                    <div className="w-1/3 bg-gradient-to-b from-indigo-50/80 to-blue-50/50 p-6 border-r border-gray-200">
+                      {link.dropdownItems
+                        .filter(item => item.isStaffing || item.isCloud)
+                        .map((item) => (
+                          <div key={item.name} className="mb-6 last:mb-0">
+                            <h4 className="text-lg font-semibold text-indigo-800 mb-3 pb-2 border-b border-indigo-200">
+                              {item.name}
+                            </h4>
+                            <div className="space-y-2">
+                              {item.subItems.map((sub) => (
+                                <Link
+                                  key={sub.name}
+                                  to={sub.to}
+                                  className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-indigo-100/60 hover:text-indigo-700 transition-colors rounded-lg"
+                                >
+                                  {sub.name}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+
+                    {/* RIGHT PANEL - all other services */}
+                    <div className="w-2/3 p-4">
+                      <div className="max-h-80 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-indigo-200 scrollbar-track-gray-50">
+                        {link.dropdownItems.map((item) => (
+                          <div key={item.name}>
+                            {item.isStaffing || item.isCloud ? null : (
+                              <Link
+                                to={item.to}
+                                className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-700 transition-colors whitespace-nowrap rounded-lg"
                               >
                                 {item.name}
-                                <ChevronDown className={`w-4 h-4 transition-transform ${openDropdowns['staffing'] ? 'rotate-180' : ''}`} />
-                              </div>
-
-                              <div
-                                className={`
-                                  overflow-hidden transition-all duration-300
-                                  ${openDropdowns['staffing'] ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}
-                                `}
-                              >
-                                <div className="py-2">
-                                  {item.subItems.map((sub) => (
-                                    <Link
-                                      key={sub.name}
-                                      to={sub.to}
-                                      className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors whitespace-nowrap"
-                                    >
-                                      {sub.name}
-                                    </Link>
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                          ) : (
-                            <Link
-                              to={item.to}
-                              className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors whitespace-nowrap"
-                            >
-                              {item.name}
-                            </Link>
-                          )}
-                        </div>
-                      ))}
+                              </Link>
+                            )}
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </>
@@ -238,7 +224,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden overflow-y-auto transition-all duration-300 ease-in-out ${
+        className={`lg:hidden overflow-y-auto transition-all duration-400 ease-in-out ${
           isMobileMenuOpen ? 'max-h-[calc(100vh-4rem)] opacity-100 visible' : 'max-h-0 opacity-0 invisible'
         } absolute top-16 left-0 right-0 bg-white shadow-lg`}
       >
