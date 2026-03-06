@@ -2,6 +2,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import LocomotiveScroll from 'locomotive-scroll';
+import 'locomotive-scroll/dist/locomotive-scroll.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -115,10 +117,48 @@ export default function LifeAtNewel() {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  const pageRef = useRef(null);
+  const scrollContainerRef = useRef(null);
   const sectionRef = useRef(null);
   const cardRefs = useRef([]);
 
   useEffect(() => {
+    document.title = 'Life At Newel | Newel';
+    
+    // Reset scroll to top on page load
+    window.scrollTo(0, 0);
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 100);
+  }, []);
+
+  useEffect(() => {
+    let scroll;
+
+    const initScroll = () => {
+      try {
+        scroll = new LocomotiveScroll({
+          el: scrollContainerRef.current,
+          smooth: true,
+          multiplier: 0.8,
+          class: 'is-revealed',
+          tablet: { smooth: true, multiplier: 0.7 },
+          smartphone: { smooth: true, multiplier: 0.6 },
+          lerp: 0.08,
+        });
+
+        setTimeout(() => {
+          scroll.update();
+        }, 300);
+      } catch (error) {
+        console.error('Locomotive Scroll init error:', error);
+      }
+    };
+
+    const timer = setTimeout(initScroll, 100);
+
     const ctx = gsap.context(() => {
       // Cards stagger entrance
       gsap.fromTo(
@@ -171,9 +211,15 @@ export default function LifeAtNewel() {
           });
         });
       });
-    });
+    }, pageRef);
 
-    return () => ctx.revert();
+    return () => {
+      clearTimeout(timer);
+      if (scroll) {
+        scroll.destroy();
+      }
+      ctx.revert();
+    };
   }, []);
 
   const nextImage = () => {
@@ -184,95 +230,97 @@ export default function LifeAtNewel() {
     setCurrentImageIndex((prev) => (prev - 1 + selectedEvent.images.length) % selectedEvent.images.length);
   };
 
- useEffect(() => {
-    document.title = 'Life At Newel | Newel';
-  }, []);
-
   return (
-    <>
-      <Navbar />
+    <div ref={pageRef} className="min-h-screen bg-white">
+      <div ref={scrollContainerRef} data-scroll-container>
+        <div data-scroll-section>
+          <Navbar />
+          <section ref={sectionRef} className="relative bg-white py-20 lg:py-32 overflow-hidden">
+            {/* Subtle background pattern */}
+            <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-[length:60px_60px] opacity-30 pointer-events-none" />
 
-      <section ref={sectionRef} className="relative bg-white py-20 lg:py-32 overflow-hidden">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-[length:60px_60px] opacity-30 pointer-events-none" />
+            <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
+              {/* Hero */}
+              <div className="text-center mb-16 lg:mb-24">
+                <h1 className="text-4xl md:text-5xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
+                  Life @ Newel Technologies
+                </h1>
+                <p className="mt-6 text-xl lg:text-2xl text-gray-700 max-w-5xl mx-auto leading-relaxed">
+                  Where work meets joy, growth meets fun, and every moment builds stronger bonds.
+                </p>
+                <div className="mt-8 h-1 w-32 bg-gradient-to-r from-[#5099ff] to-blue-600 mx-auto rounded-full" />
+              </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
-          {/* Hero */}
-          <div className="text-center mb-16 lg:mb-24">
-            <h1 className="text-4xl md:text-5xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
-              Life @ Newel Technologies
-            </h1>
-            <p className="mt-6 text-xl lg:text-2xl text-gray-700 max-w-5xl mx-auto leading-relaxed">
-              Where work meets joy, growth meets fun, and every moment builds stronger bonds.
-            </p>
-            <div className="mt-8 h-1 w-32 bg-gradient-to-r from-[#5099ff] to-blue-600 mx-auto rounded-full" />
-          </div>
+              {/* Horizontal Snap Carousel */}
+              <div className="relative">
+                <div className="overflow-x-auto snap-x snap-mandatory scrollbar-hide flex gap-6 lg:gap-10 pb-8">
+                  {events.map((event, index) => (
+                    <div
+                      key={event.title}
+                      ref={(el) => (cardRefs.current[index] = el)}
+                      className="group relative w-[300px] sm:w-[360px] lg:w-[420px] flex-shrink-0 snap-center rounded-3xl overflow-hidden shadow-xl bg-white border border-gray-100 hover:shadow-2xl hover:shadow-[#5099ff]/30 transition-all duration-500"
+                      onClick={() => {
+                        setSelectedEvent(event);
+                        setCurrentImageIndex(0);
+                      }}
+                    >
+                      <div className="relative h-[380px] lg:h-[480px] overflow-hidden">
+                        <img
+                          src={event.cover}
+                          alt={event.title}
+                          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                      </div>
 
-          {/* Horizontal Snap Carousel */}
-          <div className="relative">
-            <div className="overflow-x-auto snap-x snap-mandatory scrollbar-hide flex gap-6 lg:gap-10 pb-8">
-              {events.map((event, index) => (
-                <div
-                  key={event.title}
-                  ref={(el) => (cardRefs.current[index] = el)}
-                  className="group relative w-[300px] sm:w-[360px] lg:w-[420px] flex-shrink-0 snap-center rounded-3xl overflow-hidden shadow-xl bg-white border border-gray-100 hover:shadow-2xl hover:shadow-[#5099ff]/30 transition-all duration-500"
+                      <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8 text-white z-10">
+                        <h3 className="text-2xl lg:text-3xl font-bold tracking-tight mb-2">
+                          {event.title}
+                        </h3>
+                        <p className="text-sm lg:text-base opacity-90">
+                          Click to view gallery →
+                        </p>
+                      </div>
+
+                      <div className="absolute bottom-6 right-6">
+                        <button className="bg-[#5099ff] text-white px-6 py-2 rounded-full font-medium text-sm lg:text-base shadow-lg hover:bg-blue-600 transition-colors">
+                          View Gallery
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Navigation Arrows */}
+                <button
+                  className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 p-4 rounded-full shadow-lg hover:bg-white transition-colors hidden lg:block"
                   onClick={() => {
-                    setSelectedEvent(event);
-                    setCurrentImageIndex(0);
+                    const container = document.querySelector('.overflow-x-auto');
+                    container.scrollBy({ left: -420, behavior: 'smooth' });
                   }}
                 >
-                  <div className="relative h-[380px] lg:h-[480px] overflow-hidden">
-                    <img
-                      src={event.cover}
-                      alt={event.title}
-                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-                  </div>
+                  ←
+                </button>
 
-                  <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8 text-white z-10">
-                    <h3 className="text-2xl lg:text-3xl font-bold tracking-tight mb-2">
-                      {event.title}
-                    </h3>
-                    <p className="text-sm lg:text-base opacity-90">
-                      Click to view gallery →
-                    </p>
-                  </div>
-
-                  <div className="absolute bottom-6 right-6">
-                    <button className="bg-[#5099ff] text-white px-6 py-2 rounded-full font-medium text-sm lg:text-base shadow-lg hover:bg-blue-600 transition-colors">
-                      View Gallery
-                    </button>
-                  </div>
-                </div>
-              ))}
+                <button
+                  className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 p-4 rounded-full shadow-lg hover:bg-white transition-colors hidden lg:block"
+                  onClick={() => {
+                    const container = document.querySelector('.overflow-x-auto');
+                    container.scrollBy({ left: 420, behavior: 'smooth' });
+                  }}
+                >
+                  →
+                </button>
+              </div>
             </div>
-
-            {/* Navigation Arrows (optional - can hide on mobile) */}
-            <button
-              className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 p-4 rounded-full shadow-lg hover:bg-white transition-colors hidden lg:block"
-              onClick={() => {
-                const container = document.querySelector('.overflow-x-auto');
-                container.scrollBy({ left: -420, behavior: 'smooth' });
-              }}
-            >
-              ←
-            </button>
-
-            <button
-              className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 p-4 rounded-full shadow-lg hover:bg-white transition-colors hidden lg:block"
-              onClick={() => {
-                const container = document.querySelector('.overflow-x-auto');
-                container.scrollBy({ left: 420, behavior: 'smooth' });
-              }}
-            >
-              →
-            </button>
+          </section>
+          <div data-scroll-section>
+            <Footer />
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Full-screen Gallery Modal */}
+      {/* Full-screen Gallery Modal - Outside scroll container */}
       {selectedEvent && (
         <div className="fixed inset-0 z-50 bg-black/95 flex flex-col items-center justify-center">
           <button
@@ -326,8 +374,7 @@ export default function LifeAtNewel() {
           </div>
         </div>
       )}
-
-      <Footer />
-    </>
+    </div>
   );
 }
+

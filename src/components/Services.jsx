@@ -1,5 +1,6 @@
 // components/Services.jsx
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -15,14 +16,54 @@ import staff from '../assets/s8.png';
 gsap.registerPlugin(ScrollTrigger);
 
 const services = [
-  { title: 'Application Development', desc: 'We build scalable, secure, and high-performance applications tailored to your business needs.', icon: dev },
-  { title: 'Mobile Applications', desc: 'Modern Android and iOS apps designed for performance, usability, and engagement.', icon: mobile },
-  { title: 'Data Analytics', desc: 'Transform raw data into meaningful insights to drive smarter business decisions.', icon: analytics },
-  { title: 'Application Re-engineering', desc: 'Upgrade legacy systems into modern, efficient, and scalable solutions.', icon: reeng },
-  { title: 'AWS Services', desc: 'Cloud infrastructure setup, deployment, and optimization using AWS best practices.', icon: aws },
-  { title: 'Quality Assurance', desc: 'Ensure your software is reliable, secure, and performs flawlessly.', icon: qa },
-  { title: 'Robotic Process Automation', desc: 'Automate repetitive tasks to increase efficiency and reduce operational costs.', icon: rpa },
-  { title: 'IT Staff Augmentation', desc: 'Hire expert developers and engineers to scale your team instantly.', icon: staff },
+  { 
+    title: 'Application Development', 
+    desc: 'We build scalable, secure, and high-performance applications tailored to your business needs.', 
+    icon: dev,
+    link: '/services/ApplicationDevelopment'
+  },
+  { 
+    title: 'Mobile Applications', 
+    desc: 'Modern Android and iOS apps designed for performance, usability, and engagement.', 
+    icon: mobile,
+    link: '/services/MobileApplication'
+  },
+  { 
+    title: 'Data Analytics', 
+    desc: 'Transform raw data into meaningful insights to drive smarter business decisions.', 
+    icon: analytics,
+    link: '/services/DataAnalytics'
+  },
+  { 
+    title: 'Application Re-engineering', 
+    desc: 'Upgrade legacy systems into modern, efficient, and scalable solutions.', 
+    icon: reeng,
+    link: '/services/ApplicationRe-Engineering'
+  },
+  { 
+    title: 'AWS Services', 
+    desc: 'Cloud infrastructure setup, deployment, and optimization using AWS best practices.', 
+    icon: aws,
+    link: '/services/CloudServices'
+  },
+  { 
+    title: 'Quality Assurance', 
+    desc: 'Ensure your software is reliable, secure, and performs flawlessly.', 
+    icon: qa,
+    link: '/services/QualityAssurance'
+  },
+  { 
+    title: 'Robotic Process Automation', 
+    desc: 'Automate repetitive tasks to increase efficiency and reduce operational costs.', 
+    icon: rpa,
+    link: '/services/RoboticProcessAutomation'
+  },
+  { 
+    title: 'IT Staff Augmentation', 
+    desc: 'Hire expert developers and engineers to scale your team instantly.', 
+    icon: staff,
+    link: '/services/ITstaffAugmentation'
+  },
 ];
 
 export default function Services() {
@@ -124,10 +165,11 @@ export default function Services() {
 
           <div className="flex flex-col gap-10 md:gap-14 lg:gap-16">
             {services.map((service, index) => (
-              <div
+              <Link
+                to={service.link}
                 key={index}
                 ref={(el) => (serviceRefs.current[index] = el)}
-                className="group relative flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10 bg-white rounded-2xl p-7 md:p-9 shadow-md border border-gray-100 hover:border-blue-200 transition-all duration-400"
+                className="group relative flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10 bg-white rounded-2xl p-7 md:p-9 shadow-md border border-gray-100 hover:border-blue-200 transition-all duration-400 cursor-pointer"
               >
                 {/* Icon */}
                 <div className="shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-xl bg-blue-50/70 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
@@ -148,9 +190,16 @@ export default function Services() {
                   </p>
                 </div>
 
+                {/* Arrow indicator */}
+                <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-blue-50 text-blue-600 opacity-0 group-hover:opacity-100 transform -translate-x-3 group-hover:translate-x-0 transition-all duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
+
                 {/* Timeline dot (desktop) */}
                 <div className="absolute -left-2 md:left-7 top-10 w-5 h-5 rounded-full border-4 border-white bg-blue-500 shadow-sm hidden md:block" />
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -158,3 +207,4 @@ export default function Services() {
     </section>
   );
 }
+

@@ -18,6 +18,16 @@ const LandingPage = () => {
 
   useEffect(() => {
     document.title = 'NEWEL TECHNOLOGIES PVT LTD';
+    
+    // Reset scroll to top on page load
+    window.scrollTo(0, 0);
+    
+    // Also reset any Locomotive Scroll position if it exists
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 100);
   }, []);
 
   useEffect(() => {
