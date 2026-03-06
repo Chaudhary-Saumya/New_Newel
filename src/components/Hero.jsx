@@ -5,37 +5,85 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Carousel data
+// Carousel data — now with consistent, theme-relevant layers
 const slides = [
   {
     id: 1,
     title: "Transform Your",
     subtitle: "Business with",
     highlight: "AWS",
-    description: "Our AWS cloud services enable you to transform operations with secure, scalable, and cost-efficient solutions tailored to your goals. From seamless cloud migration to complete modernization, we deliver the right strategy, architecture, and ongoing support to help you innovate faster, operate smarter, and stay ahead in a rapidly evolving digital landscape.",
-    layer1: { number: "01", title: "Migration", desc: "Zero-downtime cloud lift & shift", color: "blue-600" },
-    layer2: { number: "02", title: "Architecture", desc: "Serverless + microservices at scale", color: "indigo-600" },
-    layer3: { number: "03", title: "Optimization", desc: "Real-time cost intelligence & auto-scaling", color: "blue-600" },
+    description:
+      "Our AWS cloud services enable you to transform operations with secure, scalable, and cost-efficient solutions tailored to your goals. From seamless cloud migration to complete modernization, we deliver the right strategy, architecture, and ongoing support to help you innovate faster, operate smarter, and stay ahead.",
+    layer1: {
+      number: "01",
+      title: "Migration",
+      desc: "Lift & shift with AWS Application Migration Service",
+      color: "blue-600",
+    },
+    layer2: {
+      number: "02",
+      title: "Modern Architecture",
+      desc: "Serverless & microservices using Lambda + ECS/Fargate",
+      color: "indigo-600",
+    },
+    layer3: {
+      number: "03",
+      title: "Cost & Performance",
+      desc: "Optimization with AWS Cost Explorer & Auto Scaling",
+      color: "blue-600",
+    },
   },
   {
     id: 2,
     title: "Web And Mobile",
     subtitle: "App",
     highlight: "Development",
-    description: "It is important for every business to invest in mobile app development services as studies suggest that the community of app-users increases very speedily with each passing year. The correct business case of mobile app can take business to new heights.",
-    layer1: { number: "01", title: "Lambda", desc: "Event-driven compute at any scale", color: "purple-600" },
-    layer2: { number: "02", title: "Fargate", desc: "Serverless containers without clusters", color: "pink-600" },
-    layer3: { number: "03", title: "Step Functions", desc: "Visual workflow orchestration", color: "purple-600" },
+    description:
+      "Building high-performance web & mobile applications is essential in today's digital-first world. We deliver fast, scalable, and user-centric apps using modern frameworks and powerful AWS backend services — helping your business engage users, grow revenue, and stay competitive.",
+    layer1: {
+      number: "01",
+      title: "Amplify",
+      desc: "Full-stack development & hosting for web/mobile",
+      color: "purple-600",
+    },
+    layer2: {
+      number: "02",
+      title: "AppSync",
+      desc: "Real-time GraphQL APIs & offline data sync",
+      color: "pink-600",
+    },
+    layer3: {
+      number: "03",
+      title: "Cognito",
+      desc: "Secure user authentication & identity management",
+      color: "purple-600",
+    },
   },
   {
     id: 3,
     title: "Staffing and",
     subtitle: "",
     highlight: "Recruitment",
-    description: "We focus on meeting your needs while empowering the individuals who drive our success. Our pursuit of the best solutions starts with each person's unique drive and entrepreneurial spirit. We provide customised project and workforce solutions tailored to help you lead your industry with confidence and agility.",
-    layer1: { number: "01", title: "Analytics", desc: "Real-time data processing at scale", color: "emerald-600" },
-    layer2: { number: "02", title: "Machine Learning", desc: "ML models for predictive insights", color: "teal-600" },
-    layer3: { number: "03", title: "AI Services", desc: "Pre-built AI for every use case", color: "emerald-600" },
+    description:
+      "We provide tailored staffing and recruitment solutions powered by smart technology. Combining human expertise with AI-driven insights, we help you build high-performing teams quickly, match talent to roles accurately, and scale your workforce with confidence and agility.",
+    layer1: {
+      number: "01",
+      title: "Talent Analytics",
+      desc: "Real-time workforce insights & gap analysis",
+      color: "emerald-600",
+    },
+    layer2: {
+      number: "02",
+      title: "AI Matching",
+      desc: "Intelligent candidate–role matching with ML",
+      color: "teal-600",
+    },
+    layer3: {
+      number: "03",
+      title: "Automated Screening",
+      desc: "Resume parsing & skill assessment at scale",
+      color: "emerald-600",
+    },
   },
 ];
 
@@ -62,7 +110,7 @@ const Hero = () => {
 
     const direction = index > currentSlide ? 1 : -1;
 
-    // First, reset the active card when changing slides
+    // Reset active card on slide change
     setActiveCard(null);
 
     const tl = gsap.timeline({
@@ -81,20 +129,22 @@ const Hero = () => {
       ease: "power2.in",
     });
 
-    // Animate out the cards smoothly
-    tl.to(layerRefs.current.filter(Boolean), {
-      opacity: 0,
-      scale: 0.9,
-      duration: 0.3,
-      stagger: 0.05,
-      ease: "power2.in",
-    }, "-=0.2");
+    tl.to(
+      layerRefs.current.filter(Boolean),
+      {
+        opacity: 0,
+        scale: 0.9,
+        duration: 0.3,
+        stagger: 0.05,
+        ease: "power2.in",
+      },
+      "-=0.2"
+    );
 
-    // After content is out → change slide & animate in new content
+    // After out → update content & animate in
     tl.add(() => {
-      // Animate in new headline words
       gsap.fromTo(
-        headlineRef.current.querySelectorAll('.word'),
+        headlineRef.current.querySelectorAll(".word"),
         { x: direction * 80, opacity: 0 },
         { x: 0, opacity: 1, stagger: 0.09, duration: 0.9, ease: "power3.out" }
       );
@@ -111,17 +161,16 @@ const Hero = () => {
         { y: 0, opacity: 1, scale: 1, stagger: 0.1, duration: 0.7, ease: "back.out(1.3)" }
       );
 
-      // Cards entrance with smooth transition
       gsap.fromTo(
         layerRefs.current,
         { opacity: 0, y: 40, scale: 0.9 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          scale: 1, 
-          duration: 0.6, 
-          stagger: 0.1, 
-          ease: "power3.out" 
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "power3.out",
         }
       );
     }, "-=0.1");
@@ -141,21 +190,21 @@ const Hero = () => {
   // Initial animations + mouse tilt
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Headline initial reveal
-      gsap.from(headlineRef.current.querySelectorAll('.word'), {
+      // Headline reveal
+      gsap.from(headlineRef.current.querySelectorAll(".word"), {
         y: 90,
         opacity: 0,
         stagger: 0.1,
         duration: 1.4,
-        ease: 'power4.out',
+        ease: "power4.out",
       });
 
-      // Gradient animation
-      gsap.to('.aws-gradient', {
-        backgroundPosition: '200% 0',
+      // Gradient flow
+      gsap.to(".aws-gradient", {
+        backgroundPosition: "200% 0",
         duration: 10,
         repeat: -1,
-        ease: 'none',
+        ease: "none",
       });
 
       gsap.from(descRef.current, {
@@ -163,7 +212,7 @@ const Hero = () => {
         opacity: 0,
         duration: 1.1,
         delay: 0.6,
-        ease: 'power3.out',
+        ease: "power3.out",
       });
 
       gsap.from(ctaRef.current.children, {
@@ -173,10 +222,10 @@ const Hero = () => {
         stagger: 0.14,
         duration: 1,
         delay: 0.9,
-        ease: 'back.out(1.5)',
+        ease: "back.out(1.5)",
       });
 
-      // Initial card entrance
+      // Cards scroll-triggered entrance
       layerRefs.current.forEach((layer, i) => {
         gsap.fromTo(
           layer,
@@ -187,17 +236,17 @@ const Hero = () => {
             scale: 1,
             duration: 1.3,
             delay: 0.8 + i * 0.18,
-            ease: 'power3.out',
+            ease: "power3.out",
             scrollTrigger: {
               trigger: sectionRef.current,
-              start: 'top 75%',
+              start: "top 75%",
               once: true,
             },
           }
         );
       });
 
-      // Mouse tilt
+      // Mouse tilt effect
       const handleMouseMove = (e) => {
         if (!visualRef.current) return;
         const rect = visualRef.current.getBoundingClientRect();
@@ -209,12 +258,12 @@ const Hero = () => {
           rotationX: -y * 16,
           transformPerspective: 1100,
           duration: 0.7,
-          ease: 'power2.out',
+          ease: "power2.out",
         });
       };
 
-      window.addEventListener('mousemove', handleMouseMove);
-      return () => window.removeEventListener('mousemove', handleMouseMove);
+      window.addEventListener("mousemove", handleMouseMove);
+      return () => window.removeEventListener("mousemove", handleMouseMove);
     });
 
     return () => ctx.revert();
@@ -232,7 +281,6 @@ const Hero = () => {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-12 gap-12 items-center">
         {/* LEFT — Text Content */}
         <div className="lg:col-span-7 space-y-8">
-          {/* Headline with key → forces remount on slide change */}
           <h1
             key={`headline-${currentSlide}`}
             ref={headlineRef}
@@ -253,36 +301,48 @@ const Hero = () => {
 
           <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4">
             <button className="group px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-base rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1 flex items-center gap-2">
-              Start Cloud Transformation
+              Get Started
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </button>
 
             <button className="px-8 py-4 border-2 border-blue-600 text-blue-700 font-semibold text-base rounded-xl hover:bg-blue-50 transition-all duration-300">
-              View Case Studies
+              Learn More
             </button>
           </div>
         </div>
 
-        {/* RIGHT — Visual Cards */}
+        {/* RIGHT — Visual Cards (now theme-relevant) */}
         <div
           ref={visualRef}
           className="hidden lg:block lg:col-span-5 relative h-[680px] perspective-[1400px]"
-          style={{ transformStyle: 'preserve-3d' }}
+          style={{ transformStyle: "preserve-3d" }}
         >
           {/* Card 1 */}
           <div
             ref={(el) => (layerRefs.current[0] = el)}
             onClick={() => toggleCard(0)}
             className={`absolute top-12 right-8 w-72 bg-white/75 backdrop-blur-xl border border-gray-200 rounded-2xl shadow-xl p-6 flex flex-col justify-center cursor-pointer transition-all duration-500 hover:shadow-2xl ${
-              activeCard === 0 ? 'ring-2 ring-blue-500 z-30' : ''
+              activeCard === 0 ? "ring-2 ring-blue-500 z-30" : ""
             }`}
           >
-            <div className={`text-${currentContent.layer1.color} text-3xl font-bold`}>{currentContent.layer1.number}</div>
+            <div className={`text-${currentContent.layer1.color} text-3xl font-bold`}>
+              {currentContent.layer1.number}
+            </div>
             <div className="mt-3 text-xl font-semibold text-gray-900">{currentContent.layer1.title}</div>
             <div className="text-gray-600 mt-2 text-sm">{currentContent.layer1.desc}</div>
-            <div className={`overflow-hidden transition-all duration-300 ${activeCard === 0 ? 'max-h-40 mt-4 pt-4 border-t border-gray-200 opacity-100' : 'max-h-0 mt-0 pt-0 border-t-0 border-transparent opacity-0'}`}>
-              <p className="text-sm text-gray-600">Learn more about our {currentContent.layer1.title.toLowerCase()} solutions and how we can help transform your business infrastructure.</p>
-              <button className="mt-3 text-blue-600 font-medium text-sm hover:underline">Explore Now →</button>
+            <div
+              className={`overflow-hidden transition-all duration-300 ${
+                activeCard === 0
+                  ? "max-h-40 mt-4 pt-4 border-t border-gray-200 opacity-100"
+                  : "max-h-0 mt-0 pt-0 border-t-0 border-transparent opacity-0"
+              }`}
+            >
+              <p className="text-sm text-gray-600">
+                Discover how we implement {currentContent.layer1.title.toLowerCase()} to accelerate your cloud journey.
+              </p>
+              <button className="mt-3 text-blue-600 font-medium text-sm hover:underline">
+                Explore →
+              </button>
             </div>
           </div>
 
@@ -291,15 +351,27 @@ const Hero = () => {
             ref={(el) => (layerRefs.current[1] = el)}
             onClick={() => toggleCard(1)}
             className={`absolute top-28 right-0 w-72 bg-white/85 backdrop-blur-2xl border border-gray-200 rounded-2xl shadow-xl p-6 flex flex-col justify-center cursor-pointer transition-all duration-500 hover:shadow-2xl ${
-              activeCard === 1 ? 'ring-2 ring-blue-500 z-30' : ''
+              activeCard === 1 ? "ring-2 ring-blue-500 z-30" : ""
             }`}
           >
-            <div className={`text-${currentContent.layer2.color} text-3xl font-bold`}>{currentContent.layer2.number}</div>
+            <div className={`text-${currentContent.layer2.color} text-3xl font-bold`}>
+              {currentContent.layer2.number}
+            </div>
             <div className="mt-3 text-xl font-semibold text-gray-900">{currentContent.layer2.title}</div>
             <div className="text-gray-600 mt-2 text-sm">{currentContent.layer2.desc}</div>
-            <div className={`overflow-hidden transition-all duration-300 ${activeCard === 1 ? 'max-h-40 mt-4 pt-4 border-t border-gray-200 opacity-100' : 'max-h-0 mt-0 pt-0 border-t-0 border-transparent opacity-0'}`}>
-              <p className="text-sm text-gray-600">Discover how our {currentContent.layer2.title.toLowerCase()} capabilities can accelerate your digital transformation journey.</p>
-              <button className="mt-3 text-blue-600 font-medium text-sm hover:underline">Explore Now →</button>
+            <div
+              className={`overflow-hidden transition-all duration-300 ${
+                activeCard === 1
+                  ? "max-h-40 mt-4 pt-4 border-t border-gray-200 opacity-100"
+                  : "max-h-0 mt-0 pt-0 border-t-0 border-transparent opacity-0"
+              }`}
+            >
+              <p className="text-sm text-gray-600">
+                Learn how {currentContent.layer2.title} powers real-time experiences.
+              </p>
+              <button className="mt-3 text-blue-600 font-medium text-sm hover:underline">
+                Explore →
+              </button>
             </div>
           </div>
 
@@ -308,15 +380,27 @@ const Hero = () => {
             ref={(el) => (layerRefs.current[2] = el)}
             onClick={() => toggleCard(2)}
             className={`absolute top-44 -right-5 w-72 bg-white border border-gray-200 rounded-2xl shadow-xl p-6 flex flex-col justify-center cursor-pointer transition-all duration-500 hover:shadow-2xl ${
-              activeCard === 2 ? 'ring-2 ring-blue-500 z-30' : ''
+              activeCard === 2 ? "ring-2 ring-blue-500 z-30" : ""
             }`}
           >
-            <div className={`text-${currentContent.layer3.color} text-3xl font-bold`}>{currentContent.layer3.number}</div>
+            <div className={`text-${currentContent.layer3.color} text-3xl font-bold`}>
+              {currentContent.layer3.number}
+            </div>
             <div className="mt-3 text-xl font-semibold text-gray-900">{currentContent.layer3.title}</div>
             <div className="text-gray-600 mt-2 text-sm">{currentContent.layer3.desc}</div>
-            <div className={`overflow-hidden transition-all duration-300 ${activeCard === 2 ? 'max-h-40 mt-4 pt-4 border-t border-gray-200 opacity-100' : 'max-h-0 mt-0 pt-0 border-t-0 border-transparent opacity-0'}`}>
-              <p className="text-sm text-gray-600">Explore our {currentContent.layer3.title.toLowerCase()} services to maximize efficiency and reduce operational costs.</p>
-              <button className="mt-3 text-blue-600 font-medium text-sm hover:underline">Explore Now →</button>
+            <div
+              className={`overflow-hidden transition-all duration-300 ${
+                activeCard === 2
+                  ? "max-h-40 mt-4 pt-4 border-t border-gray-200 opacity-100"
+                  : "max-h-0 mt-0 pt-0 border-t-0 border-transparent opacity-0"
+              }`}
+            >
+              <p className="text-sm text-gray-600">
+                Maximize efficiency with our {currentContent.layer3.title.toLowerCase()} solutions.
+              </p>
+              <button className="mt-3 text-blue-600 font-medium text-sm hover:underline">
+                Explore →
+              </button>
             </div>
           </div>
         </div>
@@ -327,7 +411,7 @@ const Hero = () => {
         <button
           onClick={goToPrevSlide}
           className="w-11 h-11 rounded-full bg-white/90 backdrop-blur border border-gray-200 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-all shadow-md"
-          aria-label="Previous"
+          aria-label="Previous slide"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -341,10 +425,10 @@ const Hero = () => {
               onClick={() => goToSlide(i)}
               className={`w-3 h-3 rounded-full transition-all duration-400 ${
                 i === currentSlide
-                  ? 'bg-blue-600 scale-125 shadow-md'
-                  : 'bg-gray-300 hover:bg-gray-400'
+                  ? "bg-blue-600 scale-125 shadow-md"
+                  : "bg-gray-300 hover:bg-gray-400"
               }`}
-              aria-label={`Slide ${i + 1}`}
+              aria-label={`Go to slide ${i + 1}`}
             />
           ))}
         </div>
@@ -352,7 +436,7 @@ const Hero = () => {
         <button
           onClick={goToNextSlide}
           className="w-11 h-11 rounded-full bg-white/90 backdrop-blur border border-gray-200 flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-all shadow-md"
-          aria-label="Next"
+          aria-label="Next slide"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -362,9 +446,9 @@ const Hero = () => {
 
       {/* Slide counter */}
       <div className="absolute bottom-10 right-10 z-20 text-sm text-gray-500 font-medium">
-        <span className="text-blue-600 text-xl font-bold">{String(currentSlide + 1).padStart(2, '0')}</span>
+        <span className="text-blue-600 text-xl font-bold">{String(currentSlide + 1).padStart(2, "0")}</span>
         <span className="mx-1.5">/</span>
-        <span>{String(slides.length).padStart(2, '0')}</span>
+        <span>{String(slides.length).padStart(2, "0")}</span>
       </div>
 
       {/* Scroll indicator */}

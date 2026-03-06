@@ -46,7 +46,7 @@ const Navbar = () => {
         { name: 'Data Analytics', to: '/services/DataAnalytics' },
         {
           name: 'Cloud Services',
-          isCloud: true, // flag for left panel
+          isCloud: true,
           subItems: [
             { name: 'AWS', to: '/services/AWS' },
             { name: 'Microsoft on AWS', to: '/services/MicrosoftOnAws' },
@@ -120,63 +120,63 @@ const Navbar = () => {
                 <>
                   <Link
                     to={link.to}
-                    className={`flex items-center gap-1.5 px-3 py-2.5 text-sm xl:text-base font-medium transition-colors duration-200 ${
-                      isScrolled ? 'text-gray-800' : 'text-gray-800'
-                    } group-hover:text-blue-600`}
+                    className={`flex items-center gap-1.5 px-3 py-2.5 text-sm xl:text-base font-medium text-gray-800 transition-colors duration-200 group-hover:text-blue-600`}
                   >
                     {link.name}
-                    <ChevronDown
-                      className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
-                    />
+                    <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
                   </Link>
 
+                  {/* Dropdown - no mt-2 gap anymore */}
                   <div
                     className={`
-                      absolute top-full left-0 mt-2 w-[760px] bg-white rounded-xl shadow-2xl border border-gray-100/80
-                      opacity-0 scale-95 translate-y-2 pointer-events-none transition-all duration-300
+                      absolute top-full left-0 w-[760px] bg-white rounded-xl shadow-2xl border border-gray-100/80
+                      opacity-0 scale-95 translate-y-1 pointer-events-none transition-all duration-300
                       group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover:pointer-events-auto
                       flex overflow-hidden
                     `}
                   >
-                    {/* LEFT PANEL - for Staffing and Cloud Services */}
-                    <div className="w-1/3 bg-gradient-to-b from-indigo-50/80 to-blue-50/50 p-6 border-r border-gray-200">
-                      {link.dropdownItems
-                        .filter(item => item.isStaffing || item.isCloud)
-                        .map((item) => (
-                          <div key={item.name} className="mb-6 last:mb-0">
-                            <h4 className="text-lg font-semibold text-indigo-800 mb-3 pb-2 border-b border-indigo-200">
-                              {item.name}
-                            </h4>
-                            <div className="space-y-2">
-                              {item.subItems.map((sub) => (
-                                <Link
-                                  key={sub.name}
-                                  to={sub.to}
-                                  className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-indigo-100/60 hover:text-indigo-700 transition-colors rounded-lg"
-                                >
-                                  {sub.name}
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                        ))}
-                    </div>
-
-                    {/* RIGHT PANEL - all other services */}
-                    <div className="w-2/3 p-4">
-                      <div className="max-h-80 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-indigo-200 scrollbar-track-gray-50">
-                        {link.dropdownItems.map((item) => (
-                          <div key={item.name}>
-                            {item.isStaffing || item.isCloud ? null : (
-                              <Link
-                                to={item.to}
-                                className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-700 transition-colors whitespace-nowrap rounded-lg"
-                              >
+                    {/* Visual padding instead of margin */}
+                    <div className=" w-full flex">
+                      {/* LEFT PANEL - Staffing & Cloud */}
+                      <div className="w-1/3 bg-gradient-to-b from-indigo-50/80 to-blue-50/50 p-6 border-r border-gray-200">
+                        {link.dropdownItems
+                          .filter((item) => item.isStaffing || item.isCloud)
+                          .map((item) => (
+                            <div key={item.name} className="mb-6 last:mb-0">
+                              <h4 className="text-lg font-semibold text-indigo-800 mb-3 pb-2 border-b border-indigo-200">
                                 {item.name}
-                              </Link>
-                            )}
-                          </div>
-                        ))}
+                              </h4>
+                              <div className="space-y-2">
+                                {item.subItems.map((sub) => (
+                                  <Link
+                                    key={sub.name}
+                                    to={sub.to}
+                                    className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-indigo-100/60 hover:text-indigo-700 transition-colors rounded-lg"
+                                  >
+                                    {sub.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          ))}
+                      </div>
+
+                      {/* RIGHT PANEL - Other services */}
+                      <div className="w-2/3 p-4">
+                        <div className="max-h-80 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-indigo-200 scrollbar-track-gray-50">
+                          {link.dropdownItems.map((item) => (
+                            <div key={item.name}>
+                              {(item.isStaffing || item.isCloud) ? null : (
+                                <Link
+                                  to={item.to}
+                                  className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-700 transition-colors whitespace-nowrap rounded-lg"
+                                >
+                                  {item.name}
+                                </Link>
+                              )}
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -184,9 +184,7 @@ const Navbar = () => {
               ) : (
                 <Link
                   to={link.to}
-                  className={`px-3 py-2.5 text-sm xl:text-base font-medium transition-colors duration-200 ${
-                    isScrolled ? 'text-gray-800' : 'text-gray-800'
-                  } hover:text-blue-600 relative group`}
+                  className={`px-3 py-2.5 text-sm xl:text-base font-medium text-gray-800 transition-colors duration-200 hover:text-blue-600 relative group`}
                 >
                   {link.name}
                   <span className="absolute bottom-1.5 left-3 right-3 h-0.5 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center" />
@@ -199,11 +197,7 @@ const Navbar = () => {
         {/* CTA Button */}
         <Link
           to="/contact"
-          className={`hidden lg:block px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 ${
-            isScrolled
-              ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md hover:shadow-lg hover:shadow-blue-200'
-              : 'bg-blue-600 text-white hover:bg-blue-700 shadow-md hover:shadow-lg hover:shadow-blue-200'
-          }`}
+          className={`hidden lg:block px-6 py-2.5 rounded-full font-semibold text-sm text-white transition-all duration-300 bg-blue-600 hover:bg-blue-700 shadow-md hover:shadow-lg hover:shadow-blue-200`}
         >
           Get Started
         </Link>
@@ -215,9 +209,21 @@ const Navbar = () => {
           aria-label="Toggle menu"
         >
           <div className="w-7 h-6 relative">
-            <span className={`absolute h-0.5 w-full bg-gray-800 rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'top-1/2 left-0 rotate-45' : 'top-0'}`} />
-            <span className={`absolute h-0.5 w-full bg-gray-800 rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'top-1/2 left-0'}`} />
-            <span className={`absolute h-0.5 w-full bg-gray-800 rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'top-1/2 left-0 -rotate-45' : 'bottom-0'}`} />
+            <span
+              className={`absolute h-0.5 w-full bg-gray-800 rounded-full transition-all duration-300 ${
+                isMobileMenuOpen ? 'top-1/2 left-0 rotate-45' : 'top-0'
+              }`}
+            />
+            <span
+              className={`absolute h-0.5 w-full bg-gray-800 rounded-full transition-all duration-300 ${
+                isMobileMenuOpen ? 'opacity-0' : 'top-1/2 left-0'
+              }`}
+            />
+            <span
+              className={`absolute h-0.5 w-full bg-gray-800 rounded-full transition-all duration-300 ${
+                isMobileMenuOpen ? 'top-1/2 left-0 -rotate-45' : 'bottom-0'
+              }`}
+            />
           </div>
         </button>
       </div>
