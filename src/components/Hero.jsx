@@ -57,15 +57,23 @@ const Hero = () => {
   const visualRef = useRef(null);
   const layerRefs = useRef([]);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeCard, setActiveCard] = useState(null);
   const isAnimating = useRef(false);
 
   const currentContent = slides[currentSlide];
+
+  const toggleCard = (index) => {
+    setActiveCard(activeCard === index ? null : index);
+  };
 
   const goToSlide = (index) => {
     if (isAnimating.current || index === currentSlide) return;
     isAnimating.current = true;
 
     const direction = index > currentSlide ? 1 : -1;
+
+    // First, reset the active card when changing slides
+    setActiveCard(null);
 
     const tl = gsap.timeline({
       onComplete: () => {
@@ -82,6 +90,15 @@ const Hero = () => {
       stagger: 0.08,
       ease: "power2.in",
     });
+
+    // Animate out the cards smoothly
+    tl.to(layerRefs.current.filter(Boolean), {
+      opacity: 0,
+      scale: 0.9,
+      duration: 0.3,
+      stagger: 0.05,
+      ease: "power2.in",
+    }, "-=0.2");
 
     // After content is out → change slide & animate in new content
     tl.add(() => {
@@ -104,14 +121,19 @@ const Hero = () => {
         { y: 0, opacity: 1, scale: 1, stagger: 0.1, duration: 0.7, ease: "back.out(1.3)" }
       );
 
-      // Cards entrance
-      layerRefs.current.forEach((layer, i) => {
-        gsap.fromTo(
-          layer,
-          { opacity: 0, y: 50, scale: 0.88, rotationY: direction * 20 },
-          { opacity: 1, y: 0, scale: 1, rotationY: 0, duration: 0.8, delay: i * 0.12, ease: "power3.out" }
-        );
-      });
+      // Cards entrance with smooth transition
+      gsap.fromTo(
+        layerRefs.current,
+        { opacity: 0, y: 40, scale: 0.9 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          scale: 1, 
+          duration: 0.6, 
+          stagger: 0.1, 
+          ease: "power3.out" 
+        }
+      );
     }, "-=0.1");
   };
 
@@ -254,34 +276,58 @@ const Hero = () => {
         {/* RIGHT — Visual Cards */}
         <div
           ref={visualRef}
-          className="hidden lg:block lg:col-span-5 relative h-[620px] perspective-[1400px]"
+          className="hidden lg:block lg:col-span-5 relative h-[680px] perspective-[1400px]"
           style={{ transformStyle: 'preserve-3d' }}
         >
+          {/* Card 1 */}
           <div
             ref={(el) => (layerRefs.current[0] = el)}
-            className={`absolute top-12 right-8 w-72 h-72 bg-white/75 backdrop-blur-xl border border-gray-200 rounded-2xl shadow-xl p-6 flex flex-col justify-center transition-colors duration-500`}
+            onClick={() => toggleCard(0)}
+            className={`absolute top-12 right-8 w-72 bg-white/75 backdrop-blur-xl border border-gray-200 rounded-2xl shadow-xl p-6 flex flex-col justify-center cursor-pointer transition-all duration-500 hover:shadow-2xl ${
+              activeCard === 0 ? 'ring-2 ring-blue-500 z-30' : ''
+            }`}
           >
             <div className={`text-${currentContent.layer1.color} text-3xl font-bold`}>{currentContent.layer1.number}</div>
             <div className="mt-3 text-xl font-semibold text-gray-900">{currentContent.layer1.title}</div>
             <div className="text-gray-600 mt-2 text-sm">{currentContent.layer1.desc}</div>
+            <div className={`overflow-hidden transition-all duration-300 ${activeCard === 0 ? 'max-h-40 mt-4 pt-4 border-t border-gray-200 opacity-100' : 'max-h-0 mt-0 pt-0 border-t-0 border-transparent opacity-0'}`}>
+              <p className="text-sm text-gray-600">Learn more about our {currentContent.layer1.title.toLowerCase()} solutions and how we can help transform your business infrastructure.</p>
+              <button className="mt-3 text-blue-600 font-medium text-sm hover:underline">Explore Now →</button>
+            </div>
           </div>
 
+          {/* Card 2 */}
           <div
             ref={(el) => (layerRefs.current[1] = el)}
-            className={`absolute top-28 right-0 w-72 h-72 bg-white/85 backdrop-blur-2xl border border-gray-200 rounded-2xl shadow-xl p-6 flex flex-col justify-center transition-colors duration-500`}
+            onClick={() => toggleCard(1)}
+            className={`absolute top-28 right-0 w-72 bg-white/85 backdrop-blur-2xl border border-gray-200 rounded-2xl shadow-xl p-6 flex flex-col justify-center cursor-pointer transition-all duration-500 hover:shadow-2xl ${
+              activeCard === 1 ? 'ring-2 ring-blue-500 z-30' : ''
+            }`}
           >
             <div className={`text-${currentContent.layer2.color} text-3xl font-bold`}>{currentContent.layer2.number}</div>
             <div className="mt-3 text-xl font-semibold text-gray-900">{currentContent.layer2.title}</div>
             <div className="text-gray-600 mt-2 text-sm">{currentContent.layer2.desc}</div>
+            <div className={`overflow-hidden transition-all duration-300 ${activeCard === 1 ? 'max-h-40 mt-4 pt-4 border-t border-gray-200 opacity-100' : 'max-h-0 mt-0 pt-0 border-t-0 border-transparent opacity-0'}`}>
+              <p className="text-sm text-gray-600">Discover how our {currentContent.layer2.title.toLowerCase()} capabilities can accelerate your digital transformation journey.</p>
+              <button className="mt-3 text-blue-600 font-medium text-sm hover:underline">Explore Now →</button>
+            </div>
           </div>
 
+          {/* Card 3 */}
           <div
             ref={(el) => (layerRefs.current[2] = el)}
-            className={`absolute top-44 -right-5 w-72 h-72 bg-white border border-gray-200 rounded-2xl shadow-xl p-6 flex flex-col justify-center transition-colors duration-500`}
+            onClick={() => toggleCard(2)}
+            className={`absolute top-44 -right-5 w-72 bg-white border border-gray-200 rounded-2xl shadow-xl p-6 flex flex-col justify-center cursor-pointer transition-all duration-500 hover:shadow-2xl ${
+              activeCard === 2 ? 'ring-2 ring-blue-500 z-30' : ''
+            }`}
           >
             <div className={`text-${currentContent.layer3.color} text-3xl font-bold`}>{currentContent.layer3.number}</div>
             <div className="mt-3 text-xl font-semibold text-gray-900">{currentContent.layer3.title}</div>
             <div className="text-gray-600 mt-2 text-sm">{currentContent.layer3.desc}</div>
+            <div className={`overflow-hidden transition-all duration-300 ${activeCard === 2 ? 'max-h-40 mt-4 pt-4 border-t border-gray-200 opacity-100' : 'max-h-0 mt-0 pt-0 border-t-0 border-transparent opacity-0'}`}>
+              <p className="text-sm text-gray-600">Explore our {currentContent.layer3.title.toLowerCase()} services to maximize efficiency and reduce operational costs.</p>
+              <button className="mt-3 text-blue-600 font-medium text-sm hover:underline">Explore Now →</button>
+            </div>
           </div>
         </div>
       </div>

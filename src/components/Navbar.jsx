@@ -8,7 +8,15 @@ import { ChevronDown } from 'lucide-react';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openDropdowns, setOpenDropdowns] = useState({});
   const navRef = useRef(null);
+
+  const toggleDropdown = (name) => {
+    setOpenDropdowns(prev => ({
+      ...prev,
+      [name]: !prev[name]
+    }));
+  };
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -145,18 +153,20 @@ const Navbar = () => {
                       {link.dropdownItems.map((item) => (
                         <div key={item.name} className="relative">
                           {item.subItems ? (
-                            // Nested dropdown for "Staffing and recruiting"
-                            <div className="relative group/sub px-5 py-2.5">
-                              <div className="flex items-center justify-between text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-pointer rounded-lg">
+                            // Nested dropdown for "Staffing and recruiting" - clickable
+                            <div className="relative px-5 py-2.5">
+                              <div 
+                                className="flex items-center justify-between text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-pointer rounded-lg"
+                                onClick={() => toggleDropdown('staffing')}
+                              >
                                 {item.name}
-                                <ChevronDown className="w-4 h-4 transition-transform group-hover/sub:rotate-180" />
+                                <ChevronDown className={`w-4 h-4 transition-transform ${openDropdowns['staffing'] ? 'rotate-180' : ''}`} />
                               </div>
 
                               <div
                                 className={`
-                                  absolute top-0 left-full ml-1 w-56 bg-white rounded-xl shadow-xl border border-gray-100/80
-                                  opacity-0 scale-95 -translate-x-2 pointer-events-none transition-all duration-300
-                                  group-hover/sub:opacity-100 group-hover/sub:scale-100 group-hover/sub:translate-x-0 group-hover/sub:pointer-events-auto z-50
+                                  overflow-hidden transition-all duration-300
+                                  ${openDropdowns['staffing'] ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}
                                 `}
                               >
                                 <div className="py-2">
