@@ -76,10 +76,10 @@ export default function TrustedBy() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <div ref={headingRef} className="text-center mb-16">
-          <h2 className="text-5xl md:text-5xl font-bold text-gray-900 tracking-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-5xl font-black text-slate-900 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent tracking-tight">
             Our Clients
           </h2>
-          <p className="mt-4 text-xl text-gray-500">
+          <p className="mt-4 text-lg text-gray-500">
             Trusted by the most innovative companies in India and beyond
           </p>
         </div>

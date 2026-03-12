@@ -11,7 +11,7 @@ export default function Contact() {
   const sectionRef = useRef(null);
   const leftRef = useRef(null);
   const rightRef = useRef(null);
-  const [formStatus] = useState('idle'); // idle | loading | success | error
+  const [formStatus, setFormStatus] = useState('idle'); // idle | loading | success | error
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -75,6 +75,46 @@ export default function Contact() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus('loading');
+
+    try {
+      const response = await fetch('http://localhost:3000/api/addContact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phoneNumber: formData.phone, // Mapping phone to phoneNumber for API
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setFormStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: '',
+        });
+      } else {
+        setFormStatus('error');
+        console.error('Error:', result.message);
+      }
+    } catch (error) {
+      setFormStatus('error');
+      console.error('Error:', error);
+    }
   };
 
   return (
@@ -169,7 +209,7 @@ export default function Contact() {
                 Let's Connect Now
               </h2>
 
-              <form onSubmit={(e) => e.preventDefault()} className="space-y-6 sm:space-y-8">
+              <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                   <div className="relative">
                     <input
@@ -304,6 +344,12 @@ export default function Contact() {
                 {formStatus === 'success' && (
                   <p className="text-center text-green-600 font-medium mt-4 text-sm sm:text-base animate-fade-in">
                     Thank you! We'll get back to you within 24 hours.
+                  </p>
+                )}
+
+                {formStatus === 'error' && (
+                  <p className="text-center text-red-600 font-medium mt-4 text-sm sm:text-base animate-fade-in">
+                    Something went wrong. Please try again later.
                   </p>
                 )}
               </form>

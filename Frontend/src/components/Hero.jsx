@@ -284,7 +284,7 @@ const Hero = () => {
           <h1
             key={`headline-${currentSlide}`}
             ref={headlineRef}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold tracking-[-0.02em] leading-tight text-gray-900"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.8rem] font-extrabold tracking-[-0.02em] leading-tight text-gray-900"
           >
             <span className="word block">{currentContent.title}</span>
             <span className="word block">{currentContent.subtitle}</span>
@@ -295,7 +295,7 @@ const Hero = () => {
             </span>
           </h1>
 
-          <p ref={descRef} className="text-lg md:text-xl text-gray-600 max-w-xl leading-relaxed">
+          <p ref={descRef} className="text-base md:text-lg text-gray-600 max-w-xl leading-relaxed">
             {currentContent.description}
           </p>
 
