@@ -64,18 +64,30 @@ const Navbar = () => {
       to: '/industries',
       hasDropdown: true,
       dropdownItems: [
+        {
+          name: 'Engineering & Construction',
+          isEngineering: true,
+          subItems: [
+            { name: 'EPC (Engineering, Procurement & Construction)', to: '/industries/epc' },
+            { name: 'Engineering', to: '/industries/engineering' },
+            { name: 'Heavy Equipment Manufacturing', to: '/industries/Manufacturing' },
+            { name: 'OEM', to: '/industries/OEM' },
+            { name: 'Building materials', to: '/industries/BuildingMaterials' },
+          ],
+        },
+        {
+          name: 'Oil, Gas & Chemicals',
+          isOilGas: true,
+          subItems: [
+            { name: 'Oil & Gas', to: '/industries/oil-gas' },
+            { name: 'Chemical', to: '/industries/Chemical' },
+            { name: 'Petrochemical', to: '/industries/Petrochemical' },
+          ],
+        },
         { name: 'BFSI', to: '/industries/bfsi' },
         { name: 'Retail', to: '/industries/retail' },
-        { name: 'EPC (Engineering, Procurement & Construction)', to: '/industries/epc' },
-        { name: 'Oil & Gas', to: '/industries/oil-gas' },
         { name: 'Infrastructure', to: '/industries/infrastructure' },
-        { name: 'Engineering', to: '/industries/engineering' },
-        { name: 'Heavy Equipment Manufacturing', to: '/industries/Manufacturing' },
-        { name: 'OEM', to: '/industries/OEM' },
-        { name: 'Chemical', to: '/industries/Chemical' },
-        { name: 'Petrochemical', to: '/industries/Petrochemical' },
         { name: 'Healthcare', to: '/industries/Healthcare' },
-        { name: 'Building materials', to: '/industries/BuildingMaterials' },
         { name: 'Metal & Minerals', to: '/industries/MetalMinerals' },
         { name: 'Tele communication', to: '/industries/TeleCommunication' },
         { name: 'Defence', to: '/industries/Defence' },
@@ -126,32 +138,40 @@ const Navbar = () => {
                     <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
                   </Link>
 
-                  {/* Dropdown - no mt-2 gap anymore */}
+                  {/* Dropdown – main container with viewport-based max height */}
                   <div
                     className={`
-                      absolute top-full left-0 w-[760px] bg-white rounded-xl shadow-2xl border border-gray-100/80
+                      absolute top-full left-0 w-[760px] lg:w-[780px] xl:w-[820px]
+                      bg-white rounded-xl shadow-2xl border border-gray-100/80
                       opacity-0 scale-95 translate-y-1 pointer-events-none transition-all duration-300
                       group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover:pointer-events-auto
-                      flex overflow-hidden
+                      overflow-hidden
+                      max-h-[95vh]               /* ← almost full screen height as requested */
                     `}
                   >
-                    {/* Visual padding instead of margin */}
-                    <div className=" w-full flex">
-                      {/* LEFT PANEL - Staffing & Cloud */}
-                      <div className="w-1/3 bg-gradient-to-b from-indigo-50/80 to-blue-50/50 p-6 border-r border-gray-200">
+                    <div className="flex max-h-95">
+                      {/* LEFT PANEL - scrollable */}
+                      <div
+                        className={`
+                          w-1/3 bg-gradient-to-b from-indigo-50/70 to-blue-50/40 p-5 lg:p-6 border-r border-gray-200/70
+                          overflow-y-auto overscroll-contain
+                          scrollbar-thin scrollbar-thumb-indigo-400/80 scrollbar-track-transparent
+                          hover:scrollbar-thumb-indigo-500 scrollbar-thumb-rounded
+                        `}
+                      >
                         {link.dropdownItems
-                          .filter((item) => item.isStaffing || item.isCloud)
+                          .filter((item) => item.isStaffing || item.isCloud || item.isEngineering || item.isOilGas)
                           .map((item) => (
-                            <div key={item.name} className="mb-6 last:mb-0">
-                              <h4 className="text-lg font-semibold text-indigo-800 mb-3 pb-2 border-b border-indigo-200">
+                            <div key={item.name} className="mb-5 last:mb-0">
+                              <h4 className="text-base lg:text-lg font-semibold text-indigo-800 mb-3 pb-1.5 border-b border-indigo-200/60">
                                 {item.name}
                               </h4>
-                              <div className="space-y-2">
+                              <div className="space-y-1.5">
                                 {item.subItems.map((sub) => (
                                   <Link
                                     key={sub.name}
                                     to={sub.to}
-                                    className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-indigo-100/60 hover:text-indigo-700 transition-colors rounded-lg"
+                                    className="block px-3.5 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-700 transition-colors rounded-md"
                                   >
                                     {sub.name}
                                   </Link>
@@ -161,15 +181,22 @@ const Navbar = () => {
                           ))}
                       </div>
 
-                      {/* RIGHT PANEL - Other services */}
-                      <div className="w-2/3 p-4">
-                        <div className="max-h-80 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-indigo-200 scrollbar-track-gray-50">
+                      {/* RIGHT PANEL - scrollable */}
+                      <div
+                        className={`
+                          w-2/3 bg-gradient-to-b from-blue-50/40 to-indigo-50/70 p-5 lg:p-6
+                          overflow-y-auto overscroll-contain
+                          scrollbar-thin scrollbar-thumb-indigo-400/80 scrollbar-track-transparent
+                          hover:scrollbar-thumb-indigo-500 scrollbar-thumb-rounded
+                        `}
+                      >
+                        <div className="space-y-0.5">
                           {link.dropdownItems.map((item) => (
                             <div key={item.name}>
-                              {(item.isStaffing || item.isCloud) ? null : (
+                              {(item.isStaffing || item.isCloud || item.isEngineering || item.isOilGas) ? null : (
                                 <Link
                                   to={item.to}
-                                  className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-700 transition-colors whitespace-nowrap rounded-lg"
+                                  className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-indigo-50/60 hover:text-indigo-700 transition-colors rounded-md whitespace-nowrap"
                                 >
                                   {item.name}
                                 </Link>

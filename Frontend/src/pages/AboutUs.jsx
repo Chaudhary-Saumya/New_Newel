@@ -216,12 +216,12 @@ const AboutUs = () => {
         </>
       ),
       icon: "mission",
-      gradient: "from-cyan-500 to-blue-600",
+    gradient: "from-cyan-500 to-blue-600",
     },
   ];
 
   const renderIcon = (icon) => {
-    const iconClass = "w-8 h-8 md:w-10 md:h-10";
+    const iconClass = "w-6 h-6 md:w-8 md:h-8";
     switch (icon) {
       case 'team':
         return (
@@ -286,7 +286,7 @@ const AboutUs = () => {
               </div>
 
               {/* Sections with alternating layout */}
-              <div className="space-y-16 md:space-y-20">
+<div className="space-y-12 md:space-y-16">
                 {sections.map((section, index) => (
                   <div
                     key={index}
@@ -297,7 +297,7 @@ const AboutUs = () => {
                   >
                     {/* Content Card */}
                     <div className="section-content w-full lg:w-1/2">
-                      <div className="relative bg-white rounded-xl p-5 md:p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-500">
+                      <div className="relative bg-white rounded-xl p-4 md:p-5 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-500">
                         {/* Gradient border effect */}
                         <div className={`absolute inset-0 rounded-xl bg-gradient-to-r ${section.gradient} opacity-0 hover:opacity-100 transition-opacity duration-500 -z-10 blur-md`} />
                         <div className={`absolute inset-0 rounded-xl border-2 border-transparent bg-gradient-to-r ${section.gradient} -z-10`} style={{ background: 'white', padding: '2px' }}>
@@ -323,7 +323,7 @@ const AboutUs = () => {
 
                     {/* Visual/Card Section */}
                     <div className="section-visual w-full lg:w-1/2 flex justify-center">
-                      <div className={`relative w-28 h-28 md:w-32 md:h-32 rounded-xl bg-gradient-to-br ${section.gradient} flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-500`}>
+                      <div className={`relative w-20 h-20 md:w-24 md:h-24 rounded-xl bg-gradient-to-br ${section.gradient} flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-500`}>
                         {/* Inner circle */}
                         <div className="absolute inset-2 rounded-lg bg-white/95 backdrop-blur flex items-center justify-center">
                           <div className={`text-gray-800`}>

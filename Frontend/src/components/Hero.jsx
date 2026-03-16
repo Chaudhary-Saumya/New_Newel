@@ -96,12 +96,14 @@ const Hero = () => {
   const layerRefs = useRef([]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeCard, setActiveCard] = useState(null);
+  const [isLayerOpen, setIsLayerOpen] = useState(false);
   const isAnimating = useRef(false);
 
   const currentContent = slides[currentSlide];
 
-  const toggleCard = (index) => {
+const toggleCard = (index) => {
     setActiveCard(activeCard === index ? null : index);
+    setIsLayerOpen(activeCard !== index); // Pause if opening, resume if closing
   };
 
   const goToSlide = (index) => {
@@ -179,13 +181,24 @@ const Hero = () => {
   const goToNextSlide = () => goToSlide((currentSlide + 1) % slides.length);
   const goToPrevSlide = () => goToSlide((currentSlide - 1 + slides.length) % slides.length);
 
-  // Auto-play
+  // Auto-play - pauses during layer open
   useEffect(() => {
     const interval = setInterval(() => {
-      if (!isAnimating.current) goToNextSlide();
+      if (!isAnimating.current && !isLayerOpen) goToNextSlide();
     }, 5800);
     return () => clearInterval(interval);
-  }, [currentSlide]);
+  }, [currentSlide, isLayerOpen]);
+
+  // Auto-close layer after 4s
+  useEffect(() => {
+    if (isLayerOpen) {
+      const timer = setTimeout(() => {
+        setIsLayerOpen(false);
+        setActiveCard(null);
+      }, 45000);
+      return () => clearTimeout(timer);
+    }
+  }, [isLayerOpen]);
 
   // Initial animations + mouse tilt
   useEffect(() => {
@@ -316,6 +329,12 @@ const Hero = () => {
           ref={visualRef}
           className="hidden lg:block lg:col-span-5 relative h-[680px] perspective-[1400px]"
           style={{ transformStyle: "preserve-3d" }}
+          onClick={() => {
+            if (isLayerOpen) {
+              setIsLayerOpen(false);
+              setActiveCard(null);
+            }
+          }}
         >
           {/* Card 1 */}
           <div
