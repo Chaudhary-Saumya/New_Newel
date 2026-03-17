@@ -137,9 +137,9 @@ export default function DataAnalytics() {
             {/* Right - Illustration (matching style) */}
             <div className="relative hidden lg:block">
               <div className="illustration relative max-w-lg mx-auto">
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+                <div className="relative rounded-3xl overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZGF0YSUyMGFuYWx5c3R8ZW58MHx8MHx8fDA%3D?auto=format&fit=crop&q=80&w=900"
+                    src="https://img.freepik.com/free-vector/business-people-analyzing-financial-charts-computers_1262-19200.jpg?t=st=1773755674~exp=1773759274~hmac=d3a8f5a542879f01ddce3eec3317715e81804796c8fe91ddd06e57f81f4a66d3&w=1480"
                     alt="Data Analytics Illustration"
                     className="w-full h-auto object-cover"
                   />

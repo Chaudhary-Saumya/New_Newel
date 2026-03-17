@@ -85,7 +85,7 @@ const App = () => {
         <Route path='/services/Outsystems' element={<Outsystems/>}/>
         <Route path='/services/DOOH' element={<DOOH/>}/>
         <Route path='/services/ITstaffAugmentation' element={<ITStaffAugmentation/>}/>
-        <Route path='/services/thirdParty' element={<ThirdPartyContracting/>}/>
+        <Route path='/services/ThirdPartyContracting' element={<ThirdPartyContracting/>}/>
         <Route path='/services/AWS' element={<AWS/>}/>
         <Route path='/services/MicrosoftOnAws' element={<MicrosoftOnAWS/>}/>
       </Routes>  

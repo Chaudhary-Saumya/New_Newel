@@ -157,9 +157,9 @@ export default function DOOH() {
             {/* Right - Illustration (modern DOOH vibe) */}
             <div className="relative hidden lg:block">
               <div className="illustration relative max-w-lg mx-auto">
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+                <div className="relative rounded-3xl overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&q=80&w=900"
+                    src="https://img.freepik.com/free-vector/gradient-digital-signage-illustration_23-2150216272.jpg?t=st=1773755865~exp=1773759465~hmac=dfa8ced296eed70bdf25a6bb16ab0859a10bc6b89593d0779aff19ccdaf4aab3&w=1480"
                     alt="Digital Out-of-Home LED Display"
                     className="w-full h-auto object-cover"
                   />

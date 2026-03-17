@@ -165,9 +165,9 @@ export default function MicrosoftOnAWS() {
                 <div className="relative hidden lg:block">
                   <div className="illustration relative max-w-lg mx-auto">
                     <img
-                      src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200"
+                      src="https://img.freepik.com/free-vector/abstract-technology-saas-illustration_23-2149227346.jpg?t=st=1773755636~exp=1773759236~hmac=40f1986a1f971efe376c9ee27a08888875f8e30e4fdd241e477d3e796bebfebb&w=1480"
                       alt="Microsoft on AWS Illustration"
-                      className="w-full h-auto object-cover rounded-3xl shadow-2xl border border-gray-100"
+                      className="w-full h-auto object-cover rounded-3xl"
                     />
                     <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/10 to-transparent rounded-3xl" />
                   </div>

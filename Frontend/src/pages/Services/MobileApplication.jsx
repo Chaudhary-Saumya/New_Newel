@@ -145,9 +145,9 @@ export default function MobileApplication() {
             <div className="relative hidden lg:block">
               <div className="illustration relative max-w-lg mx-auto">
                 {/* Main phone illustration */}
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+                <div className="relative rounded-3xl overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=900"
+                    src="https://img.freepik.com/free-vector/user-interface-development-isometric-concept-with-young-woman-creating-custom-design-mobile-application-vector-illustration_1284-72341.jpg?t=st=1773755415~exp=1773759015~hmac=261f84b17f30c84027feb8d2a29cfc3964268b9b9869756d93b0be29c27f78cf&w=1480"
                     alt="Mobile App Illustration"
                     className="w-full h-auto object-cover"
                   />

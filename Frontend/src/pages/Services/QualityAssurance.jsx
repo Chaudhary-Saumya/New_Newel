@@ -168,9 +168,9 @@ export default function QualityAssurance() {
             {/* Right - Illustration */}
             <div className="relative hidden lg:block">
               <div className="illustration relative max-w-lg mx-auto">
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+                <div className="relative rounded-3xl overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=900"
+                    src="https://img.freepik.com/free-vector/iso-certification-illustration_23-2148688046.jpg?t=st=1773755711~exp=1773759311~hmac=4dbac4c5ec2a1bdd8c901b64ae4038abe2a26279768b664339c8806d51ad78e7&w=1480"
                     alt="Quality Assurance Illustration"
                     className="w-full h-auto object-cover"
                   />

@@ -170,9 +170,9 @@ export default function AWS() {
                   <div className="relative hidden lg:block">
                     <div className="aws-illustration relative max-w-lg mx-auto">
                       <img
-                        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200"
+                        src="https://img.freepik.com/free-vector/big-data-center-server-room-rack-engineering-process-teamwork-computer-technology-cloud-storage_39422-1032.jpg?t=st=1773755547~exp=1773759147~hmac=3e054cc641ea59b28b9aeb16db72d81a5b4426b72a7bd92d8836b0a495f36461&w=1480"
                         alt="AWS Cloud Illustration"
-                        className="w-full h-auto object-cover rounded-3xl shadow-2xl border border-gray-100"
+                        className="w-full h-auto object-cover rounded-3xl"
                       />
                       <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/10 to-transparent rounded-3xl" />
                     </div>

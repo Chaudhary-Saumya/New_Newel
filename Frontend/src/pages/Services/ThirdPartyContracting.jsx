@@ -1,20 +1,7 @@
-// src/pages/services/ThirdPartyContracting.jsx
 import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-// Lucide icons
-import {
-  Handshake,
-  FileCheck,
-  ShieldCheck,
-  Users,
-  Scale,
-  ArrowRight,
-  CheckCircle,
-  Briefcase,
-} from 'lucide-react';
 
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
@@ -61,33 +48,6 @@ export default function ThirdPartyContracting() {
           scrollTrigger: { trigger: '.hero', start: 'top 70%' },
         }
       );
-
-      // Process icons stagger
-      gsap.utils.toArray('.process-step').forEach((step, i) => {
-        gsap.fromTo(
-          step,
-          { y: 50, opacity: 0, scale: 0.9 },
-          {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            duration: 1,
-            delay: i * 0.15,
-            ease: 'power3.out',
-            scrollTrigger: { trigger: step, start: 'top 85%' },
-          }
-        );
-      });
-
-      // Hover lift on illustration elements
-      gsap.utils.toArray('.float-el').forEach((el) => {
-        el.addEventListener('mouseenter', () => {
-          gsap.to(el, { y: -8, scale: 1.1, duration: 0.4, ease: 'power2.out' });
-        });
-        el.addEventListener('mouseleave', () => {
-          gsap.to(el, { y: 0, scale: 1, duration: 0.5, ease: 'power2.out' });
-        });
-      });
     }, container);
 
     return () => ctx.revert();
@@ -126,36 +86,36 @@ export default function ThirdPartyContracting() {
                   onClick={() => navigate('/Contact')}
                   className="hero-btn group px-10 py-5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-lg rounded-xl shadow-lg shadow-indigo-200/40 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex items-center gap-3"
                 >
-                  Contact Us
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                  Contact Us →
                 </button>
               </div>
             </div>
 
-            {/* Right - Illustration (handshake + process icons) */}
+            {/* Right - Illustration (DOOH style) */}
             <div className="relative hidden lg:block">
               <div className="illustration relative max-w-lg mx-auto">
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100 bg-gradient-to-br from-blue-50 to-indigo-50 p-8">
-                  <div className="flex justify-center">
-                    <div className="relative w-80 h-80">
-                      {/* Main handshake illustration */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-64 h-64 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-full flex items-center justify-center shadow-lg">
-                          <Handshake className="w-40 h-40 text-indigo-600" />
-                        </div>
-                      </div>
+                <div className="relative rounded-3xl overflow-hidden">
+                  <img
+                    src="https://img.freepik.com/free-vector/satisfied-businessmen-shake-hands-against-signed-agreement_107791-69.jpg?t=st=1773755933~exp=1773759533~hmac=c9c811eb09b61df33584c6f778735419a79dcfb99c73c02a87c32564868e8dda&w=1480"
+                    alt="Business agreement handshake"
+                    className="w-full h-[480px] object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/10 to-blue-600/5" />
+                </div>
 
-                      {/* Floating process icons */}
-                      <div className="float-el absolute -top-6 left-0 w-16 h-16 bg-white rounded-xl shadow-lg flex items-center justify-center">
-                        <FileCheck className="w-8 h-8 text-emerald-600" />
-                      </div>
-                      <div className="float-el absolute top-4 -right-6 w-16 h-16 bg-white rounded-xl shadow-lg flex items-center justify-center">
-                        <CheckCircle className="w-8 h-8 text-blue-600" />
-                      </div>
-                      <div className="float-el absolute bottom-0 -right-8 w-16 h-16 bg-white rounded-xl shadow-lg flex items-center justify-center">
-                        <Briefcase className="w-8 h-8 text-purple-600" />
-                      </div>
-                    </div>
+                {/* Floating icons */}
+                <div className="absolute -top-10 -right-10 w-20 h-20 bg-white rounded-2xl shadow-xl flex items-center justify-center border-4 border-white">
+                  <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="absolute -bottom-8 -left-8 w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center border-4 border-white">
+                  <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM6 5a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
                   </div>
                 </div>
               </div>
@@ -165,29 +125,25 @@ export default function ThirdPartyContracting() {
 
         {/* FINAL CTA */}
         <section className="py-16 bg-gradient-to-br from-indigo-50 to-blue-50">
-  <div className="max-w-3xl mx-auto px-6 text-center">
-
-    <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
-      Ready to partner for reliable staffing?
-    </h2>
-
-    <p className="text-lg md:text-xl text-gray-700 mb-8">
-      Let Newel Technologies handle your third-party contracting needs with full compliance, transparency, and excellence.
-    </p>
-
-    <button 
-      onClick={() => navigate('/Contact')}
-      className="group px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-base rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2 mx-auto"
-    >
-      Get In Touch
-      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-    </button>
-
-  </div>
-</section>
+          <div className="max-w-3xl mx-auto px-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+              Ready to partner for reliable staffing?
+            </h2>
+            <p className="text-lg md:text-xl text-gray-700 mb-8">
+              Let Newel Technologies handle your third-party contracting needs with full compliance, transparency, and excellence.
+            </p>
+            <button 
+              onClick={() => navigate('/Contact')}
+              className="group px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-base rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2 mx-auto"
+            >
+              Get In Touch →
+            </button>
+          </div>
+        </section>
       </div>
 
       <Footer />
     </>
   );
 }
+

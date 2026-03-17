@@ -184,9 +184,9 @@ export default function ApplicationDevelopment() {
             {/* Floating visual + icons */}
             <div className="relative hidden lg:block">
               <div className="floating-visual relative w-full max-w-xl mx-auto">
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+                <div className="relative rounded-3xl overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=900&q=80"
+                    src="https://img.freepik.com/free-vector/mobile-application-development-programming-languages-css-html-it-ui-male-programmer-cartoon-character-developing-website-coding_335657-2367.jpg?t=st=1773755286~exp=1773758886~hmac=e8bc0be8748219fd77abaf8f0b1e714252c85d4f7ea91e249025a0d9a1234ef3&w=1480"
                     alt="Modern Application Development"
                     className="w-full h-auto object-cover"
                   />
@@ -203,9 +203,7 @@ export default function ApplicationDevelopment() {
                 <div className="float-icon absolute bottom-6 -left-10 bg-white/90 backdrop-blur-xl p-4 rounded-2xl shadow-xl">
                   <Database size={40} className="text-purple-600" />
                 </div>
-                <div className="float-icon absolute bottom-20 right-8 bg-white/90 backdrop-blur-xl p-4 rounded-2xl shadow-xl">
-                  <Zap size={38} className="text-cyan-600" />
-                </div>
+                
               </div>
             </div>
           </div>

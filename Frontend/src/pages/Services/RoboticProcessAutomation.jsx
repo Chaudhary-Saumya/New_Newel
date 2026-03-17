@@ -158,9 +158,9 @@ export default function RoboticProcessAutomation() {
             {/* Right - Illustration (workers + robots + machinery) */}
             <div className="relative hidden lg:block">
               <div className="illustration relative max-w-lg mx-auto">
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+                <div className="relative rounded-3xl overflow-hidden ">
                   <img
-                    src="https://images.unsplash.com/photo-1647427060118-4911c9821b82?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cm9ib3RpYyUyMHByb2Nlc3MlMjBhdXRvbWF0aW9ufGVufDB8fDB8fHww?auto=format&fit=crop&q=80&w=900"
+                    src="https://img.freepik.com/free-vector/collaborative-robotics-abstract-concept-illustration-collaborative-artificial-intelligence-manufacturing-robotics-cobot-automatization-safe-industry-solutions_335657-491.jpg?t=st=1773755761~exp=1773759361~hmac=19d9554dd03944002b0a76fc3a1c8b2f641f72f58af6fbf1f95abe9f4f9eaf2d&w=1480"
                     alt="RPA Illustration - Humans & Robots Working Together"
                     className="w-full h-auto object-cover"
                   />

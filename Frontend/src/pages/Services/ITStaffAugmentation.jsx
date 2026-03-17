@@ -159,9 +159,9 @@ export default function ITStaffAugmentation() {
             {/* Right - Illustration (matching style: woman at laptop + team cards + gears) */}
             <div className="relative hidden lg:block">
               <div className="illustration relative max-w-lg mx-auto">
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+                <div className="relative rounded-3xl overflow-hidden ">
                   <img
-                    src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=900"
+                    src="https://img.freepik.com/free-vector/business-people-watching-profile_1262-19722.jpg?t=st=1773755164~exp=1773758764~hmac=8041e704b4bc0b491da00a8184e6bd2661a97e7cf0b1f3d08819cc216ec28806&w=1480"
                     alt="IT Staff Augmentation Illustration"
                     className="w-full h-auto object-cover"
                   />

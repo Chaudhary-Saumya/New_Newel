@@ -140,9 +140,9 @@ export default function ApplicationReEngineering() {
             {/* Right - Illustration (crane lifting app blocks - symbolic re-engineering) */}
             <div className="relative hidden lg:block">
               <div className="illustration relative max-w-lg mx-auto">
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+                <div className="relative rounded-3xl overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=900"
+                    src="https://img.freepik.com/free-vector/custom-style-script-website-optimization-coding-software-development-female-programmer-cartoon-character-working-adding-javascript-css-code_335657-2370.jpg?t=st=1773755500~exp=1773759100~hmac=a9c0419aae66c5cc41766160fa544883a58fbf307c32a7550f9cdf7dddad3253&w=1480"
                     alt="Application Re-Engineering Illustration"
                     className="w-full h-auto object-cover"
                   />

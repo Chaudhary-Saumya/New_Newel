@@ -158,9 +158,9 @@ export default function Outsystems() {
             {/* Right - Illustration (developer / low-code platform vibe) */}
             <div className="relative hidden lg:block">
               <div className="illustration relative max-w-lg mx-auto">
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+                <div className="relative rounded-3xl overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=900"
+                    src="https://img.freepik.com/free-vector/teem-discussing-project-kanban-board_1262-19963.jpg?t=st=1773755818~exp=1773759418~hmac=39659ef90f0123efb4e7679139b51cd15fb6fbd82354cab9b8495e9eada451fe&w=1480"
                     alt="OutSystems Low-Code Development"
                     className="w-full h-auto object-cover"
                   />
