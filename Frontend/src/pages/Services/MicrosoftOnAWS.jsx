@@ -140,7 +140,7 @@ export default function MicrosoftOnAWS() {
               <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 {/* Left - Text */}
                 <div>
-                  <h1 className="text-5xl md:text-6xl lg:text-5xl font-extrabold tracking-tight text-gray-900 leading-none mb-10">
+                  <h1 className="text-5xl md:text-5xl lg:text-5xl font-extrabold tracking-tight text-gray-900 leading-none mb-10">
                     Managed Services & Cloud
                     <br />
                     Consulting for Microsoft
@@ -178,7 +178,7 @@ export default function MicrosoftOnAWS() {
             {/* FOCUS AREAS */}
             <section className="py-20 lg:py-28 bg-white">
               <div className="max-w-7xl mx-auto px-6 lg:px-16">
-                <h2 className="section-title text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 tracking-tight text-gray-900">
+                <h2 className="section-title text-4xl md:text-5xl lg:text-5xl font-bold text-center mb-16 tracking-tight text-gray-900">
                   Our Microsoft Workload Focus Areas on AWS
                 </h2>
 
@@ -252,7 +252,7 @@ export default function MicrosoftOnAWS() {
             {/* MANAGED SERVICES */}
             <section className="py-20 lg:py-28 bg-gradient-to-b from-white to-indigo-50/30">
               <div className="max-w-7xl mx-auto px-6 lg:px-16">
-                <h2 className="section-title text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 tracking-tight text-gray-900">
+                <h2 className="section-title text-4xl md:text-5xl lg:text-5xl font-bold text-center mb-16 tracking-tight text-gray-900">
                   Our Services as an AWS Managed Service Provider
                 </h2>
 
@@ -315,7 +315,7 @@ export default function MicrosoftOnAWS() {
             {/* BUSINESS BENEFITS */}
             <section className="py-20 lg:py-28 bg-white">
               <div className="max-w-7xl mx-auto px-6 lg:px-16">
-                <h2 className="section-title text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 tracking-tight text-gray-900">
+                <h2 className="section-title text-4xl md:text-5xl lg:text-5xl font-bold text-center mb-16 tracking-tight text-gray-900">
                   Business Benefits Delivered
                 </h2>
 

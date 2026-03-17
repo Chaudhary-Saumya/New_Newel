@@ -115,7 +115,7 @@ export default function MobileApplication() {
           <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left - Text */}
             <div>
-              <h1 className="hero-title text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none mb-8 text-gray-900">
+              <h1 className="hero-title text-5xl md:text-5xl lg:text-5xl font-extrabold tracking-tight leading-none mb-8 text-gray-900">
                 Mobile
                 <br />
                 Application
@@ -194,7 +194,7 @@ export default function MobileApplication() {
         {/* WHY CHOOSE US */}
         <section className="py-20 lg:py-28 bg-white">
           <div className="max-w-7xl mx-auto px-6 lg:px-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 tracking-tight text-gray-900">
+            <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold text-center mb-16 tracking-tight text-gray-900">
               Why Choose Our Mobile Apps?
             </h2>
 
@@ -222,7 +222,7 @@ export default function MobileApplication() {
         {/* PROCESS */}
         <section className="py-20 lg:py-28 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6 lg:px-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 tracking-tight text-gray-900">
+            <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold text-center mb-16 tracking-tight text-gray-900">
               Our Development Process
             </h2>
 

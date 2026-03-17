@@ -143,7 +143,7 @@ export default function AWS() {
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                   {/* Left - Text */}
                   <div>
-                    <h1 className="text-5xl md:text-6xl lg:text-6xl font-extrabold tracking-tight text-gray-900 leading-none mb-10">
+                    <h1 className="text-5xl md:text-5xl lg:text-5xl font-extrabold tracking-tight text-gray-900 leading-none mb-10">
                       Unlock the Power of
                       <span className="block text-indigo-600 mt-2">AWS</span>
                       <span className="block text-4xl md:text-5xl mt-2">with Us</span>
@@ -184,7 +184,7 @@ export default function AWS() {
             {/* WHY CHOOSE NEWEL */}
             <section className="py-20 lg:py-28 bg-white">
               <div className="max-w-7xl mx-auto px-6 lg:px-16">
-                <h2 className="section-title text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 tracking-tight text-gray-900">
+                <h2 className="section-title text-4xl md:text-5xl lg:text-5xl font-bold text-center mb-16 tracking-tight text-gray-900">
                   Why Choose Newel Technologies?
                 </h2>
 
@@ -252,7 +252,7 @@ export default function AWS() {
             {/* AWS SERVICES CYCLE */}
             <section className="py-20 lg:py-28 bg-gradient-to-b from-white to-indigo-50/30">
               <div className="max-w-7xl mx-auto px-6 lg:px-16 text-center">
-                <h2 className="section-title text-4xl md:text-5xl lg:text-6xl font-bold mb-16 tracking-tight text-gray-900">
+                <h2 className="section-title text-4xl md:text-5xl lg:text-5xl font-bold mb-16 tracking-tight text-gray-900">
                   AWS Services Cycle
                 </h2>
 
@@ -291,7 +291,7 @@ export default function AWS() {
             {/* OUR AWS SERVICES GRID */}
             <section className="py-20 lg:py-28 bg-white">
               <div className="max-w-7xl mx-auto px-6 lg:px-16">
-                <h2 className="section-title text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 tracking-tight text-gray-900">
+                <h2 className="section-title text-4xl md:text-5xl lg:text-5xl font-bold text-center mb-16 tracking-tight text-gray-900">
                   Our AWS Services
                 </h2>
 

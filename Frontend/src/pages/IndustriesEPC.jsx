@@ -215,8 +215,8 @@ export default function IndustriesEPC() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
           {/* Hero Section */}
           <div ref={heroRef} className="text-center mb-20 lg:mb-32">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 tracking-tight leading-none">
-              EPC (Engineering, Procurement & Construction)
+            <h1 className="text-5xl md:text-5xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-none">
+              EPC <br /> (Engineering, Procurement & Construction)
             </h1>
             <p className="mt-8 text-xl lg:text-2xl text-gray-700 max-w-5xl mx-auto leading-relaxed">
               The EPC industry is transforming with the adoption of smart project delivery methods, digital engineering, and automation tools.
