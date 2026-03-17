@@ -43,7 +43,7 @@ const industries = [
     desc: "Advanced engineering solutions for modern manufacturing and design." 
   },
   { 
-    name: "Heavy Equipment Manufacturing", 
+    name: "HEM", 
     link: "/industries/Manufacturing",
     image: "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=800&q=80",
     desc: "Revolutionizing heavy equipment manufacturing with automation and IoT." 
@@ -163,7 +163,7 @@ export default function Industries() {
       });
 
       // === INDIVIDUAL SUPER ANIMATIONS ===
-      cardRefs.current.forEach((card, i) => {
+      cardRefs.current.forEach((card) => {
         if (!card) return;
 
         const img = card.querySelector("img");
@@ -300,6 +300,9 @@ export default function Industries() {
 
               {/* CONTENT LAYER */}
               <div className="content-layer absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm p-5 md:p-6 h-[34%] flex flex-col justify-between border-t border-slate-200/50">
+               <h1 className="text-xs md:text-xl mb-2 font-bold text-slate-900 tracking-tight">
+                  {ind.name}
+                </h1>
                 <p className="text-xs md:text-sm text-slate-700 line-clamp-3 leading-tight">
                   {ind.desc}
                 </p>
@@ -317,11 +320,7 @@ export default function Industries() {
       </div>
 
       {/* Bottom hint */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 text-xs uppercase tracking-wide font-medium text-slate-500">
-        <div className="h-px w-6 bg-slate-300" />
-        Scroll horizontally to view all industries
-        <div className="h-px w-6 bg-slate-300" />
-      </div>
+    
     </section>
   );
 }
