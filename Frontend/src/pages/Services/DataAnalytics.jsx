@@ -126,7 +126,7 @@ export default function DataAnalytics() {
               <div className="mt-12">
                 <button 
                   onClick={() => navigate('/Contact')}
-                  className="hero-btn group px-10 py-5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-lg rounded-xl shadow-lg shadow-indigo-200/40 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex items-center gap-3"
+                  className="hero-btn group px-10 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-lg rounded-xl shadow-lg shadow-indigo-200/40 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex items-center gap-3"
                 >
                   Contact Us
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
@@ -176,7 +176,7 @@ export default function DataAnalytics() {
                     <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-${benefit.color}-50 group-hover:bg-${benefit.color}-100 transition-colors`}>
                       <Icon size={44} className={`text-${benefit.color}-600`} />
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
                   </div>
                 );
               })}

@@ -156,7 +156,7 @@ const Navbar = () => {
           <img
             src={logo}
             alt="Newel Technologies"
-            className="h-9 md:h-12 w-auto transition-all duration-300"
+            className="h-9 md:h-13 w-auto transition-all duration-300"
           />
         </Link>
 

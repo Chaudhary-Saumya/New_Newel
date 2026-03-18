@@ -157,7 +157,7 @@ export default function ApplicationDevelopment() {
         <section className="hero relative pt-20 pb-28 md:pt-32 md:pb-44 px-6 lg:px-16">
           <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h1 className="hero-title text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter leading-none mb-8">
+              <h1 className="hero-title text-5xl md:text-5xl lg:text-5xl font-extrabold tracking-tighter leading-none mb-8">
                 Application
                 <span className="block bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent mt-2">
                   Development
@@ -174,7 +174,7 @@ export default function ApplicationDevelopment() {
               </div>
 
               <div className="mt-12">
-                <button className="hero-btn group relative px-10 py-5 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-semibold text-lg rounded-2xl shadow-2xl shadow-indigo-200/60 transition-all duration-300 hover:-translate-y-1 flex items-center gap-4">
+                <button className="hero-btn group relative px-10 py-3 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-semibold text-lg rounded-2xl shadow-2xl shadow-indigo-200/60 transition-all duration-300 hover:-translate-y-1 flex items-center gap-4">
                   Contact Us
                   <span className="text-2xl group-hover:translate-x-2 transition">→</span>
                 </button>
@@ -212,11 +212,11 @@ export default function ApplicationDevelopment() {
         {/* WHAT WE OFFER */}
         <section className="py-20 lg:py-28 bg-white">
           <div className="max-w-7xl mx-auto px-6 lg:px-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 tracking-tight text-gray-900">
+            <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold text-center mb-16 tracking-tight text-gray-900">
               What we offer
             </h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
               {offerItems.map((item, i) => {
                 const Icon = item.icon;
                 return (
@@ -238,11 +238,11 @@ export default function ApplicationDevelopment() {
         {/* SUPPORT SERVICES */}
         <section className="py-20 lg:py-28 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6 lg:px-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 tracking-tight text-gray-900">
+            <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold text-center mb-16 tracking-tight text-gray-900">
               Support Services
             </h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {supportItems.map((item, i) => {
                 const Icon = item.icon;
                 return (
@@ -253,7 +253,7 @@ export default function ApplicationDevelopment() {
                     <div className="flex-shrink-0 w-14 h-14 bg-emerald-50 group-hover:bg-emerald-100 rounded-2xl flex items-center justify-center transition-colors">
                       <Icon size={32} className="text-emerald-600" />
                     </div>
-                    <p className="text-xl font-medium text-gray-800 leading-relaxed">{item.title}</p>
+                    <p className="font-medium text-gray-800 leading-relaxed">{item.title}</p>
                   </div>
                 );
               })}
@@ -264,7 +264,7 @@ export default function ApplicationDevelopment() {
         {/* PROCESS */}
         <section className="py-20 lg:py-28 bg-white">
           <div className="max-w-7xl mx-auto px-6 lg:px-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 tracking-tight text-gray-900">
+            <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold text-center mb-16 tracking-tight text-gray-900">
               Process
             </h2>
 
@@ -276,10 +276,10 @@ export default function ApplicationDevelopment() {
                     key={i}
                     className="step-card group relative bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 text-center"
                   >
-                    <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-${step.color}-50 group-hover:bg-${step.color}-100 transition-colors`}>
+                    <div className={`w-20 h-20 mx-auto mb-4 rounded-2xl flex items-center justify-center bg-${step.color}-50 group-hover:bg-${step.color}-100 transition-colors`}>
                       <Icon size={44} className={`text-${step.color}-600`} />
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">{step.title}</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
                     <p className="text-gray-600 leading-relaxed">{step.desc}</p>
                   </div>
                 );
@@ -291,7 +291,7 @@ export default function ApplicationDevelopment() {
         {/* OUR SKILLS */}
         <section className="py-20 lg:py-28 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6 lg:px-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 tracking-tight text-gray-900">
+            <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold text-center mb-16 tracking-tight text-gray-900">
               Our Skills
             </h2>
 
@@ -305,7 +305,7 @@ export default function ApplicationDevelopment() {
                     <div className="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center">
                       <skill.icon size={36} className="text-indigo-600" />
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900">{skill.category}</h3>
+                    <h3 className="text-xl font-bold text-gray-900">{skill.category}</h3>
                   </div>
                   <ul className="space-y-3 text-gray-700">
                     {skill.items.map((item, idx) => (
@@ -324,13 +324,13 @@ export default function ApplicationDevelopment() {
         {/* FINAL CTA */}
         <section className="py-24 bg-gradient-to-br from-indigo-50 to-white">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gray-900">
+            <h2 className="text-4xl md:text-4xl font-bold mb-8 text-gray-900">
               Ready to build something amazing?
             </h2>
-            <p className="text-2xl text-gray-600 mb-12">
+            <p className="text-xl text-gray-600 mb-12">
               Let’s turn your vision into a powerful, scalable application.
             </p>
-            <button className="px-14 py-7 bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-bold text-xl rounded-2xl shadow-2xl hover:shadow-indigo-300 transition-all hover:-translate-y-1">
+            <button className="px-14 py-4 bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-bold text-xl rounded-2xl shadow-2xl hover:shadow-indigo-300 transition-all hover:-translate-y-1">
               Get In Touch
             </button>
           </div>

@@ -149,14 +149,14 @@ export default function Industries() {
 
       // === MAIN SUPER HORIZONTAL SCROLL (Pin + Scrub) ===
       gsap.to(scroller, {
-        x: () => -(totalScrollWidth - viewportWidth + 200),
+        x: () => -(totalScrollWidth - viewportWidth + 100),
         ease: "none",
         scrollTrigger: {
           trigger: sectionRef.current,
           pin: true,
           scrub: 1.2,
           start: "top top",
-          end: () => `+=${totalScrollWidth - viewportWidth + 200}`,
+          end: () => `+=${totalScrollWidth - viewportWidth + 100}`,
           invalidateOnRefresh: true,
           anticipatePin: 1,
         },
@@ -271,14 +271,15 @@ export default function Industries() {
             <div
               key={i}
               ref={(el) => (cardRefs.current[i] = el)}
-              className="group flex-shrink-0 w-[280px] md:w-[340px] h-full bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl relative cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1"
+              className="group flex-shrink-0 w-[280px] md:w-[300px] h-full bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl relative cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1 [&>a]:block [&>a]:w-full [&>a]:h-full"
             >
+              <Link to={ind.link} className="block w-full h-full">
               {/* IMAGE CONTAINER WITH PARALLAX */}
               <div className="relative h-[100%] overflow-hidden">
                 <img
                   src={ind.image}
                   alt={ind.name}
-                  className="absolute inset-0 w-full h-full object-cover  transition-transform duration-700"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700"
                   loading="lazy"
                 />
 
@@ -307,13 +308,13 @@ export default function Industries() {
                   {ind.desc}
                 </p>
 
-                <Link
-                  to={ind.link}
-                  className="mt-auto inline-flex items-center gap-2 text-[#5099ff] font-semibold text-sm md:text-base group-hover:gap-3 transition-all hover:underline"
+                <span
+                  className="mt-auto inline-flex items-center gap-2 text-[#5099ff] font-semibold text-sm md:text-base group-hover:gap-3 transition-all"
                 >
                   Explore →
-                </Link>
+                </span>
               </div>
+              </Link>
             </div>
           ))}
         </div>

@@ -219,7 +219,7 @@ export default function Careers() {
             <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
               {/* Hero */}
               <div ref={heroRef} className="text-center mb-16 lg:mb-24 opacity-0">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-[#5099ff] to-blue-700 tracking-tight leading-none mb-5">
+                <h1 className="text-4xl md:text-5xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-[#5099ff] to-blue-700 tracking-tight leading-none mb-5">
                   Careers at Newel
                 </h1>
                 <p className="text-xl lg:text-2xl text-gray-700 font-medium max-w-4xl mx-auto">

@@ -131,10 +131,10 @@ export default function Contact() {
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-12">
           {/* Hero Header */}
           <div className="text-center mb-12 sm:mb-16 lg:mb-24">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
               Why Wait? <span className="text-[#5099ff]">Let's Connect</span> Now
             </h1>
-            <p className="mt-5 sm:mt-6 text-lg sm:text-xl lg:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+            <p className="mt-5 sm:mt-6 text-lg sm:text-xl lg:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
               Ready to accelerate your business with next-gen cloud, AWS, and IT solutions? Drop us a message — we're excited to talk.
             </p>
           </div>
@@ -143,7 +143,7 @@ export default function Contact() {
             {/* Left: Contact Info */}
             <div ref={leftRef} className="space-y-8 sm:space-y-10 lg:space-y-12">
               <div className="bg-white rounded-2xl shadow-lg border border-gray-100/80 p-6 sm:p-8 lg:p-10">
-                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 bg-gradient-to-r from-[#5099ff] to-blue-600 bg-clip-text text-transparent inline-block">
+                <h2 className="text-2xl sm:text-2xl font-bold text-gray-900 mb-6 sm:mb-8 bg-gradient-to-r from-[#5099ff] to-blue-600 bg-clip-text text-transparent inline-block">
                   Reach Us Directly
                 </h2>
 
@@ -205,7 +205,7 @@ export default function Contact() {
               ref={rightRef}
               className="bg-white/90 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl border border-gray-100/50 p-6 sm:p-8 lg:p-12"
             >
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 sm:mb-10 bg-gradient-to-r from-[#5099ff] to-blue-600 bg-clip-text text-transparent inline-block">
+              <h2 className="text-2xl sm:text-2xl font-bold text-gray-900 mb-8 sm:mb-10 bg-gradient-to-r from-[#5099ff] to-blue-600 bg-clip-text text-transparent inline-block">
                 Let's Connect Now
               </h2>
 

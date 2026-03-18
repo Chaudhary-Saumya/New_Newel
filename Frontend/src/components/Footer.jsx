@@ -1,5 +1,6 @@
 // components/Footer.jsx
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MapPin, Mail, Phone, Facebook, Twitter, Linkedin, Instagram, ArrowUp } from "lucide-react";
@@ -29,29 +30,35 @@ export default function Footer() {
   }, []);
 
   const services = [
-    "Application Development",
-    "Mobile Applications",
-    "Data Analytics",
-    "AWS Services",
-    "Application Re-engineering",
-    "Quality Assurance",
-    "Robotic Process Automation",
-    "IT Staff Augmentation",
+    { name: "Application Development", path: "/services/ApplicationDevelopment" },
+    { name: "Mobile Applications", path: "/services/MobileApplications" },
+    { name: "Data Analytics", path: "/services/DataAnalytics" },
+    { name: "AWS Services", path: "/services/aws" },
+    { name: "Application Re-engineering", path: "/services/ApplicationRe-Engineering" },
+    { name: "Quality Assurance", path: "/services/QualityAssurance" },
+    { name: "Robotic Process Automation", path: "/services/RoboticProcessAutomation" },
+    { name: "IT Staff Augmentation", path: "/services/ITstaffAugmentation" },
   ];
 
   const quickLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About Us", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Industries", href: "#industries" },
-    { name: "Careers", href: "#careers" },
-    { name: "Contact Us", href: "#contact" },
+    { name: "Home", path: "/" },
+    { name: "About Us", path: "/about-us" },
+    { name: "Services", path: "/services" },
+    { name: "Industries", path: "/industries" },
+    { name: "Careers", path: "/careers" },
+    { name: "Contact Us", path: "/contact" },
   ];
 
   const industries = [
-    "BFSI", "Retails", "EPC (Engineering, Procurement & Construction)",
-    "Oil & GAS", "Infrastructure", "Chemical", "Healthcare",
-    "Defence", "Renewable Energy",
+    { name: "BFSI", path: "/industries/bfsi" },
+    { name: "Retail", path: "/industries/retail" },
+    { name: "EPC", path: "/industries/epc" },
+    { name: "Oil & Gas", path: "/industries/oil-gas" },
+    { name: "Infrastructure", path: "/industries/infrastructure" },
+    { name: "Chemical", path: "/industries/chemical" },
+    { name: "Healthcare", path: "/industries/healthcare" },
+    { name: "Defence", path: "/industries/defence" },
+    { name: "Renewable Energy", path: "/industries/renewableenergy" },
   ];
 
   return (
@@ -136,7 +143,9 @@ export default function Footer() {
             <h3 className="text-xl font-semibold text-slate-900">Services</h3>
             <ul className="space-y-3 text-sm text-slate-600">
               {services.map((item, i) => (
-                <li key={i} className="hover:text-[#5099ff] transition-colors cursor-pointer">{item}</li>
+                <li key={i}>
+                  <Link to={item.path} className="hover:text-[#5099ff] transition-colors block">{item.name}</Link>
+                </li>
               ))}
             </ul>
           </div>
@@ -147,7 +156,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-slate-600">
               {quickLinks.map((link, i) => (
                 <li key={i}>
-                  <a href={link.href} className="hover:text-[#5099ff] transition-colors">{link.name}</a>
+                  <Link to={link.path} className="hover:text-[#5099ff] transition-colors block">{link.name}</Link>
                 </li>
               ))}
             </ul>
@@ -158,7 +167,9 @@ export default function Footer() {
             <h3 className="text-xl font-semibold text-slate-900">Industries</h3>
             <ul className="space-y-3 text-sm text-slate-600">
               {industries.map((item, i) => (
-                <li key={i} className="hover:text-[#5099ff] transition-colors cursor-pointer">{item}</li>
+                <li key={i}>
+                  <Link to={item.path} className="hover:text-[#5099ff] transition-colors block">{item.name}</Link>
+                </li>
               ))}
             </ul>
           </div>

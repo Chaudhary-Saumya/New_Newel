@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -273,7 +274,7 @@ export default function IndustriesSemiconductor() {
                   <div className="w-16 h-16 rounded-2xl bg-[#5099ff]/10 flex items-center justify-center mb-6 text-3xl">
                     {challenge.icon}
                   </div>
-                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4 group-hover:text-[#5099ff] transition-colors">
+                  <h3 className="text-2xl lg:text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#5099ff] transition-colors">
                     {challenge.title}
                   </h3>
                   <p className="text-gray-700 leading-relaxed text-base lg:text-lg">
@@ -294,7 +295,7 @@ export default function IndustriesSemiconductor() {
                   <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-[#5099ff]/10 flex items-center justify-center mb-4 md:mb-6 text-2xl md:text-3xl">
                     {challenge.icon}
                   </div>
-                  <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-3 md:mb-4 group-hover:text-[#5099ff] transition-colors">
+                  <h3 className="text-xl md:text-2xl lg:text-2xl font-bold text-gray-900 mb-3 md:mb-4 group-hover:text-[#5099ff] transition-colors">
                     {challenge.title}
                   </h3>
                   <p className="text-gray-700 leading-relaxed text-sm md:text-base lg:text-lg">
@@ -314,10 +315,9 @@ export default function IndustriesSemiconductor() {
               Build precise, high-performing teams with Newel for design, fabrication, and yield excellence.
             </p>
             <a
-              href="#contact"
               className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#5099ff] to-blue-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:shadow-[#5099ff]/40 transition-all duration-300 hover:-translate-y-1"
             >
-              Start the Conversation →
+               <Link to={'/contact'}> Start the Conversation →</Link>
             </a>
           </div>
         </div>

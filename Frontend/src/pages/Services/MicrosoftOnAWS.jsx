@@ -154,7 +154,7 @@ export default function MicrosoftOnAWS() {
                   </div>
 
                   <div className="mt-12">
-                    <Link to="/contact" className="group px-10 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-lg rounded-xl shadow-xl shadow-indigo-200/40 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-300/60 hover:-translate-y-1 flex items-center gap-3 w-fit">
+                    <Link to="/contact" className="group px-10 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-lg rounded-xl shadow-xl shadow-indigo-200/40 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-300/60 hover:-translate-y-1 flex items-center gap-3 w-fit">
                       Contact Us
                       <ArrowRight className="w-6 h-6 group-hover:translate-x-1.5 transition-transform" />
                     </Link>

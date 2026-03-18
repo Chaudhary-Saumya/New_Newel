@@ -1,4 +1,3 @@
-// components/Hero.jsx
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -286,7 +285,7 @@ const toggleCard = (index) => {
     <section
       id="home"
       ref={sectionRef}
-      className="relative min-h-screen flex items-center bg-gradient-to-br from-slate-50 via-blue-50/30 to-white overflow-hidden"
+      className="relative min-h-screen flex items-center bg-gradient-to-br from-slate-100 via-blue-50/10 to-white overflow-hidden"
     >
       {/* Background pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(#3b82f620_1px,transparent_1px)] bg-[size:40px_40px] opacity-40" />
@@ -359,9 +358,7 @@ const toggleCard = (index) => {
               <p className="text-sm text-gray-600">
                 Discover how we implement {currentContent.layer1.title.toLowerCase()} to accelerate your cloud journey.
               </p>
-              <button className="mt-3 text-blue-600 font-medium text-sm hover:underline">
-                Explore →
-              </button>
+              
             </div>
           </div>
 
@@ -388,9 +385,7 @@ const toggleCard = (index) => {
               <p className="text-sm text-gray-600">
                 Learn how {currentContent.layer2.title} powers real-time experiences.
               </p>
-              <button className="mt-3 text-blue-600 font-medium text-sm hover:underline">
-                Explore →
-              </button>
+              
             </div>
           </div>
 
@@ -417,9 +412,7 @@ const toggleCard = (index) => {
               <p className="text-sm text-gray-600">
                 Maximize efficiency with our {currentContent.layer3.title.toLowerCase()} solutions.
               </p>
-              <button className="mt-3 text-blue-600 font-medium text-sm hover:underline">
-                Explore →
-              </button>
+              
             </div>
           </div>
         </div>
